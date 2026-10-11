@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Publicité par IA : créations publicitaires, vidéos et visuels professionnels pour développer votre activité.">
+  <title>Publicité par IA | Création Ai</title>
+
+  <style>
+    :root {
+      --blue: #087cf0;
+      --cyan: #08c5e8;
+      --dark: #10203e;
+      --text: #344663;
+      --pale: #f2f8ff;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    a { text-decoration: none; }
+
+    .container {
+      width: min(1200px, 90%);
+      margin: auto;
+    }
+
+    header {
+      background: rgba(255,255,255,.97);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #eaf1fa;
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+
+    .logo span, .accent { color: var(--blue); }
+
+    .logo-symbol {
+      color: var(--blue);
+      font-size: 35px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--dark);
+      font-size: 14px;
+    }
+
+    nav a:hover, nav a.active { color: var(--blue); }
+
+    .whatsapp-outline {
+      border: 1px solid var(--blue);
+      color: var(--blue);
+      padding: 8px 17px;
+      border-radius: 30px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 65px 0 70px;
+      background: linear-gradient(115deg, #fff 48%, #f0f8ff);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 25px;
+      background: #dff0ff;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.13;
+      letter-spacing: -1.5px;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy {
+      color: var(--text);
+      font-size: 18px;
+      max-width: 530px;
+      margin-bottom: 25px;
+    }
+
+    .checks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 15px;
+      margin-top: 28px;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .check span {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      width: 23px;
+      height: 23px;
+      color: white;
+      background: var(--blue);
+      border-radius: 50%;
+      font-weight: bold;
+    }
+
+    .hero-visual {
+      min-height: 380px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle, #cceaff 0%, #eff8ff 48%, transparent 72%);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      max-width: 510px;
+      height: 370px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: 0 22px 55px #087cf026;
+    }
+
+    .ai-tag {
+      position: absolute;
+      right: 0;
+      top: 20px;
+      background: white;
+      border-radius: 16px;
+      padding: 12px 18px;
+      color: var(--blue);
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 8px 30px #087cf01c;
+    }
+
+    section { padding: 55px 0; }
+
+    .benefits { background: #f7faff; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .eyebrow {
+      color: #2995ef;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(27px, 3.5vw, 37px);
+      line-height: 1.3;
+      margin-top: 7px;
+    }
+
+    .section-subtitle {
+      color: var(--text);
+      margin-top: 9px;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 27px;
+    }
+
+    .benefit-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #e2f2ff;
+      color: var(--blue);
+      font-size: 29px;
+      margin-bottom: 12px;
+    }
+
+    .benefit h3 {
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .benefit p {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .offers { background: white; }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    .offer {
+      padding: 25px;
+      border: 1px solid #e1ebf6;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px #173d6d0c;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .offer-top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .offer-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+      color: white;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      border-radius: 50%;
+      font-size: 28px;
+    }
+
+    .offer h3 { font-size: 19px; }
+
+    .offer-top p { color: var(--text); }
+
+    .features {
+      list-style: none;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .features li {
+      color: var(--text);
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .features li::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue);
+      color: white;
+      border-radius: 50%;
+      width: 19px;
+      height: 19px;
+      font-size: 12px;
+      margin-right: 9px;
+    }
+
+    .price {
+      border-top: 1px solid #e5edf6;
+      padding-top: 15px;
+      margin-bottom: 15px;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .price strong { font-size: 43px; }
+    .price span { font-size: 17px; }
+
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 30px;
+      color: white;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(100deg, var(--blue), #0872ee);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px #087cf033;
+    }
+
+    .cta {
+      margin-top: 30px;
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      border-radius: 20px;
+      background: #eff7ff;
+    }
+
+    .cta h3 { font-size: 18px; }
+    .cta p { color: var(--text); font-size: 14px; }
+
+    .cta .btn { min-width: 180px; }
+
+    footer {
+      padding: 25px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    footer .logo { font-size: 22px; }
+
+    @media (max-width: 800px) {
+      .navbar { flex-wrap: wrap; padding: 12px 0; }
+      nav { order: 3; width: 100%; justify-content: space-between; gap: 10px; }
+      nav a { font-size: 13px; }
+      .logo { font-size: 23px; }
+      .hero { padding: 35px 0 45px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 280px; }
+      .hero-visual img { height: 290px; }
+      .benefit-grid { grid-template-columns: repeat(2, 1fr); }
+      .offer-grid { gap: 16px; }
+      .offer { padding: 18px; }
+      .offer-top { align-items: flex-start; gap: 12px; }
+      .offer h3 { font-size: 16px; }
+      .price strong { font-size: 34px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { width: 92%; }
+      .whatsapp-outline { padding: 6px 10px; font-size: 12px; }
+      .hero-copy { font-size: 16px; }
+      .checks { grid-template-columns: 1fr; }
+      .benefit-grid { gap: 22px 16px; }
+      .benefit h3 { font-size: 15px; }
+      .benefit p { font-size: 13px; }
+      .offer-grid { grid-template-columns: 1fr; }
+      .offer { padding: 22px; }
+      .cta { flex-direction: column; align-items: stretch; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+    <a class="logo" href="index.html">
+      <span class="logo-symbol">✳</span>Création <span>Ai</span>
+    </a>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="index.html#about">À propos</a>
+      <a href="index.html#services" class="active">Services</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <a class="whatsapp-outline" href="#offres">◉ WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+
+      <div>
+        <span class="badge">SERVICE</span>
+        <h1>Publicité par <span class="accent">IA</span></h1>
+
+        <p class="hero-copy">
+          Des visuels publicitaires créatifs et percutants
+          pour mettre en valeur vos produits et attirer
+          l’attention de votre audience.
+        </p>
+
+        <div class="checks">
+          <div class="check"><span>✓</span> Créations personnalisées</div>
+          <div class="check"><span>✓</span> Résultats rapides</div>
+          <div class="check"><span>✓</span> Contenus adaptés à votre cible</div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img
+          src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1000&q=85"
+          alt="Création visuelle et publicité créative">
+        <div class="ai-tag">✦ AI</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">POURQUOI CHOISIR NOTRE SERVICE ?</div>
+        <h2>Des publicités qui font <span class="accent">la différence</span></h2>
+      </div>
+
+      <div class="benefit-grid">
+        <article class="benefit">
+          <div class="benefit-icon">✦</div>
+          <h3>Créativité illimitée</h3>
+          <p>Des visuels uniques générés par l’IA, adaptés à votre marque et à votre secteur.</p>
+        </article>
+
+        <article class="benefit">
+          <div class="benefit-icon">◎</div>
+          <h3>Ciblage précis</h3>
+          <p>Des contenus pensés pour toucher la bonne audience au bon moment.</p>
+        </article>
+
+        <article class="benefit">
+          <div class="benefit-icon">ϟ</div>
+          <h3>Gain de temps</h3>
+          <p>Des créations rapides, professionnelles et prêtes à l’emploi.</p>
+        </article>
+
+        <article class="benefit">
+          <div class="benefit-icon">▥</div>
+          <h3>Plus de résultats</h3>
+          <p>Des visuels qui attirent l’œil et augmentent votre engagement.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="offers" id="offres">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">NOS OFFRES</div>
+        <h2>Choisissez l’offre <span class="accent">qui vous convient</span></h2>
+        <p class="section-subtitle">
+          Deux formules simples et efficaces pour booster votre communication.
+        </p>
+      </div>
+
+      <div class="offer-grid">
+        <article class="offer">
+          <div class="offer-top">
+            <div class="offer-icon">▦</div>
+            <div>
+              <h3>Abonnement mensuel</h3>
+              <p>De 3 à 4 vidéos par jour</p>
+            </div>
+          </div>
+
+          <ul class="features">
+            <li>3 à 4 vidéos par jour</li>
+            <li>Contenus variés et créatifs</li>
+            <li>Format adapté à vos réseaux</li>
+            <li>Support et accompagnement</li>
+          </ul>
+
+          <div class="price"><strong>400</strong> <span>DT / mois</span></div>
+
+          <a class="btn whatsapp-link" href="#contact-whatsapp"
+             data-offer="Abonnement mensuel - 400 DT / mois">
+            ◉ Commander sur WhatsApp
+          </a>
+        </article>
+
+        <article class="offer">
+          <div class="offer-top">
+            <div class="offer-icon">▦</div>
+            <div>
+              <h3>Abonnement annuel</h3>
+              <p>120 vidéos par mois (1440 vidéos par an)</p>
+            </div>
+          </div>
+
+          <ul class="features">
+            <li>120 vidéos par mois</li>
+            <li>1440 vidéos par an</li>
+            <li>Contenus variés et créatifs</li>
+            <li>Format adapté à vos réseaux</li>
+            <li>Support et accompagnement</li>
+          </ul>
+
+          <div class="price"><strong>4000</strong> <span>DT / an</span></div>
+
+          <a class="btn whatsapp-link" href="#contact-whatsapp"
+             data-offer="Abonnement annuel - 4000 DT / an">
+            ◉ Commander sur WhatsApp
+          </a>
+        </article>
+      </div>
+
+      <div class="cta" id="contact-whatsapp">
+        <div>
+          <h3>🚀 Prêt à donner un coup de boost à votre visibilité ?</h3>
+          <p>Contactez-nous dès maintenant et développez votre activité.</p>
+        </div>
+        <a class="btn whatsapp-link" href="#contact-whatsapp"
+           data-offer="Demande de renseignements sur la publicité par IA">
+          ◉ WhatsApp →
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="container">
+  <a class="logo" href="index.html">
+    <span class="logo-symbol">✳</span>Création <span>Ai</span>
+  </a>
+  <p>© 2026 Création Ai. Tous droits réservés.</p>
+</footer>
+
+<script>
+  // Remplacez ce numéro par votre numéro WhatsApp international.
+  // Exemple pour la Tunisie : 216XXXXXXXX
+  const whatsappNumber = "216XXXXXXXX";
+
+  document.querySelectorAll(".whatsapp-link").forEach(function(button) {
+    button.addEventListener("click", function(event) {
+      event.preventDefault();
+
+      if (whatsappNumber.includes("X")) {
+        alert("Veuillez ajouter votre numéro WhatsApp dans le code avant de recevoir les commandes.");
+        return;
+      }
+
+      const offer = button.dataset.offer;
+      const message = "Bonjour Création Ai, je souhaite des informations concernant : " + offer;
+      const url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank");
+    });
+  });
+</script>
+
+</body>
+</html>
