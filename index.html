@@ -4,18 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="description" content="Création Ai — création de sites web, publicités et contenus visuels grâce à l'intelligence artificielle.">
+
   <title>Création Ai | Créativité & Intelligence Artificielle</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
   <header class="header">
     <a class="brand" href="#accueil" aria-label="Création Ai, accueil">
       <span class="brand-icon">✳</span>
       <span>Création <b>Ai</b></span>
     </a>
 
-    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <button
+      class="menu-toggle"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      type="button">
+      ☰
+    </button>
 
     <nav class="nav" aria-label="Navigation principale">
       <a class="active" href="#accueil">Accueil</a>
@@ -26,23 +37,41 @@
   </header>
 
   <main>
+
+    <!-- ACCUEIL -->
     <section id="accueil" class="hero" aria-label="Accueil Création Ai">
-      <img src="hero.png" alt="Visuel principal de Création Ai" class="hero-image">
+      <img
+        src="hero.png"
+        alt="Visuel principal de Création Ai"
+        class="hero-image">
+
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <p class="eyebrow">DONNEZ VIE À VOS IDÉES</p>
+
         <h1>Création <span>Ai</span></h1>
-        <p class="hero-subtitle">L'intelligence artificielle au service de votre créativité.</p>
-        <a class="cta" href="#services">Découvrir nos services <span>↗</span></a>
+
+        <p class="hero-subtitle">
+          L'intelligence artificielle au service de votre créativité.
+        </p>
+
+        <a class="cta" href="#services">
+          Découvrir nos services <span>↗</span>
+        </a>
       </div>
 
-      <a href="#apropos" class="scroll-hint" aria-label="Défiler vers le bas">↓</a>
+      <a href="#apropos" class="scroll-hint" aria-label="Défiler vers le bas">
+        ↓
+      </a>
     </section>
 
+    <!-- À PROPOS -->
     <section id="apropos" class="section about">
       <p class="section-kicker">QUI SOMMES-NOUS ?</p>
+
       <h2>La créativité rencontre <span>l'innovation</span></h2>
+
       <p class="section-copy">
         Création Ai vous accompagne pour mettre en valeur votre activité
         avec des créations visuelles modernes et des solutions web
@@ -50,126 +79,303 @@
       </p>
     </section>
 
+    <!-- SERVICES -->
     <section id="services" class="section services">
       <p class="section-kicker">CE QUE NOUS FAISONS</p>
+
       <h2>Nos <span>services</span></h2>
 
       <div class="service-grid">
+
+        <!-- PUBLICITÉ PAR IA -->
         <article class="service-card">
           <div class="service-icon">✦</div>
+
           <h3>Publicité par IA</h3>
-          <p>Des visuels publicitaires créatifs pour présenter vos produits et attirer l'attention.</p>
-          <button type="button" class="cta" onclick="openOrder('Publicité par IA')">Commander</button>
+
+          <p>
+            Des visuels publicitaires créatifs pour présenter vos produits
+            et attirer l'attention.
+          </p>
+
+          <div class="pricing-option">
+            <h4>Abonnement mensuel</h4>
+
+            <p class="price">
+              400 DT <span>/ mois</span>
+            </p>
+
+            <button
+              type="button"
+              class="cta"
+              onclick="openOrder('Publicité par IA - Mensuel - 400 DT/mois')">
+              Commander
+            </button>
+          </div>
+
+          <div class="pricing-option">
+            <h4>Abonnement annuel</h4>
+
+            <p class="price">
+              4000 DT <span>/ an</span>
+            </p>
+
+            <button
+              type="button"
+              class="cta"
+              onclick="openOrder('Publicité par IA - Annuel - 4000 DT/an')">
+              Commander
+            </button>
+          </div>
         </article>
 
+        <!-- CRÉATION DE SITES WEB -->
         <article class="service-card">
           <div class="service-icon">⌘</div>
+
           <h3>Création de sites web</h3>
-          <p>Des sites modernes, adaptés aux mobiles et conçus pour présenter votre activité.</p>
-          <button type="button" class="cta" onclick="openOrder('Création de sites web')">Commander</button>
+
+          <p>
+            Des sites modernes, adaptés aux mobiles et conçus
+            pour présenter votre activité.
+          </p>
+
+          <button
+            type="button"
+            class="cta"
+            onclick="openOrder('Création de sites web')">
+            Commander
+          </button>
         </article>
 
+        <!-- IMAGES ET VIDÉOS -->
         <article class="service-card">
           <div class="service-icon">▶</div>
+
           <h3>Images & vidéos</h3>
-          <p>Des contenus visuels personnalisés pour vos réseaux sociaux et vos campagnes.</p>
-          <button type="button" class="cta" onclick="openOrder('Images et vidéos')">Commander</button>
+
+          <p>
+            Des contenus visuels personnalisés pour vos réseaux sociaux
+            et vos campagnes.
+          </p>
+
+          <button
+            type="button"
+            class="cta"
+            onclick="openOrder('Images et vidéos')">
+            Commander
+          </button>
         </article>
 
+        <!-- PACK SUCCÈS -->
         <article class="service-card">
           <div class="service-icon">🚀</div>
+
           <h3>Pack Succès</h3>
-          <p>Une solution complète pour développer votre activité, renforcer votre présence en ligne et attirer plus de clients.</p>
-          <button type="button" class="cta" onclick="openOrder('Pack Succès')">Commander</button>
+
+          <p>
+            Une solution complète pour développer votre activité,
+            renforcer votre présence en ligne et attirer plus de clients.
+          </p>
+
+          <button
+            type="button"
+            class="cta"
+            onclick="openOrder('Pack Succès')">
+            Commander
+          </button>
         </article>
+
       </div>
     </section>
 
+    <!-- FORMULAIRE DE COMMANDE -->
     <section id="commande" class="section contact" hidden>
-      <p class="section-kicker">VOTRE COMMANDE</p>
-      <h2>Confirmer votre <span>commande</span></h2>
-      <p class="section-copy">Veuillez remplir vos informations pour envoyer votre demande.</p>
 
-      <p>Service choisi : <strong id="service-choisi"></strong></p>
+      <p class="section-kicker">VOTRE COMMANDE</p>
+
+      <h2>Confirmer votre <span>commande</span></h2>
+
+      <p class="section-copy">
+        Veuillez remplir vos informations pour envoyer votre demande.
+      </p>
+
+      <p>
+        Service choisi :
+        <strong id="service-choisi"></strong>
+      </p>
 
       <form
         id="order-form"
         action="https://formspree.io/f/mbgdkabo"
-        method="POST"
-      >
-        <input type="hidden" name="service" id="service-input">
+        method="POST">
+
+        <input
+          type="hidden"
+          name="service"
+          id="service-input">
 
         <div class="form-group">
           <label for="nom">Nom</label>
+
           <input
             id="nom"
             name="nom"
             type="text"
             autocomplete="family-name"
             placeholder="Votre nom"
-            required
-          >
+            required>
         </div>
 
         <div class="form-group">
           <label for="prenom">Prénom</label>
+
           <input
             id="prenom"
             name="prenom"
             type="text"
             autocomplete="given-name"
             placeholder="Votre prénom"
-            required
-          >
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Adresse e-mail</label>
+
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="Votre adresse e-mail"
+            required>
         </div>
 
         <div class="form-group">
           <label for="telephone">Numéro de téléphone</label>
+
           <input
             id="telephone"
             name="telephone"
             type="tel"
             autocomplete="tel"
             placeholder="+216 ..."
-            required
-          >
+            required>
         </div>
 
         <div class="form-group">
           <label for="adresse">Adresse complète</label>
+
           <textarea
             id="adresse"
             name="adresse"
             autocomplete="street-address"
             rows="4"
             placeholder="Votre adresse complète"
-            required
-          ></textarea>
+            required></textarea>
         </div>
 
-        <button type="submit" class="cta">Confirmer la commande</button>
-        <button type="button" class="cta" onclick="closeOrder()">Retour aux services</button>
+        <div class="form-group">
+          <label for="message">Message (facultatif)</label>
+
+          <textarea
+            id="message"
+            name="message"
+            rows="3"
+            placeholder="Précisions sur votre commande"></textarea>
+        </div>
+
+        <button type="submit" class="cta">
+          Envoyer ma commande
+        </button>
+
+        <button
+          type="button"
+          class="cta"
+          onclick="closeOrder()">
+          Retour aux services
+        </button>
+
       </form>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="section contact">
+
       <p class="section-kicker">PARLONS DE VOTRE PROJET</p>
-      <h2>Prêt à créer quelque chose de <span>remarquable</span> ?</h2>
+
+      <h2>
+        Prêt à créer quelque chose de <span>remarquable</span> ?
+      </h2>
+
       <p class="section-copy">
-        Contactez-nous pour discuter de votre idée et trouver la solution adaptée à votre activité.
+        Contactez-nous pour discuter de votre idée et trouver
+        la solution adaptée à votre activité.
       </p>
-      <a class="cta" href="https://wa.me/21621582307" target="_blank" rel="noopener">
+
+      <a
+        class="cta"
+        href="https://wa.me/21621582307"
+        target="_blank"
+        rel="noopener">
         Contacter Création Ai sur WhatsApp <span>↗</span>
       </a>
-      <p class="phone">Téléphone : +216 21 582 307</p>
+
+      <p class="phone">
+        Téléphone : +216 21 582 307
+      </p>
     </section>
+
   </main>
 
+  <!-- PIED DE PAGE -->
   <footer>
-    <a class="footer-brand" href="#accueil">Création <b>Ai</b></a>
-    <p>© <span id="year"></span> Création Ai. Tous droits réservés.</p>
+    <a class="footer-brand" href="#accueil">
+      Création <b>Ai</b>
+    </a>
+
+    <p>
+      © <span id="year"></span> Création Ai. Tous droits réservés.
+    </p>
   </footer>
 
+  <!-- JAVASCRIPT -->
   <script src="script.js"></script>
+
+  <script>
+    // Année automatique
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Ouvrir le formulaire avec le service choisi
+    function openOrder(service) {
+      const section = document.getElementById("commande");
+      const serviceInput = document.getElementById("service-input");
+      const serviceText = document.getElementById("service-choisi");
+
+      serviceInput.value = service;
+      serviceText.textContent = service;
+
+      section.hidden = false;
+
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    // Retour aux services
+    function closeOrder() {
+      const section = document.getElementById("commande");
+
+      section.hidden = true;
+
+      document.getElementById("services").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  </script>
+
 </body>
 </html>
