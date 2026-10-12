@@ -2,217 +2,389 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Commander un site web</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06172f">
+<title>Création de sites web | Création Ai</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+:root {
+  --bg: #06172f;
+  --panel: #0a2140;
+  --cyan: #08d7f4;
+  --blue: #087cf5;
+  --text: #f4f8ff;
+  --muted: #b6c8df;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(ellipse at top right, #10345d, var(--bg) 65%);
+  line-height: 1.6;
+}
+.container { width: min(1100px, 92%); margin: auto; }
+header {
+  background: #041328;
+  border-bottom: 1px solid #123e60;
+  padding: 18px 0;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.logo { font-size: 23px; font-weight: bold; }
+.logo span, .cyan { color: var(--cyan); }
+nav a { color: white; text-decoration: none; }
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 30px;
+  padding: 55px 0 35px;
+}
+.tag {
+  display: inline-block;
+  border: 1px solid var(--cyan);
+  border-radius: 30px;
+  padding: 4px 15px;
+  color: var(--cyan);
+  font-size: 12px;
+}
+h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.1; }
+h1 span { color: var(--cyan); }
+p { color: var(--muted); }
+ul { list-style: none; padding: 0; }
+li { margin: 12px 0; }
+.check { color: var(--cyan); margin-right: 8px; }
+.device {
+  border: 2px solid var(--cyan);
+  border-radius: 18px;
+  padding: 28px;
+  min-height: 250px;
+  background: linear-gradient(145deg, #103b6b, #06172f);
+  box-shadow: 0 0 30px #087cf533;
+  transform: rotate(-2deg);
+}
+.device h2 { font-size: 29px; }
+.device button { margin-top: 12px; }
+.price-card {
+  border: 1px solid var(--cyan);
+  border-radius: 18px;
+  background: #071c37;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 0 25px #087cf522;
+  margin: 10px auto 45px;
+}
+.price-label { color: var(--cyan); }
+.price {
+  font-size: 42px;
+  font-weight: bold;
+  color: var(--cyan);
+  line-height: 1.2;
+}
+.btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 14px 22px;
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(100deg, var(--blue), var(--cyan));
+  cursor: pointer;
+  font-size: 15px;
+}
+.btn:hover { filter: brightness(1.1); }
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 10px 0 45px;
+}
+.feature {
+  border-top: 1px solid #16466b;
+  padding: 20px 8px;
+}
+.feature strong { color: var(--cyan); }
+.cta {
+  border: 1px solid #16466b;
+  background: #091f3c;
+  border-radius: 15px;
+  padding: 22px;
+  margin-bottom: 35px;
+}
+footer {
+  border-top: 1px solid #16466b;
+  padding: 24px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
 
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #eef2ff, #f8fafc);
-      color: #1e293b;
-    }
-
-    .container {
-      max-width: 480px;
-      margin: 35px auto;
-      padding: 30px;
-      background: white;
-      border-radius: 18px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .icon {
-      text-align: center;
-      font-size: 48px;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 27px;
-      margin-bottom: 12px;
-    }
-
-    .description {
-      text-align: center;
-      color: #64748b;
-      line-height: 1.7;
-    }
-
-    .price {
-      margin: 22px 0;
-      padding: 20px;
-      background: #ecfdf5;
-      border: 1px solid #a7f3d0;
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .price span {
-      display: block;
-      color: #047857;
-      font-size: 14px;
-    }
-
-    .price strong {
-      display: block;
-      margin-top: 8px;
-      color: #047857;
-      font-size: 32px;
-    }
-
-    .note {
-      font-size: 13px;
-      color: #64748b;
-      text-align: center;
-    }
-
-    label {
-      display: block;
-      margin-top: 18px;
-      margin-bottom: 8px;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-    input {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #cbd5e1;
-      border-radius: 9px;
-      font-size: 16px;
-      outline: none;
-    }
-
-    input:focus {
-      border-color: #059669;
-      box-shadow: 0 0 0 3px #05966920;
-    }
-
-    button {
-      display: block;
-      width: 100%;
-      margin-top: 25px;
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      background: #059669;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #047857;
-    }
-
-    .back {
-      display: block;
-      margin-top: 22px;
-      text-align: center;
-      text-decoration: none;
-      color: #059669;
-    }
-
-    .back:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 400px) {
-      .container {
-        padding: 22px;
-      }
-
-      h1 {
-        font-size: 23px;
-      }
-    }
-  </style>
+/* Fenêtre de commande */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(1, 9, 23, .88);
+  backdrop-filter: blur(5px);
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  width: min(100%, 460px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 24px;
+  border: 1px solid var(--cyan);
+  border-radius: 17px;
+  background: linear-gradient(150deg, #0c294c, #06172f);
+  box-shadow: 0 0 35px #008dff33;
+}
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.modal h2 { margin: 0; font-size: 24px; }
+.close {
+  background: transparent;
+  border: 1px solid #17608a;
+  color: white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 23px;
+  cursor: pointer;
+}
+.selected {
+  color: var(--cyan);
+  background: #092b4b;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 15px 0;
+  font-weight: bold;
+}
+.field { margin-bottom: 14px; }
+.field label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+.field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #155782;
+  border-radius: 8px;
+  background: #061a34;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+.field input:focus { border-color: var(--cyan); }
+.field input::placeholder { color: #8199b5; }
+.submit { width: 100%; }
+.privacy { text-align: center; font-size: 11px; }
+.status { font-size: 13px; }
+@media(max-width: 700px) {
+  .hero { grid-template-columns: 1fr; padding-top: 35px; }
+  .device { min-height: 200px; }
+  .features { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .price { font-size: 36px; }
+  .price-card { align-items: stretch; }
+  .price-card .btn { width: 100%; }
+  .modal { padding: 19px; }
+}
+</style>
 </head>
 
 <body>
+<header>
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo">✳ Création <span>Ai</span></a>
+      <a href="index.html">← Retour à l'accueil</a>
+    </nav>
+  </div>
+</header>
 
-  <main class="container">
-
-    <div class="icon">💻</div>
-
-    <h1>Créez votre site web</h1>
-
-    <p class="description">
-      Vous avez un projet ?
-      Remplissez le formulaire pour nous contacter
-      et discuter de votre futur site web.
-    </p>
-
-    <div class="price">
-      <span>Offre de création de site web</span>
-      <strong>À partir de 300 DT</strong>
+<main class="container">
+  <section class="hero">
+    <div>
+      <span class="tag">SERVICE</span>
+      <h1>Création de<br><span>sites web</span></h1>
+      <p>
+        Des sites web modernes, rapides et sur mesure pour
+        donner vie à votre projet et développer votre activité en ligne.
+      </p>
+      <ul>
+        <li><span class="check">✓</span> Design moderne et responsive</li>
+        <li><span class="check">✓</span> Optimisation SEO</li>
+        <li><span class="check">✓</span> Sécurité et performance</li>
+        <li><span class="check">✓</span> Accompagnement personnalisé</li>
+      </ul>
     </div>
 
-    <p class="note">
-      Le prix final dépend de vos besoins et des fonctionnalités demandées.
-    </p>
+    <div class="device">
+      <span class="cyan">✳ CRÉATION AI</span>
+      <h2>Votre site web<br><span class="cyan">sur mesure</span></h2>
+      <p>Votre présence professionnelle en ligne commence ici.</p>
+      <button class="btn" type="button" data-order>Découvrir →</button>
+    </div>
+  </section>
 
-    <form
-      action="https://formspree.io/f/mbgdkabo"
-      method="POST"
-    >
+  <!-- خانة السعر الوحيدة -->
+  <section class="price-card">
+    <div>
+      <div class="price-label">Offre de création de site web</div>
+      <div class="price">À partir de 300 DT</div>
+      <p>Le prix final dépend de vos besoins et des fonctionnalités demandées.</p>
+    </div>
+    <button class="btn" type="button" data-order>
+      🛒 Commander →
+    </button>
+  </section>
 
-      <input
-        type="hidden"
-        name="Objet"
-        value="Nouvelle demande de création de site web"
-      >
+  <section class="features">
+    <div class="feature"><strong>▣ Site vitrine</strong><p>Présentez votre activité en ligne.</p></div>
+    <div class="feature"><strong>▤ Site e-commerce</strong><p>Vendez vos produits en ligne.</p></div>
+    <div class="feature"><strong>⚙ Fonctionnalités</strong><p>Selon les besoins de votre projet.</p></div>
+    <div class="feature"><strong>✓ Responsive</strong><p>Compatible mobile et ordinateur.</p></div>
+  </section>
 
-      <label for="nom">Nom et prénom *</label>
-      <input
-        type="text"
-        id="nom"
-        name="Nom et prénom"
-        placeholder="Votre nom et prénom"
-        autocomplete="name"
-        required
-      >
+  <div class="cta">
+    <strong>🚀 Prêt à lancer votre site web ?</strong>
+    <p>Envoyez votre demande, nous vous contacterons pour discuter de votre projet.</p>
+    <button class="btn" type="button" data-order>Commander maintenant →</button>
+  </div>
+</main>
 
-      <label for="telephone">Numéro de téléphone *</label>
-      <input
-        type="tel"
-        id="telephone"
-        name="Téléphone"
-        placeholder="Exemple : 20 123 456"
-        autocomplete="tel"
-        required
-      >
+<footer>
+  <div class="container">
+    <strong class="logo">✳ Création <span>Ai</span></strong>
+    <span>© 2026 Création Ai. Tous droits réservés.</span>
+  </div>
+</footer>
 
-      <label for="adresse">Adresse *</label>
-      <input
-        type="text"
-        id="adresse"
-        name="Adresse"
-        placeholder="Votre adresse"
-        autocomplete="street-address"
-        required
-      >
+<!-- Formulaire qui s'ouvre au clic sur Commander -->
+<div class="modal-backdrop" id="orderModal" aria-hidden="true">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h2 id="modalTitle">Votre commande</h2>
+      <button class="close" type="button" id="closeModal" aria-label="Fermer">×</button>
+    </div>
 
-      <button type="submit">
-        Commander maintenant
-      </button>
+    <p>Remplissez vos coordonnées pour demander la création de votre site web.</p>
+    <div class="selected">Création de site web — à partir de 300 DT</div>
 
+    <!-- Remplace YOUR_FORM_ID par ton identifiant Formspree -->
+    <form id="orderForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="Nouvelle demande de création de site web">
+
+      <div class="field">
+        <label for="prenom">Prénom *</label>
+        <input id="prenom" name="Prénom" type="text" placeholder="Votre prénom" required>
+      </div>
+
+      <div class="field">
+        <label for="nom">Nom *</label>
+        <input id="nom" name="Nom" type="text" placeholder="Votre nom" required>
+      </div>
+
+      <div class="field">
+        <label for="telephone">Numéro de téléphone *</label>
+        <input id="telephone" name="Téléphone" type="tel" placeholder="Ex. : +216 XX XXX XXX" required>
+      </div>
+
+      <div class="field">
+        <label for="adresse">Adresse *</label>
+        <input id="adresse" name="Adresse" type="text" placeholder="Votre adresse complète" required>
+      </div>
+
+      <button class="btn submit" type="submit">Envoyer ma demande →</button>
+      <p class="privacy">Vos informations seront utilisées pour traiter votre demande.</p>
+      <p class="status" id="formStatus" role="status"></p>
     </form>
+  </section>
+</div>
 
-    <a class="back" href="index.html">
-      ← Retour à l'accueil
-    </a>
+<script>
+const modal = document.getElementById('orderModal');
+const form = document.getElementById('orderForm');
+const statusBox = document.getElementById('formStatus');
+const submitButton = form.querySelector('button[type="submit"]');
 
-  </main>
+function openModal() {
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('prenom').focus(), 50);
+}
+function closeModal() {
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('[data-order]').forEach(button => {
+  button.addEventListener('click', openModal);
+});
+document.getElementById('closeModal').addEventListener('click', closeModal);
+modal.addEventListener('click', event => {
+  if (event.target === modal) closeModal();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeModal();
+});
 
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  if (form.action.includes('YOUR_FORM_ID')) {
+    statusBox.textContent = 'Configurez d’abord votre identifiant Formspree dans le code.';
+    statusBox.style.color = '#ffbaba';
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Envoi en cours…';
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    });
+    if (!response.ok) throw new Error('Envoi impossible');
+
+    statusBox.textContent = 'Merci ! Votre demande a bien été envoyée.';
+    statusBox.style.color = '#8fffd9';
+    form.reset();
+  } catch (error) {
+    statusBox.textContent = 'Échec de l’envoi. Vérifiez votre connexion et Formspree.';
+    statusBox.style.color = '#ffbaba';
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Envoyer ma demande →';
+  }
+});
+</script>
 </body>
 </html>
