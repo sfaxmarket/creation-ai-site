@@ -44,12 +44,12 @@
     .container {
       max-width: 950px;
       margin: auto;
-      padding: 35px 18px;
+      padding: 30px 18px;
     }
 
     .intro {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
 
     .intro h2 {
@@ -60,6 +60,24 @@
     .intro p {
       color: #b9c5dc;
       line-height: 1.7;
+    }
+
+    /* Image professionnelle */
+    .hero-image {
+      width: 100%;
+      margin: 0 auto 32px;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid #2b3d65;
+      box-shadow: 0 10px 35px rgba(0, 198, 255, 0.12);
+      background: #131d38;
+    }
+
+    .hero-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
 
     .offers {
@@ -125,6 +143,7 @@
       background: #131d38;
       border: 1px solid #2b3d65;
       border-radius: 18px;
+      scroll-margin-top: 20px;
     }
 
     #orderForm h2 {
@@ -196,6 +215,11 @@
         padding: 25px 15px;
       }
 
+      .hero-image {
+        margin-bottom: 25px;
+        border-radius: 13px;
+      }
+
       .card {
         padding: 25px 18px;
       }
@@ -219,6 +243,14 @@
         modernes réalisées avec l'intelligence artificielle.
       </p>
     </section>
+
+    <!-- Image de l'appareil photo et de l'ordinateur -->
+    <div class="hero-image">
+      <img
+        src="file_00000000aac881f5987c1ee642d3ef47.png"
+        alt="Appareil photo professionnel et ordinateur portable sur un bureau luxueux"
+        loading="eager">
+    </div>
 
     <section class="offers">
 
@@ -257,7 +289,6 @@
     </section>
 
     <section id="orderForm">
-
       <h2>Formulaire de commande</h2>
       <p id="selectedOffer"></p>
 
