@@ -72,7 +72,7 @@
     }
 
     .back-link,
-    .color-toggle {
+    .theme-toggle {
       display: inline-block;
       color: var(--text);
       background: var(--card);
@@ -84,13 +84,13 @@
       transition: .3s;
     }
 
-    .color-toggle {
+    .theme-toggle {
       border-color: var(--cyan);
       font-weight: bold;
     }
 
     .back-link:hover,
-    .color-toggle:hover {
+    .theme-toggle:hover {
       transform: translateY(-2px);
       opacity: .85;
     }
@@ -375,8 +375,8 @@
       font-size: 13px;
     }
 
-    /* Thème clair : blanc et bleu */
-    body.theme-light {
+    /* Thème clair : bleu et blanc */
+    body.light-theme {
       --bg: #f3f7fd;
       --card: #ffffff;
       --panel: #edf4ff;
@@ -390,24 +390,24 @@
       --button-text: #ffffff;
     }
 
-    body.theme-light .tag {
+    body.light-theme .tag {
       background: #e5f4ff;
       border-color: #b9e4ff;
     }
 
-    body.theme-light .plan {
+    body.light-theme .plan {
       box-shadow: 0 8px 25px rgba(24,61,110,.07);
     }
 
-    body.theme-light .plan.featured {
+    body.light-theme .plan.featured {
       box-shadow: 0 8px 28px rgba(8,126,189,.13);
     }
 
-    body.theme-light .hero-image {
+    body.light-theme .hero-image {
       box-shadow: 0 12px 35px rgba(24,61,110,.12);
     }
 
-    body.theme-light .cancel-btn {
+    body.light-theme .cancel-btn {
       background: #ffffff;
     }
 
@@ -441,7 +441,7 @@
       }
 
       .back-link,
-      .color-toggle {
+      .theme-toggle {
         text-align: center;
         flex: 1;
       }
@@ -476,11 +476,10 @@
       <a class="back-link" href="index.html">← Accueil</a>
 
       <button
-        class="color-toggle"
+        class="theme-toggle"
         id="colorToggle"
         type="button"
-        onclick="changeColors()"
-        aria-label="Changer le thème de couleurs"
+        aria-label="Activer le mode clair"
       >
         ☀️ Mode clair
       </button>
@@ -503,7 +502,6 @@
         de toucher votre audience et d'attirer de nouveaux clients.
       </p>
 
-      <!-- Image de la page Sponsoring -->
       <img
         class="hero-image"
         src="sponsoring.png"
@@ -529,7 +527,6 @@
 
         <article class="plan">
           <div class="plan-icon">🚀</div>
-
           <h3>Offre Hebdomadaire</h3>
 
           <div class="price">
@@ -559,7 +556,6 @@
 
         <article class="plan featured">
           <div class="plan-icon">⭐</div>
-
           <h3>Offre Mensuelle</h3>
 
           <div class="price">
@@ -589,7 +585,6 @@
 
         <article class="plan">
           <div class="plan-icon">👑</div>
-
           <h3>Offre Annuelle</h3>
 
           <div class="price">
@@ -632,7 +627,6 @@
         action="https://formspree.io/f/mbgdkabo"
         method="POST"
       >
-
         <input
           type="hidden"
           name="_subject"
@@ -654,7 +648,6 @@
 
         <div class="form-group">
           <label for="nom">Nom et prénom *</label>
-
           <input
             type="text"
             id="nom"
@@ -667,7 +660,6 @@
 
         <div class="form-group">
           <label for="telephone">Numéro de téléphone *</label>
-
           <input
             type="tel"
             id="telephone"
@@ -680,7 +672,6 @@
 
         <div class="form-group">
           <label for="email">Adresse e-mail</label>
-
           <input
             type="email"
             id="email"
@@ -692,7 +683,6 @@
 
         <div class="form-group">
           <label for="reseau">Réseau social à promouvoir *</label>
-
           <select id="reseau" name="Réseau social" required>
             <option value="">Choisissez un réseau</option>
             <option value="Facebook">Facebook</option>
@@ -706,7 +696,6 @@
 
         <div class="form-group">
           <label for="lien">Lien de votre page ou profil</label>
-
           <input
             type="url"
             id="lien"
@@ -717,7 +706,6 @@
 
         <div class="form-group">
           <label for="details">Parlez-nous de votre projet</label>
-
           <textarea
             id="details"
             name="Détails du projet"
@@ -742,7 +730,6 @@
           Vos informations servent uniquement au traitement
           de votre demande par Création Ai.
         </p>
-
       </form>
     </section>
 
@@ -755,55 +742,9 @@
   </footer>
 
   <script>
-    // Changement de couleurs : bleu foncé et blanc
-    const colorToggle = document.getElementById("colorToggle");
-
-    function applyTheme(theme) {
-      document.body.classList.toggle(
-        "theme-light",
-        theme === "light"
-      );
-
-      colorToggle.textContent =
-        theme === "light"
-          ? "🌙 Mode sombre"
-          : "☀️ Mode clair";
-
-      document
-        .querySelector('meta[name="theme-color"]')
-        .setAttribute(
-          "content",
-          theme === "light" ? "#f3f7fd" : "#06172f"
-        );
-
-      try {
-        localStorage.setItem("creationAiSponsoringTheme", theme);
-      } catch (error) {
-        // Le changement de thème reste possible sans stockage.
-      }
-    }
-
-    function changeColors() {
-      const isLight =
-        document.body.classList.contains("theme-light");
-
-      applyTheme(isLight ? "dark" : "light");
-    }
-
-    // Restaurer le thème choisi lors de la visite précédente
-    try {
-      const savedTheme =
-        localStorage.getItem("creationAiSponsoringTheme");
-
-      applyTheme(savedTheme === "light" ? "light" : "dark");
-    } catch (error) {
-      applyTheme("dark");
-    }
-
-    // Afficher le formulaire avec l'offre choisie
+    // Choisir une offre et afficher le formulaire
     function selectPlan(name, price) {
       const section = document.getElementById("orderSection");
-
       const selectedOffer = name + " — " + price;
 
       document.getElementById("selectedPlanText").textContent =
@@ -832,6 +773,9 @@
       });
     }
   </script>
+
+  <!-- Script commun pour le thème et les autres fonctions -->
+  <script src="script.js"></script>
 
 </body>
 </html>
