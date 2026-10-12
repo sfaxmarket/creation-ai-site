@@ -1,341 +1,334 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="Création Ai — création de sites web, publicités, contenus visuels, sponsoring et Pack Succès pour développer votre activité.">
-
-  <meta name="theme-color" content="#0b1020">
-
-  <title>Création Ai | Créativité & Intelligence Artificielle</title>
-
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-  <!-- HEADER -->
-  <header class="header">
-    <a class="brand" href="#accueil" aria-label="Création Ai, accueil">
-      <span class="brand-icon">✳</span>
-      <span>Création <b>Ai</b></span>
-    </a>
-
-    <button
-      class="menu-toggle"
-      aria-label="Ouvrir le menu"
-      aria-expanded="false"
-      type="button">
-      ☰
-    </button>
-
-    <nav class="nav" aria-label="Navigation principale">
-      <a class="active" href="#accueil">Accueil</a>
-      <a href="#apropos">À propos</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- ACCUEIL -->
-    <section id="accueil" class="hero" aria-label="Accueil Création Ai">
-
-      <img
-        src="hero.png"
-        alt="Visuel principal de Création Ai"
-        class="hero-image">
-
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <p class="eyebrow">DONNEZ VIE À VOS IDÉES</p>
-
-        <h1>Création <span>Ai</span></h1>
-
-        <p class="hero-subtitle">
-          L'intelligence artificielle au service de votre créativité.
-        </p>
-
-        <a class="cta" href="#services">
-          Découvrir nos services <span>↗</span>
-        </a>
-      </div>
-
-      <a
-        href="#apropos"
-        class="scroll-hint"
-        aria-label="Défiler vers le bas">
-        ↓
-      </a>
-
-    </section>
-
-    <!-- À PROPOS -->
-    <section id="apropos" class="section about">
-
-      <p class="section-kicker">QUI SOMMES-NOUS ?</p>
-
-      <h2>
-        La créativité rencontre <span>l'innovation</span>
-      </h2>
-
-      <p class="section-copy">
-        Création Ai vous accompagne pour mettre en valeur votre activité
-        avec des créations visuelles modernes et des solutions web
-        adaptées à vos besoins.
-      </p>
-
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="section services">
-
-      <p class="section-kicker">CE QUE NOUS FAISONS</p>
-
-      <h2>Nos <span>services</span></h2>
-
-      <div class="service-grid">
-
-        <!-- PUBLICITÉ PAR IA -->
-        <article class="service-card">
-
-          <div class="service-icon">✦</div>
-
-          <h3>Publicité par IA</h3>
-
-          <p>
-            Des visuels publicitaires créatifs pour présenter
-            vos produits et attirer l'attention.
-          </p>
-
-          <a href="./publicite.html" class="cta">
-            Commander <span>↗</span>
-          </a>
-
-        </article>
-
-        <!-- CRÉATION DE SITES WEB -->
-        <article class="service-card">
-
-          <div class="service-icon">⌘</div>
-
-          <h3>Création de sites web</h3>
-
-          <p>
-            Des sites modernes, adaptés aux mobiles et conçus
-            pour présenter votre activité.
-          </p>
-
-          <a href="./commande.html" class="cta">
-            Commander <span>↗</span>
-          </a>
-
-          <p class="service-price">
-            À partir de 300 DT
-          </p>
-
-        </article>
-
-        <!-- IMAGES ET VIDÉOS -->
-        <article class="service-card">
-
-          <div class="service-icon">▶</div>
-
-          <h3>Images & vidéos</h3>
-
-          <p>
-            Des contenus visuels personnalisés pour vos réseaux
-            sociaux et vos campagnes.
-          </p>
-
-          <a href="./images-videos.html" class="cta">
-            Commander <span>↗</span>
-          </a>
-
-        </article>
-
-        <!-- PACK SUCCÈS -->
-        <article class="service-card">
-
-          <div class="service-icon">🚀</div>
-
-          <h3>Pack Succès</h3>
-
-          <p>
-            Une solution complète pour développer votre activité,
-            renforcer votre présence en ligne et attirer plus de clients.
-          </p>
-
-          <a href="./pack-succes.html" class="cta">
-            Découvrir le Pack Succès <span>↗</span>
-          </a>
-
-        </article>
-
-        <!-- SPONSORING DES RÉSEAUX SOCIAUX -->
-        <article class="service-card">
-
-          <div class="service-icon">📣</div>
-
-          <h3>Sponsoring des réseaux sociaux</h3>
-
-          <p>
-            Augmentez votre visibilité et touchez plus de clients
-            grâce au sponsoring de vos pages sur les réseaux sociaux.
-          </p>
-
-          <a href="./sponsoring.html" class="cta">
-            Commander <span>↗</span>
-          </a>
-
-        </article>
-
-      </div>
-    </section>
-
-    <!-- FORMULAIRE POUR LES AUTRES SERVICES -->
-    <section id="commande" class="section contact" hidden>
-
-      <p class="section-kicker">VOTRE COMMANDE</p>
-
-      <h2>
-        Confirmer votre <span>commande</span>
-      </h2>
-
-      <p class="section-copy">
-        Veuillez remplir vos informations pour envoyer votre demande.
-      </p>
-
-      <p>
-        Service choisi :
-        <strong id="service-choisi"></strong>
-      </p>
-
-      <form
-        id="order-form"
-        action="https://formspree.io/f/mbgdkabo"
-        method="POST">
-
-        <input
-          type="hidden"
-          name="service"
-          id="service-input">
-
-        <div class="form-group">
-          <label for="nom">Nom</label>
-
-          <input
-            id="nom"
-            name="nom"
-            type="text"
-            autocomplete="family-name"
-            placeholder="Votre nom"
-            required>
-        </div>
-
-        <div class="form-group">
-          <label for="prenom">Prénom</label>
-
-          <input
-            id="prenom"
-            name="prenom"
-            type="text"
-            autocomplete="given-name"
-            placeholder="Votre prénom"
-            required>
-        </div>
-
-        <div class="form-group">
-          <label for="telephone">Numéro de téléphone</label>
-
-          <input
-            id="telephone"
-            name="telephone"
-            type="tel"
-            autocomplete="tel"
-            placeholder="+216 ..."
-            required>
-        </div>
-
-        <div class="form-group">
-          <label for="adresse">Adresse complète</label>
-
-          <textarea
-            id="adresse"
-            name="adresse"
-            autocomplete="street-address"
-            rows="4"
-            placeholder="Votre adresse complète"
-            required></textarea>
-        </div>
-
-        <button type="submit" class="cta">
-          Confirmer la commande
-        </button>
-
-        <button
-          type="button"
-          class="cta"
-          onclick="closeOrder()">
-          Retour aux services
-        </button>
-
-      </form>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact">
-
-      <p class="section-kicker">PARLONS DE VOTRE PROJET</p>
-
-      <h2>
-        Prêt à créer quelque chose de
-        <span>remarquable</span> ?
-      </h2>
-
-      <p class="section-copy">
-        Contactez-nous pour discuter de votre idée et trouver
-        la solution adaptée à votre activité.
-      </p>
-
-      <a
-        class="cta"
-        href="https://wa.me/21621582307"
-        target="_blank"
-        rel="noopener noreferrer">
-        Contacter Création Ai sur WhatsApp <span>↗</span>
-      </a>
-
-      <p class="phone">
-        Téléphone : +216 21 582 307
-      </p>
-
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-
-    <a class="footer-brand" href="#accueil">
-      Création <b>Ai</b>
-    </a>
-
-    <p>
-      © <span id="year"></span>
-      Création Ai. Tous droits réservés.
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="description" content="Création Ai — création de sites web, publicités, contenus visuels, sponsoring et Pack Succès pour développer votre activité.">  <meta name="theme-color" content="#04152f">  <title>Création Ai | Créativité & Intelligence Artificielle</title>  <link rel="stylesheet" href="style.css">
+</head><body>  <!-- HEADER -->  <header class="header"><a class="brand" href="#accueil" aria-label="Création Ai, accueil">
+  <span class="brand-icon">✳</span>
+  <span>Création <b>Ai</b></span>
+</a>
+
+<button
+  class="menu-toggle"
+  aria-label="Ouvrir le menu"
+  aria-expanded="false"
+  type="button">
+  ☰
+</button>
+
+<nav class="nav" aria-label="Navigation principale">
+  <a class="active" href="#accueil">Accueil</a>
+  <a href="#apropos">À propos</a>
+  <a href="#services">Services</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- Bouton de changement de thème -->
+<button
+  type="button"
+  class="theme-toggle"
+  id="themeToggle"
+  aria-label="Changer le thème">
+  ☀️ / 🌙
+</button>
+
+  </header>  <main><!-- ACCUEIL -->
+<section id="accueil" class="hero" aria-label="Accueil Création Ai">
+
+  <img
+    src="hero.png"
+    alt="Visuel principal de Création Ai"
+    class="hero-image">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+
+    <p class="eyebrow">DONNEZ VIE À VOS IDÉES</p>
+
+    <h1>Création <span>Ai</span></h1>
+
+    <p class="hero-subtitle">
+      L'intelligence artificielle au service de votre créativité.
     </p>
 
-  </footer>
+    <a class="cta" href="#services">
+      Découvrir nos services <span>↗</span>
+    </a>
 
-  <!-- SCRIPTS -->
-  <script src="script.js"></script>
+  </div>
 
-  <script>
-    // Ouvrir le formulaire pour les autres services
+  <a
+    href="#apropos"
+    class="scroll-hint"
+    aria-label="Défiler vers le bas">
+    ↓
+  </a>
+
+</section>
+
+<!-- À PROPOS -->
+<section id="apropos" class="section about">
+
+  <p class="section-kicker">QUI SOMMES-NOUS ?</p>
+
+  <h2>
+    La créativité rencontre <span>l'innovation</span>
+  </h2>
+
+  <p class="section-copy">
+    Création Ai vous accompagne pour mettre en valeur votre activité
+    avec des créations visuelles modernes et des solutions web
+    adaptées à vos besoins.
+  </p>
+
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section services">
+
+  <p class="section-kicker">CE QUE NOUS FAISONS</p>
+
+  <h2>Nos <span>services</span></h2>
+
+  <div class="service-grid">
+
+    <!-- PUBLICITÉ PAR IA -->
+    <article class="service-card">
+
+      <div class="service-icon">✦</div>
+
+      <h3>Publicité par IA</h3>
+
+      <p>
+        Des visuels publicitaires créatifs pour présenter
+        vos produits et attirer l'attention.
+      </p>
+
+      <a href="./publicite.html" class="cta">
+        Commander <span>↗</span>
+      </a>
+
+    </article>
+
+    <!-- CRÉATION DE SITES WEB -->
+    <article class="service-card">
+
+      <div class="service-icon">⌘</div>
+
+      <h3>Création de sites web</h3>
+
+      <p>
+        Des sites modernes, adaptés aux mobiles et conçus
+        pour présenter votre activité.
+      </p>
+
+      <a href="./commande.html" class="cta">
+        Commander <span>↗</span>
+      </a>
+
+      <p class="service-price">
+        À partir de 300 DT
+      </p>
+
+    </article>
+
+    <!-- IMAGES ET VIDÉOS -->
+    <article class="service-card">
+
+      <div class="service-icon">▶</div>
+
+      <h3>Images & vidéos</h3>
+
+      <p>
+        Des contenus visuels personnalisés pour vos réseaux
+        sociaux et vos campagnes.
+      </p>
+
+      <a href="./images-videos.html" class="cta">
+        Commander <span>↗</span>
+      </a>
+
+    </article>
+
+    <!-- PACK SUCCÈS -->
+    <article class="service-card">
+
+      <div class="service-icon">🚀</div>
+
+      <h3>Pack Succès</h3>
+
+      <p>
+        Une solution complète pour développer votre activité,
+        renforcer votre présence en ligne et attirer plus de clients.
+      </p>
+
+      <a href="./pack-succes.html" class="cta">
+        Découvrir le Pack Succès <span>↗</span>
+      </a>
+
+    </article>
+
+    <!-- SPONSORING -->
+    <article class="service-card">
+
+      <div class="service-icon">📣</div>
+
+      <h3>Sponsoring des réseaux sociaux</h3>
+
+      <p>
+        Augmentez votre visibilité et touchez plus de clients
+        grâce au sponsoring de vos pages sur les réseaux sociaux.
+      </p>
+
+      <a href="./sponsoring.html" class="cta">
+        Commander <span>↗</span>
+      </a>
+
+    </article>
+
+  </div>
+
+</section>
+
+<!-- FORMULAIRE DE COMMANDE -->
+<section id="commande" class="section contact" hidden>
+
+  <p class="section-kicker">VOTRE COMMANDE</p>
+
+  <h2>
+    Confirmer votre <span>commande</span>
+  </h2>
+
+  <p class="section-copy">
+    Veuillez remplir vos informations pour envoyer votre demande.
+  </p>
+
+  <p>
+    Service choisi :
+    <strong id="service-choisi"></strong>
+  </p>
+
+  <form
+    id="order-form"
+    action="https://formspree.io/f/mbgdkabo"
+    method="POST">
+
+    <input
+      type="hidden"
+      name="service"
+      id="service-input">
+
+    <div class="form-group">
+
+      <label for="nom">Nom</label>
+
+      <input
+        id="nom"
+        name="nom"
+        type="text"
+        autocomplete="family-name"
+        placeholder="Votre nom"
+        required>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="prenom">Prénom</label>
+
+      <input
+        id="prenom"
+        name="prenom"
+        type="text"
+        autocomplete="given-name"
+        placeholder="Votre prénom"
+        required>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="telephone">Numéro de téléphone</label>
+
+      <input
+        id="telephone"
+        name="telephone"
+        type="tel"
+        autocomplete="tel"
+        placeholder="+216 ..."
+        required>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="adresse">Adresse complète</label>
+
+      <textarea
+        id="adresse"
+        name="adresse"
+        autocomplete="street-address"
+        rows="4"
+        placeholder="Votre adresse complète"
+        required></textarea>
+
+    </div>
+
+    <button type="submit" class="cta">
+      Confirmer la commande
+    </button>
+
+    <button
+      type="button"
+      class="cta"
+      onclick="closeOrder()">
+      Retour aux services
+    </button>
+
+  </form>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+
+  <p class="section-kicker">PARLONS DE VOTRE PROJET</p>
+
+  <h2>
+    Prêt à créer quelque chose de
+    <span>remarquable</span> ?
+  </h2>
+
+  <p class="section-copy">
+    Contactez-nous pour discuter de votre idée et trouver
+    la solution adaptée à votre activité.
+  </p>
+
+  <a
+    class="cta"
+    href="https://wa.me/21621582307"
+    target="_blank"
+    rel="noopener noreferrer">
+    Contacter Création Ai sur WhatsApp <span>↗</span>
+  </a>
+
+  <p class="phone">
+    Téléphone : +216 21 582 307
+  </p>
+
+</section>
+
+  </main>  <!-- FOOTER -->  <footer><a class="footer-brand" href="#accueil">
+  Création <b>Ai</b>
+</a>
+
+<p>
+  © <span id="year"></span>
+  Création Ai. Tous droits réservés.
+</p>
+
+  </footer>  <!-- SCRIPT COMMUN -->  <script src="script.js"></script>  <!-- FONCTIONS DE LA PAGE D'ACCUEIL -->  <script>
+    // Ouvrir le formulaire de commande
     function openOrder(service) {
       const section = document.getElementById('commande');
       const serviceLabel = document.getElementById('service-choisi');
@@ -367,7 +360,5 @@
     // Afficher l'année actuelle
     document.getElementById('year').textContent =
       new Date().getFullYear();
-  </script>
-
-</body>
+  </script></body>
 </html>
