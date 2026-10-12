@@ -11,9 +11,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Corrections réservées à la page d'accueil -->
   <style>
-    /* Couleurs lisibles sur la page d'accueil */
     body:not(.light-theme) {
       --text: #f8fbff;
       --muted: #c2d2e8;
@@ -23,7 +21,6 @@
       --border: #1c5790;
     }
 
-    /* En-tête : logo séparé du menu */
     .header {
       gap: 20px;
     }
@@ -48,8 +45,21 @@
       font-size: 14px;
     }
 
-    /* Image principale : masquer le texte déjà intégré à l'image
-       grâce à un voile bleu à gauche */
+    /* Bouton Mes ventes */
+    .nav a.sales-link {
+      color: #00d4f5;
+      font-weight: 700;
+      border: 1px solid #00a9d0;
+      border-radius: 8px;
+      padding: 9px 13px;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .nav a.sales-link:hover {
+      color: #04152f;
+      background: #00d4f5;
+    }
+
     #accueil.hero {
       isolation: isolate;
       background: #041d43;
@@ -108,7 +118,6 @@
       text-shadow: none;
     }
 
-    /* Sections sombres et textes clairs */
     #apropos.about,
     #services.services,
     #contact.contact {
@@ -148,7 +157,6 @@
       color: #c2d2e8;
     }
 
-    /* Cartes de services */
     #services .service-card {
       color: #f8fbff;
       background: linear-gradient(145deg, #0a2d58, #061d3c);
@@ -178,7 +186,6 @@
       margin-top: 10px;
     }
 
-    /* Pied de page */
     footer {
       color: #f8fbff;
     }
@@ -187,7 +194,6 @@
       color: #c2d2e8;
     }
 
-    /* Mode clair : uniquement pour les sections de cette page */
     body.light-theme #apropos.about,
     body.light-theme #services.services,
     body.light-theme #contact.contact {
@@ -224,7 +230,16 @@
       background: #e8f6ff;
     }
 
-    /* Téléphones */
+    body.light-theme .nav a.sales-link {
+      color: #0879b8;
+      border-color: #0879b8;
+    }
+
+    body.light-theme .nav a.sales-link:hover {
+      color: #ffffff;
+      background: #0879b8;
+    }
+
     @media (max-width: 700px) {
       .header {
         padding: 0 12px;
@@ -243,6 +258,15 @@
 
       .nav {
         gap: 0;
+      }
+
+      .nav a {
+        font-size: 12px;
+      }
+
+      .nav a.sales-link {
+        padding: 6px 7px;
+        font-size: 11px;
       }
 
       #accueil.hero {
@@ -324,6 +348,7 @@
 
   <!-- EN-TÊTE -->
   <header class="header">
+
     <a class="brand" href="#accueil" aria-label="Création Ai, accueil">
       <span class="brand-icon">✳</span>
       <span>Création <b>Ai</b></span>
@@ -342,7 +367,9 @@
       <a href="#apropos">À propos</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
+      <a href="./ventes.html" class="sales-link">Mes ventes</a>
     </nav>
+
   </header>
 
   <main>
@@ -358,6 +385,7 @@
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
+
         <p class="eyebrow">DONNEZ VIE À VOS IDÉES</p>
 
         <h1>Création <span>Ai</span></h1>
@@ -369,6 +397,7 @@
         <a class="cta" href="#services">
           Découvrir nos services <span>↗</span>
         </a>
+
       </div>
 
       <a
@@ -377,6 +406,7 @@
         aria-label="Défiler vers le bas">
         ↓
       </a>
+
     </section>
 
     <!-- À PROPOS -->
@@ -467,6 +497,7 @@
         </article>
 
       </div>
+
     </section>
 
     <!-- FORMULAIRE DE COMMANDE -->
@@ -545,6 +576,7 @@
         </button>
 
       </form>
+
     </section>
 
     <!-- CONTACT -->
@@ -578,6 +610,7 @@
 
   <!-- PIED DE PAGE -->
   <footer>
+
     <a class="footer-brand" href="#accueil">
       Création <b>Ai</b>
     </a>
@@ -586,6 +619,7 @@
       © <span id="year"></span>
       Création Ai. Tous droits réservés.
     </p>
+
   </footer>
 
   <!-- SCRIPT COMMUN -->
