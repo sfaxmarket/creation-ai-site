@@ -1,332 +1,603 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <meta name="description" content="Création Ai — création de sites web, publicités, contenus visuels, sponsoring et Pack Succès pour développer votre activité.">  <meta name="theme-color" content="#04152f">  <title>Création Ai | Créativité & Intelligence Artificielle</title>  <link rel="stylesheet" href="style.css">
-</head><body>  <!-- HEADER -->  <header class="header"><a class="brand" href="#accueil" aria-label="Création Ai, accueil">
-  <span class="brand-icon">✳</span>
-  <span>Création <b>Ai</b></span>
-</a>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<button
-  class="menu-toggle"
-  aria-label="Ouvrir le menu"
-  aria-expanded="false"
-  type="button">
-  ☰
-</button>
+  <meta name="description" content="Création Ai — création de sites web, publicités, contenus visuels, sponsoring et Pack Succès pour développer votre activité.">
+  <meta name="theme-color" content="#04152f">
 
-<nav class="nav" aria-label="Navigation principale">
-  <a class="active" href="#accueil">Accueil</a>
-  <a href="#apropos">À propos</a>
-  <a href="#services">Services</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <title>Création Ai | Créativité & Intelligence Artificielle</title>
 
-  </header>  <main><!-- ACCUEIL -->
-<section id="accueil" class="hero" aria-label="Accueil Création Ai">
+  <link rel="stylesheet" href="style.css">
 
-  <img
-    src="hero.png"
-    alt="Visuel principal de Création Ai"
-    class="hero-image">
+  <!-- Corrections réservées à la page d'accueil -->
+  <style>
+    /* Couleurs lisibles sur la page d'accueil */
+    body:not(.light-theme) {
+      --text: #f8fbff;
+      --muted: #c2d2e8;
+      --page-bg: #04152f;
+      --panel-bg: #0a2d58;
+      --header-bg: #052550;
+      --border: #1c5790;
+    }
 
-  <div class="hero-overlay"></div>
+    /* En-tête : logo séparé du menu */
+    .header {
+      gap: 20px;
+    }
 
-  <div class="hero-content">
+    .brand {
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-size: clamp(19px, 2vw, 27px);
+      letter-spacing: -0.7px;
+    }
 
-    <p class="eyebrow">DONNEZ VIE À VOS IDÉES</p>
+    .brand-icon {
+      flex-shrink: 0;
+    }
 
-    <h1>Création <span>Ai</span></h1>
+    .nav {
+      gap: clamp(12px, 2vw, 30px);
+    }
 
-    <p class="hero-subtitle">
-      L'intelligence artificielle au service de votre créativité.
-    </p>
+    .nav a {
+      white-space: nowrap;
+      font-size: 14px;
+    }
 
-    <a class="cta" href="#services">
-      Découvrir nos services <span>↗</span>
+    /* Image principale : masquer le texte déjà intégré à l'image
+       grâce à un voile bleu à gauche */
+    #accueil.hero {
+      isolation: isolate;
+      background: #041d43;
+    }
+
+    #accueil .hero-image {
+      z-index: -2;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    #accueil .hero-overlay {
+      z-index: -1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3, 25, 61, 0.99) 0%,
+          rgba(3, 25, 61, 0.94) 25%,
+          rgba(3, 25, 61, 0.72) 43%,
+          rgba(3, 25, 61, 0.10) 72%,
+          rgba(3, 25, 61, 0.02) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(3, 20, 48, 0.25),
+          transparent 45%
+        );
+    }
+
+    #accueil .hero-content {
+      max-width: 650px;
+      text-shadow: none;
+    }
+
+    #accueil .eyebrow {
+      color: #00d4f5;
+    }
+
+    #accueil h1 {
+      color: #f8fbff;
+      line-height: 1.12;
+      letter-spacing: -2px;
+      overflow-wrap: break-word;
+    }
+
+    #accueil h1 span,
+    #apropos h2 span,
+    #services h2 span,
+    #contact h2 span {
+      color: #00d4f5;
+    }
+
+    #accueil .hero-subtitle {
+      color: #e0ebfa;
+      max-width: 430px;
+      text-shadow: none;
+    }
+
+    /* Sections sombres et textes clairs */
+    #apropos.about,
+    #services.services,
+    #contact.contact {
+      color: #f8fbff;
+    }
+
+    #apropos.about {
+      background: #061b3a;
+    }
+
+    #services.services {
+      background: linear-gradient(180deg, #04152f, #062650);
+    }
+
+    #contact.contact {
+      background: radial-gradient(
+        ellipse at top,
+        #0a3e78,
+        #04152f 75%
+      );
+    }
+
+    #apropos .section-kicker,
+    #services .section-kicker,
+    #contact .section-kicker {
+      color: #00d4f5;
+    }
+
+    #apropos h2,
+    #services h2,
+    #contact h2 {
+      color: #f8fbff;
+    }
+
+    #apropos .section-copy,
+    #contact .section-copy {
+      color: #c2d2e8;
+    }
+
+    /* Cartes de services */
+    #services .service-card {
+      color: #f8fbff;
+      background: linear-gradient(145deg, #0a2d58, #061d3c);
+      border: 1px solid #1c5790;
+    }
+
+    #services .service-card h3 {
+      color: #ffffff;
+    }
+
+    #services .service-card p {
+      color: #c2d2e8;
+    }
+
+    #services .service-icon {
+      color: #00d4f5;
+      background: rgba(0, 212, 245, 0.12);
+    }
+
+    #services .service-card .cta {
+      color: #ffffff;
+    }
+
+    #services .service-card .service-price {
+      color: #00d4f5;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    /* Pied de page */
+    footer {
+      color: #f8fbff;
+    }
+
+    footer p {
+      color: #c2d2e8;
+    }
+
+    /* Mode clair : uniquement pour les sections de cette page */
+    body.light-theme #apropos.about,
+    body.light-theme #services.services,
+    body.light-theme #contact.contact {
+      background: #f4f7fc;
+      color: #102344;
+    }
+
+    body.light-theme #apropos h2,
+    body.light-theme #services h2,
+    body.light-theme #contact h2 {
+      color: #102344;
+    }
+
+    body.light-theme #apropos .section-copy,
+    body.light-theme #contact .section-copy {
+      color: #536781;
+    }
+
+    body.light-theme #services .service-card {
+      background: #ffffff;
+      border-color: #d5e1f0;
+    }
+
+    body.light-theme #services .service-card h3 {
+      color: #102344;
+    }
+
+    body.light-theme #services .service-card p {
+      color: #536781;
+    }
+
+    body.light-theme #services .service-icon {
+      color: #0879e8;
+      background: #e8f6ff;
+    }
+
+    /* Téléphones */
+    @media (max-width: 700px) {
+      .header {
+        padding: 0 12px;
+        gap: 8px;
+      }
+
+      .brand {
+        font-size: 17px;
+        gap: 5px;
+        letter-spacing: -0.5px;
+      }
+
+      .brand-icon {
+        font-size: 25px;
+      }
+
+      .nav {
+        gap: 0;
+      }
+
+      #accueil.hero {
+        height: calc(100svh - 68px);
+        min-height: 540px;
+        max-height: 760px;
+      }
+
+      #accueil .hero-image {
+        object-position: 58% center;
+      }
+
+      #accueil .hero-overlay {
+        background:
+          linear-gradient(
+            0deg,
+            rgba(3, 20, 48, 0.98) 0%,
+            rgba(3, 20, 48, 0.88) 35%,
+            rgba(3, 20, 48, 0.42) 65%,
+            rgba(3, 20, 48, 0.05) 100%
+          ),
+          linear-gradient(
+            90deg,
+            rgba(3, 25, 61, 0.75),
+            rgba(3, 25, 61, 0.02)
+          );
+      }
+
+      body.light-theme #accueil .hero-overlay {
+        background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.98) 0%,
+          rgba(255, 255, 255, 0.85) 42%,
+          rgba(255, 255, 255, 0.12) 100%
+        );
+      }
+
+      #accueil .hero-content {
+        max-width: 100%;
+        padding: 40px 24px 85px;
+      }
+
+      #accueil h1 {
+        font-size: clamp(42px, 11vw, 64px);
+        letter-spacing: -1.8px;
+      }
+
+      #accueil .hero-subtitle {
+        color: #f0f6ff;
+        font-size: 16px;
+      }
+
+      body.light-theme #accueil .hero-subtitle {
+        color: #243c5c;
+      }
+
+      #services .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 701px) and (max-width: 1000px) {
+      .header {
+        gap: 12px;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .nav a {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- EN-TÊTE -->
+  <header class="header">
+    <a class="brand" href="#accueil" aria-label="Création Ai, accueil">
+      <span class="brand-icon">✳</span>
+      <span>Création <b>Ai</b></span>
     </a>
 
-  </div>
-
-  <a
-    href="#apropos"
-    class="scroll-hint"
-    aria-label="Défiler vers le bas">
-    ↓
-  </a>
-
-</section>
-
-<!-- À PROPOS -->
-<section id="apropos" class="section about">
-
-  <p class="section-kicker">QUI SOMMES-NOUS ?</p>
-
-  <h2>
-    La créativité rencontre <span>l'innovation</span>
-  </h2>
-
-  <p class="section-copy">
-    Création Ai vous accompagne pour mettre en valeur votre activité
-    avec des créations visuelles modernes et des solutions web
-    adaptées à vos besoins.
-  </p>
-
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="section services">
-
-  <p class="section-kicker">CE QUE NOUS FAISONS</p>
-
-  <h2>Nos <span>services</span></h2>
-
-  <div class="service-grid">
-
-    <!-- PUBLICITÉ PAR IA -->
-    <article class="service-card">
-
-      <div class="service-icon">✦</div>
-
-      <h3>Publicité par IA</h3>
-
-      <p>
-        Des visuels publicitaires créatifs pour présenter
-        vos produits et attirer l'attention.
-      </p>
-
-      <a href="./publicite.html" class="cta">
-        Commander <span>↗</span>
-      </a>
-
-    </article>
-
-    <!-- CRÉATION DE SITES WEB -->
-    <article class="service-card">
-
-      <div class="service-icon">⌘</div>
-
-      <h3>Création de sites web</h3>
-
-      <p>
-        Des sites modernes, adaptés aux mobiles et conçus
-        pour présenter votre activité.
-      </p>
-
-      <a href="./commande.html" class="cta">
-        Commander <span>↗</span>
-      </a>
-
-      <p class="service-price">
-        À partir de 300 DT
-      </p>
-
-    </article>
-
-    <!-- IMAGES ET VIDÉOS -->
-    <article class="service-card">
-
-      <div class="service-icon">▶</div>
-
-      <h3>Images & vidéos</h3>
-
-      <p>
-        Des contenus visuels personnalisés pour vos réseaux
-        sociaux et vos campagnes.
-      </p>
-
-      <a href="./images-videos.html" class="cta">
-        Commander <span>↗</span>
-      </a>
-
-    </article>
-
-    <!-- PACK SUCCÈS -->
-    <article class="service-card">
-
-      <div class="service-icon">🚀</div>
-
-      <h3>Pack Succès</h3>
-
-      <p>
-        Une solution complète pour développer votre activité,
-        renforcer votre présence en ligne et attirer plus de clients.
-      </p>
-
-      <a href="./pack-succes.html" class="cta">
-        Découvrir le Pack Succès <span>↗</span>
-      </a>
-
-    </article>
-
-    <!-- SPONSORING -->
-    <article class="service-card">
-
-      <div class="service-icon">📣</div>
-
-      <h3>Sponsoring des réseaux sociaux</h3>
-
-      <p>
-        Augmentez votre visibilité et touchez plus de clients
-        grâce au sponsoring de vos pages sur les réseaux sociaux.
-      </p>
-
-      <a href="./sponsoring.html" class="cta">
-        Commander <span>↗</span>
-      </a>
-
-    </article>
-
-  </div>
-
-</section>
-
-<!-- FORMULAIRE DE COMMANDE -->
-<section id="commande" class="section contact" hidden>
-
-  <p class="section-kicker">VOTRE COMMANDE</p>
-
-  <h2>
-    Confirmer votre <span>commande</span>
-  </h2>
-
-  <p class="section-copy">
-    Veuillez remplir vos informations pour envoyer votre demande.
-  </p>
-
-  <p>
-    Service choisi :
-    <strong id="service-choisi"></strong>
-  </p>
-
-  <form
-    id="order-form"
-    action="https://formspree.io/f/mbgdkabo"
-    method="POST">
-
-    <input
-      type="hidden"
-      name="service"
-      id="service-input">
-
-    <div class="form-group">
-
-      <label for="nom">Nom</label>
-
-      <input
-        id="nom"
-        name="nom"
-        type="text"
-        autocomplete="family-name"
-        placeholder="Votre nom"
-        required>
-
-    </div>
-
-    <div class="form-group">
-
-      <label for="prenom">Prénom</label>
-
-      <input
-        id="prenom"
-        name="prenom"
-        type="text"
-        autocomplete="given-name"
-        placeholder="Votre prénom"
-        required>
-
-    </div>
-
-    <div class="form-group">
-
-      <label for="telephone">Numéro de téléphone</label>
-
-      <input
-        id="telephone"
-        name="telephone"
-        type="tel"
-        autocomplete="tel"
-        placeholder="+216 ..."
-        required>
-
-    </div>
-
-    <div class="form-group">
-
-      <label for="adresse">Adresse complète</label>
-
-      <textarea
-        id="adresse"
-        name="adresse"
-        autocomplete="street-address"
-        rows="4"
-        placeholder="Votre adresse complète"
-        required></textarea>
-
-    </div>
-
-    <button type="submit" class="cta">
-      Confirmer la commande
-    </button>
-
     <button
-      type="button"
-      class="cta"
-      onclick="closeOrder()">
-      Retour aux services
+      class="menu-toggle"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      type="button">
+      ☰
     </button>
 
-  </form>
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="active" href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-</section>
+  <main>
 
-<!-- CONTACT -->
-<section id="contact" class="section contact">
+    <!-- ACCUEIL -->
+    <section id="accueil" class="hero" aria-label="Accueil Création Ai">
 
-  <p class="section-kicker">PARLONS DE VOTRE PROJET</p>
+      <img
+        src="hero.png"
+        alt="Intelligence artificielle et créativité"
+        class="hero-image">
 
-  <h2>
-    Prêt à créer quelque chose de
-    <span>remarquable</span> ?
-  </h2>
+      <div class="hero-overlay"></div>
 
-  <p class="section-copy">
-    Contactez-nous pour discuter de votre idée et trouver
-    la solution adaptée à votre activité.
-  </p>
+      <div class="hero-content">
+        <p class="eyebrow">DONNEZ VIE À VOS IDÉES</p>
 
-  <a
-    class="cta"
-    href="https://wa.me/21621582307"
-    target="_blank"
-    rel="noopener noreferrer">
-    Contacter Création Ai sur WhatsApp <span>↗</span>
-  </a>
+        <h1>Création <span>Ai</span></h1>
 
-  <p class="phone">
-    Téléphone : +216 21 582 307
-  </p>
+        <p class="hero-subtitle">
+          L'intelligence artificielle au service de votre créativité.
+        </p>
 
-</section>
+        <a class="cta" href="#services">
+          Découvrir nos services <span>↗</span>
+        </a>
+      </div>
 
-  </main>  <!-- FOOTER -->  <footer><a class="footer-brand" href="#accueil">
-  Création <b>Ai</b>
-</a>
+      <a
+        href="#apropos"
+        class="scroll-hint"
+        aria-label="Défiler vers le bas">
+        ↓
+      </a>
+    </section>
 
-<p>
-  © <span id="year"></span>
-  Création Ai. Tous droits réservés.
-</p>
+    <!-- À PROPOS -->
+    <section id="apropos" class="section about">
 
-  </footer>  <!-- SCRIPT COMMUN -->  <script src="script.js"></script>  <!-- FONCTIONS DE LA PAGE D'ACCUEIL -->  <script>
-    // Ouvrir le formulaire de commande
+      <p class="section-kicker">QUI SOMMES-NOUS ?</p>
+
+      <h2>
+        La créativité rencontre <span>l'innovation</span>
+      </h2>
+
+      <p class="section-copy">
+        Création Ai vous accompagne pour mettre en valeur votre activité
+        avec des créations visuelles modernes et des solutions web
+        adaptées à vos besoins.
+      </p>
+
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section services">
+
+      <p class="section-kicker">CE QUE NOUS FAISONS</p>
+
+      <h2>Nos <span>services</span></h2>
+
+      <div class="service-grid">
+
+        <article class="service-card">
+          <div class="service-icon">✦</div>
+          <h3>Publicité par IA</h3>
+          <p>
+            Des visuels publicitaires créatifs pour présenter
+            vos produits et attirer l'attention.
+          </p>
+          <a href="./publicite.html" class="cta">
+            Commander <span>↗</span>
+          </a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">⌘</div>
+          <h3>Création de sites web</h3>
+          <p>
+            Des sites modernes, adaptés aux mobiles et conçus
+            pour présenter votre activité.
+          </p>
+          <a href="./commande.html" class="cta">
+            Commander <span>↗</span>
+          </a>
+          <p class="service-price">À partir de 300 DT</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">▶</div>
+          <h3>Images & vidéos</h3>
+          <p>
+            Des contenus visuels personnalisés pour vos réseaux
+            sociaux et vos campagnes.
+          </p>
+          <a href="./images-videos.html" class="cta">
+            Commander <span>↗</span>
+          </a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🚀</div>
+          <h3>Pack Succès</h3>
+          <p>
+            Une solution complète pour développer votre activité,
+            renforcer votre présence en ligne et attirer plus de clients.
+          </p>
+          <a href="./pack-succes.html" class="cta">
+            Découvrir le Pack Succès <span>↗</span>
+          </a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">📣</div>
+          <h3>Sponsoring des réseaux sociaux</h3>
+          <p>
+            Augmentez votre visibilité et touchez plus de clients
+            grâce au sponsoring de vos pages sur les réseaux sociaux.
+          </p>
+          <a href="./sponsoring.html" class="cta">
+            Commander <span>↗</span>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FORMULAIRE DE COMMANDE -->
+    <section id="commande" class="section contact" hidden>
+
+      <p class="section-kicker">VOTRE COMMANDE</p>
+
+      <h2>Confirmer votre <span>commande</span></h2>
+
+      <p class="section-copy">
+        Veuillez remplir vos informations pour envoyer votre demande.
+      </p>
+
+      <p>
+        Service choisi :
+        <strong id="service-choisi"></strong>
+      </p>
+
+      <form
+        id="order-form"
+        action="https://formspree.io/f/mbgdkabo"
+        method="POST">
+
+        <input type="hidden" name="service" id="service-input">
+
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input
+            id="nom"
+            name="nom"
+            type="text"
+            autocomplete="family-name"
+            placeholder="Votre nom"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input
+            id="prenom"
+            name="prenom"
+            type="text"
+            autocomplete="given-name"
+            placeholder="Votre prénom"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="telephone">Numéro de téléphone</label>
+          <input
+            id="telephone"
+            name="telephone"
+            type="tel"
+            autocomplete="tel"
+            placeholder="+216 ..."
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="adresse">Adresse complète</label>
+          <textarea
+            id="adresse"
+            name="adresse"
+            autocomplete="street-address"
+            rows="4"
+            placeholder="Votre adresse complète"
+            required></textarea>
+        </div>
+
+        <button type="submit" class="cta">
+          Confirmer la commande
+        </button>
+
+        <button type="button" class="cta" onclick="closeOrder()">
+          Retour aux services
+        </button>
+
+      </form>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+
+      <p class="section-kicker">PARLONS DE VOTRE PROJET</p>
+
+      <h2>
+        Prêt à créer quelque chose de
+        <span>remarquable</span> ?
+      </h2>
+
+      <p class="section-copy">
+        Contactez-nous pour discuter de votre idée et trouver
+        la solution adaptée à votre activité.
+      </p>
+
+      <a
+        class="cta"
+        href="https://wa.me/21621582307"
+        target="_blank"
+        rel="noopener noreferrer">
+        Contacter Création Ai sur WhatsApp <span>↗</span>
+      </a>
+
+      <p class="phone">Téléphone : +216 21 582 307</p>
+
+    </section>
+
+  </main>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <a class="footer-brand" href="#accueil">
+      Création <b>Ai</b>
+    </a>
+
+    <p>
+      © <span id="year"></span>
+      Création Ai. Tous droits réservés.
+    </p>
+  </footer>
+
+  <!-- SCRIPT COMMUN -->
+  <script src="script.js"></script>
+
+  <!-- FONCTIONS DE LA PAGE D'ACCUEIL -->
+  <script>
     function openOrder(service) {
       const section = document.getElementById('commande');
-      const serviceLabel = document.getElementById('service-choisi');
-      const serviceInput = document.getElementById('service-input');
 
-      serviceLabel.textContent = service;
-      serviceInput.value = service;
+      document.getElementById('service-choisi').textContent = service;
+      document.getElementById('service-input').value = service;
 
       section.hidden = false;
 
@@ -336,11 +607,8 @@
       });
     }
 
-    // Fermer le formulaire
     function closeOrder() {
-      const section = document.getElementById('commande');
-
-      section.hidden = true;
+      document.getElementById('commande').hidden = true;
 
       document.getElementById('services').scrollIntoView({
         behavior: 'smooth',
@@ -348,8 +616,9 @@
       });
     }
 
-    // Afficher l'année actuelle
     document.getElementById('year').textContent =
       new Date().getFullYear();
-  </script></body>
+  </script>
+
+</body>
 </html>
