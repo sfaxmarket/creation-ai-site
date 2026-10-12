@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="description" content="Pack Succès Création Ai : site web, création publicitaire et sponsoring de vos réseaux sociaux.">
-
   <meta name="theme-color" content="#0b1020">
 
   <title>Pack Succès | Création Ai</title>
@@ -31,6 +29,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 20px;
     }
 
     body {
@@ -243,11 +242,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      background: linear-gradient(
-        100deg,
-        var(--blue),
-        #00bfdc
-      );
+      background: linear-gradient(100deg, var(--blue), #00bfdc);
       box-shadow: 0 5px 18px rgba(0, 160, 255, 0.16);
       transition: filter 0.2s, transform 0.2s;
     }
@@ -255,6 +250,14 @@
     .order-btn:hover {
       filter: brightness(1.12);
       transform: translateY(-2px);
+    }
+
+    .order-btn:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 3px;
     }
 
     .guarantee {
@@ -451,7 +454,6 @@
     </section>
 
     <section class="packages-section" id="offres">
-
       <div class="packages">
 
         <!-- OFFRE MENSUELLE -->
@@ -478,47 +480,17 @@
           </p>
 
           <ul class="features">
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Nous prenons soin de chaque détail de votre projet.
-              </span>
-            </li>
-
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Création de votre site web professionnel.
-              </span>
-            </li>
-
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Création de vos publicités pour valoriser vos produits
-                et services.
-              </span>
-            </li>
-
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Sponsoring de vos pages sur les réseaux sociaux.
-              </span>
-            </li>
-
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Une solution pensée pour développer votre visibilité.
-              </span>
-            </li>
+            <li><span class="check">✓</span><span>Nous prenons soin de chaque détail de votre projet.</span></li>
+            <li><span class="check">✓</span><span>Création de votre site web professionnel.</span></li>
+            <li><span class="check">✓</span><span>Création de vos publicités pour valoriser vos produits et services.</span></li>
+            <li><span class="check">✓</span><span>Sponsoring de vos pages sur les réseaux sociaux.</span></li>
+            <li><span class="check">✓</span><span>Une solution pensée pour développer votre visibilité.</span></li>
           </ul>
 
           <button
             class="order-btn"
             type="button"
-            onclick="choosePlan('mensuel', '700 DT / mois')">
+            onclick="choosePlan('mensuel')">
             Choisir l'offre mensuelle →
           </button>
 
@@ -548,48 +520,17 @@
           </p>
 
           <ul class="features">
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Nous prenons soin de chaque détail de votre projet.
-              </span>
-            </li>
-
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Création de votre site web professionnel.
-              </span>
-            </li>
-
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Création de vos publicités pour valoriser vos produits
-                et services.
-              </span>
-            </li>
-
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Sponsoring de vos pages sur les réseaux sociaux.
-              </span>
-            </li>
-
-            <li>
-              <span class="check">✓</span>
-              <span>
-                Une vision globale pour développer votre activité
-                tout au long de l'année.
-              </span>
-            </li>
+            <li><span class="check">✓</span><span>Nous prenons soin de chaque détail de votre projet.</span></li>
+            <li><span class="check">✓</span><span>Création de votre site web professionnel.</span></li>
+            <li><span class="check">✓</span><span>Création de vos publicités pour valoriser vos produits et services.</span></li>
+            <li><span class="check">✓</span><span>Sponsoring de vos pages sur les réseaux sociaux.</span></li>
+            <li><span class="check">✓</span><span>Une vision globale pour développer votre activité tout au long de l'année.</span></li>
           </ul>
 
           <button
             class="order-btn"
             type="button"
-            onclick="choosePlan('annuel', '7 000 DT / an')">
+            onclick="choosePlan('annuel')">
             Choisir l'offre annuelle →
           </button>
 
@@ -600,7 +541,6 @@
       <p class="guarantee">
         ✦ Une solution adaptée à votre projet et à vos objectifs.
       </p>
-
     </section>
 
     <!-- FORMULAIRE DE COMMANDE -->
@@ -611,9 +551,7 @@
         <div class="order-heading">
           <div class="eyebrow">Votre commande</div>
 
-          <h2>
-            Confirmer votre <span>commande</span>
-          </h2>
+          <h2>Confirmer votre <span>commande</span></h2>
 
           <p>
             Remplissez vos coordonnées pour nous envoyer votre demande.
@@ -622,14 +560,14 @@
 
         <div class="form-card">
 
-          <div class="selected-plan">
+          <div class="selected-plan" aria-live="polite">
             Offre choisie :
             <strong id="plan-label">Pack Succès Mensuel — 700 DT / mois</strong>
           </div>
 
-          <!-- Remplacez l'adresse ci-dessous par votre URL Formspree -->
+          <!-- FORMULAIRE FORMSPREE -->
           <form
-            action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+            action="https://formspree.io/f/mbgdkabo"
             method="POST">
 
             <input
@@ -637,6 +575,11 @@
               name="Offre choisie"
               id="plan-input"
               value="Pack Succès Mensuel — 700 DT / mois">
+
+            <input
+              type="hidden"
+              name="_subject"
+              value="Nouvelle commande - Pack Succès Création Ai">
 
             <div class="field">
               <label for="nom">Nom</label>
@@ -709,20 +652,21 @@
   </footer>
 
   <script>
-    function choosePlan(type, price) {
+    function choosePlan(type) {
       let label;
 
       if (type === "annuel") {
-        label = "Pack Succès Annuel — " + price;
+        label = "Pack Succès Annuel — 7 000 DT / an";
       } else {
-        label = "Pack Succès Mensuel — " + price;
+        label = "Pack Succès Mensuel — 700 DT / mois";
       }
 
       document.getElementById("plan-label").textContent = label;
       document.getElementById("plan-input").value = label;
 
       document.getElementById("commande").scrollIntoView({
-        behavior: "smooth"
+        behavior: "smooth",
+        block: "start"
       });
     }
   </script>
