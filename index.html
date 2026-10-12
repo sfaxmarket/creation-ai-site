@@ -1,26 +1,176 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="blue">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="description" content="Création Ai — création de sites web, publicités, contenus visuels, sponsoring et Pack Succès pour développer votre activité.">
 
-  <meta name="theme-color" content="#0b1020">
+  <meta name="theme-color" content="#06172f">
 
   <title>Création Ai | Créativité & Intelligence Artificielle</title>
 
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem("creationAiTheme");
+        if (theme === "white" || theme === "blue") {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* BOUTON DE CHANGEMENT DE THÈME */
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      border-radius: 30px;
+      background: var(--theme-button-bg, #102b4d);
+      color: var(--theme-button-text, #ffffff);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover {
+      opacity: 0.85;
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 3px solid #38bdf8;
+      outline-offset: 3px;
+    }
+
+    .theme-toggle .theme-dot {
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #94a3b8;
+    }
+
+    html[data-theme="white"] {
+      --theme-button-bg: #e2e8f0;
+      --theme-button-text: #0f172a;
+    }
+
+    html[data-theme="white"] body {
+      background: #f8fafc;
+      color: #172033;
+    }
+
+    html[data-theme="white"] .header,
+    html[data-theme="white"] footer {
+      background: #ffffff;
+      color: #172033;
+      border-color: #e2e8f0;
+    }
+
+    html[data-theme="white"] .nav a,
+    html[data-theme="white"] .brand,
+    html[data-theme="white"] .footer-brand {
+      color: #172033;
+    }
+
+    html[data-theme="white"] .section {
+      background-color: #f8fafc;
+      color: #172033;
+    }
+
+    html[data-theme="white"] .section h2,
+    html[data-theme="white"] .service-card h3,
+    html[data-theme="white"] .section-copy,
+    html[data-theme="white"] .service-card p,
+    html[data-theme="white"] .phone {
+      color: #334155;
+    }
+
+    html[data-theme="white"] .service-card,
+    html[data-theme="white"] .contact form {
+      background: #ffffff;
+      color: #172033;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+    }
+
+    html[data-theme="white"] .service-icon {
+      color: #0756a8;
+    }
+
+    html[data-theme="white"] .form-group label {
+      color: #172033;
+    }
+
+    html[data-theme="white"] .form-group input,
+    html[data-theme="white"] .form-group textarea {
+      background: #ffffff;
+      color: #172033;
+      border: 1px solid #cbd5e1;
+    }
+
+    html[data-theme="white"] .section-kicker {
+      color: #0756a8;
+    }
+
+    html[data-theme="white"] .about,
+    html[data-theme="white"] .services,
+    html[data-theme="white"] .contact {
+      background: #f8fafc;
+    }
+
+    html[data-theme="white"] .menu-toggle {
+      color: #172033;
+      background: #e2e8f0;
+    }
+
+    html[data-theme="white"] .service-price {
+      color: #0756a8;
+    }
+
+    @media (max-width: 760px) {
+      .header {
+        flex-wrap: wrap;
+      }
+
+      .theme-toggle {
+        margin-left: auto;
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- HEADER -->
   <header class="header">
+
     <a class="brand" href="#accueil" aria-label="Création Ai, accueil">
       <span class="brand-icon">✳</span>
       <span>Création <b>Ai</b></span>
     </a>
+
+    <button
+      class="theme-toggle"
+      id="theme-toggle"
+      type="button"
+      aria-label="Passer au thème blanc"
+      aria-pressed="false">
+      <span class="theme-dot" aria-hidden="true"></span>
+      <span id="theme-label">Mode blanc</span>
+    </button>
 
     <button
       class="menu-toggle"
@@ -36,6 +186,7 @@
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </nav>
+
   </header>
 
   <main>
@@ -51,6 +202,7 @@
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
+
         <p class="eyebrow">DONNEZ VIE À VOS IDÉES</p>
 
         <h1>Création <span>Ai</span></h1>
@@ -62,6 +214,7 @@
         <a class="cta" href="#services">
           Découvrir nos services <span>↗</span>
         </a>
+
       </div>
 
       <a
@@ -133,9 +286,7 @@
             Commander <span>↗</span>
           </a>
 
-          <p class="service-price">
-            À partir de 300 DT
-          </p>
+          <p class="service-price">À partir de 300 DT</p>
 
         </article>
 
@@ -175,7 +326,7 @@
 
         </article>
 
-        <!-- SPONSORING DES RÉSEAUX SOCIAUX -->
+        <!-- SPONSORING -->
         <article class="service-card">
 
           <div class="service-icon">📣</div>
@@ -187,7 +338,6 @@
             grâce au sponsoring de vos pages sur les réseaux sociaux.
           </p>
 
-          <!-- Lien vers la page Sponsoring -->
           <a href="./Sponsoring.html" class="cta">
             Découvrir nos offres <span>↗</span>
           </a>
@@ -195,6 +345,7 @@
         </article>
 
       </div>
+
     </section>
 
     <!-- FORMULAIRE POUR LES AUTRES SERVICES -->
@@ -202,9 +353,7 @@
 
       <p class="section-kicker">VOTRE COMMANDE</p>
 
-      <h2>
-        Confirmer votre <span>commande</span>
-      </h2>
+      <h2>Confirmer votre <span>commande</span></h2>
 
       <p class="section-copy">
         Veuillez remplir vos informations pour envoyer votre demande.
@@ -220,14 +369,10 @@
         action="https://formspree.io/f/mbgdkabo"
         method="POST">
 
-        <input
-          type="hidden"
-          name="service"
-          id="service-input">
+        <input type="hidden" name="service" id="service-input">
 
         <div class="form-group">
           <label for="nom">Nom</label>
-
           <input
             id="nom"
             name="nom"
@@ -239,7 +384,6 @@
 
         <div class="form-group">
           <label for="prenom">Prénom</label>
-
           <input
             id="prenom"
             name="prenom"
@@ -251,7 +395,6 @@
 
         <div class="form-group">
           <label for="telephone">Numéro de téléphone</label>
-
           <input
             id="telephone"
             name="telephone"
@@ -263,7 +406,6 @@
 
         <div class="form-group">
           <label for="adresse">Adresse complète</label>
-
           <textarea
             id="adresse"
             name="adresse"
@@ -285,6 +427,7 @@
         </button>
 
       </form>
+
     </section>
 
     <!-- CONTACT -->
@@ -310,9 +453,7 @@
         Contacter Création Ai sur WhatsApp <span>↗</span>
       </a>
 
-      <p class="phone">
-        Téléphone : +216 21 582 307
-      </p>
+      <p class="phone">Téléphone : +216 21 582 307</p>
 
     </section>
 
@@ -336,37 +477,77 @@
   <script src="script.js"></script>
 
   <script>
+    // Gestion du thème bleu/blanc sur cette page
+    (function () {
+      const button = document.getElementById("theme-toggle");
+      const label = document.getElementById("theme-label");
+      const root = document.documentElement;
+
+      function getTheme() {
+        try {
+          return localStorage.getItem("creationAiTheme") || "blue";
+        } catch (e) {
+          return root.getAttribute("data-theme") || "blue";
+        }
+      }
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+
+        try {
+          localStorage.setItem("creationAiTheme", theme);
+        } catch (e) {}
+
+        const isWhite = theme === "white";
+
+        label.textContent = isWhite ? "Mode bleu" : "Mode blanc";
+        button.setAttribute("aria-pressed", String(isWhite));
+        button.setAttribute(
+          "aria-label",
+          isWhite ? "Passer au thème bleu" : "Passer au thème blanc"
+        );
+
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) {
+          metaTheme.setAttribute(
+            "content",
+            isWhite ? "#f8fafc" : "#06172f"
+          );
+        }
+      }
+
+      applyTheme(getTheme());
+
+      button.addEventListener("click", function () {
+        applyTheme(getTheme() === "blue" ? "white" : "blue");
+      });
+    })();
+
     // Ouvrir le formulaire pour les autres services
     function openOrder(service) {
-      const section = document.getElementById('commande');
-      const serviceLabel = document.getElementById('service-choisi');
-      const serviceInput = document.getElementById('service-input');
-
-      serviceLabel.textContent = service;
-      serviceInput.value = service;
+      const section = document.getElementById("commande");
+      document.getElementById("service-choisi").textContent = service;
+      document.getElementById("service-input").value = service;
 
       section.hidden = false;
-
       section.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+        behavior: "smooth",
+        block: "start"
       });
     }
 
     // Fermer le formulaire
     function closeOrder() {
-      const section = document.getElementById('commande');
+      document.getElementById("commande").hidden = true;
 
-      section.hidden = true;
-
-      document.getElementById('services').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+      document.getElementById("services").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       });
     }
 
     // Afficher l'année actuelle
-    document.getElementById('year').textContent =
+    document.getElementById("year").textContent =
       new Date().getFullYear();
   </script>
 
