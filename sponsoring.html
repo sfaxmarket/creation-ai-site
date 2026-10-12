@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#06172f">
+  <meta name="theme-color" content="#0b1020">
 
   <meta name="description" content="Création Ai : sponsoring et promotion de vos pages sur les réseaux sociaux. Développez votre visibilité et attirez plus de clients.">
 
@@ -11,17 +11,12 @@
 
   <style>
     :root {
-      --bg: #06172f;
-      --card: #0a2140;
-      --panel: #0d284b;
-      --blue: #2875ff;
-      --cyan: #35c8ff;
-      --text: #f5f8ff;
-      --muted: #b8c8df;
-      --border: #294567;
-      --input-bg: #071a33;
-      --header-bg: #06172f;
-      --button-text: #ffffff;
+      --bg: #0b1020;
+      --card: #131c32;
+      --blue: #3984ff;
+      --cyan: #24d5ff;
+      --text: #f5f7ff;
+      --muted: #b5c0d8;
     }
 
     * {
@@ -35,7 +30,6 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
-      transition: background .3s, color .3s;
     }
 
     a {
@@ -48,51 +42,27 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 15px;
       flex-wrap: wrap;
-      background: var(--header-bg);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(255,255,255,.09);
     }
 
     .logo {
       font-size: 25px;
       font-weight: 800;
-      color: var(--text);
+      color: white;
     }
 
     .logo span {
       color: var(--cyan);
     }
 
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .back-link,
-    .theme-toggle {
-      display: inline-block;
-      color: var(--text);
-      background: var(--card);
-      border: 1px solid var(--border);
+    .back-link {
+      color: #dbe8ff;
+      border: 1px solid #34415d;
       border-radius: 25px;
-      padding: 9px 15px;
-      font-size: 13px;
-      cursor: pointer;
-      transition: .3s;
-    }
-
-    .theme-toggle {
-      border-color: var(--cyan);
-      font-weight: bold;
-    }
-
-    .back-link:hover,
-    .theme-toggle:hover {
-      transform: translateY(-2px);
-      opacity: .85;
+      padding: 8px 16px;
+      font-size: 14px;
     }
 
     .hero {
@@ -105,8 +75,8 @@
     .tag {
       display: inline-block;
       color: var(--cyan);
-      background: rgba(53,200,255,.10);
-      border: 1px solid rgba(53,200,255,.30);
+      background: rgba(36,213,255,.10);
+      border: 1px solid rgba(36,213,255,.25);
       border-radius: 30px;
       padding: 6px 15px;
       font-size: 13px;
@@ -136,8 +106,8 @@
       display: block;
       margin: 25px auto;
       border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: 0 18px 55px rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
     }
 
     .benefits {
@@ -149,9 +119,9 @@
     }
 
     .benefit {
-      color: var(--text);
-      background: var(--card);
-      border: 1px solid var(--border);
+      color: #e3edff;
+      background: #131c32;
+      border: 1px solid #293853;
       padding: 9px 15px;
       border-radius: 30px;
       font-size: 13px;
@@ -182,24 +152,19 @@
     }
 
     .plan {
-      background: linear-gradient(160deg, var(--card), var(--panel));
-      border: 1px solid var(--border);
+      background: linear-gradient(160deg, #172440, #11192c);
+      border: 1px solid #2b3c5b;
       padding: 28px 22px;
       border-radius: 20px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform .3s, border-color .3s;
-    }
-
-    .plan:hover {
-      transform: translateY(-4px);
     }
 
     .plan.featured {
-      border: 2px solid var(--cyan);
-      box-shadow: 0 0 28px rgba(53,200,255,.12);
+      border: 1px solid var(--cyan);
+      box-shadow: 0 0 28px rgba(36,213,255,.10);
     }
 
     .plan-icon {
@@ -241,7 +206,7 @@
 
     .features li {
       padding: 7px 0;
-      color: var(--text);
+      color: #e1eaff;
       font-size: 14px;
     }
 
@@ -261,8 +226,8 @@
       font-weight: 700;
       font-size: 15px;
       cursor: pointer;
-      color: var(--button-text);
-      background: linear-gradient(100deg, var(--blue), #20bde9);
+      color: white;
+      background: linear-gradient(100deg, #2875ff, #20bde9);
       transition: transform .2s, opacity .2s;
     }
 
@@ -277,9 +242,8 @@
       margin: 0 auto 60px;
       padding: 30px 22px;
       background: var(--card);
-      border: 1px solid var(--border);
+      border: 1px solid #344866;
       border-radius: 20px;
-      scroll-margin-top: 20px;
     }
 
     .order-section.visible {
@@ -311,42 +275,26 @@
       display: block;
       margin-bottom: 6px;
       font-size: 14px;
-      color: var(--text);
+      color: #e5edff;
     }
 
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 13px;
       border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--input-bg);
-      color: var(--text);
+      border: 1px solid #344663;
+      background: #0b1325;
+      color: white;
       font: inherit;
       outline: none;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       border-color: var(--cyan);
-      box-shadow: 0 0 0 2px rgba(53,200,255,.12);
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: var(--muted);
-      opacity: .8;
     }
 
     select option {
-      background: var(--card);
-      color: var(--text);
-    }
-
-    textarea {
-      resize: vertical;
+      background: #131c32;
     }
 
     .submit-btn {
@@ -355,9 +303,8 @@
 
     .cancel-btn {
       background: transparent;
-      border: 1px solid var(--border);
+      border: 1px solid #40516e;
       margin-top: 10px;
-      color: var(--text);
     }
 
     .privacy {
@@ -368,47 +315,11 @@
     }
 
     footer {
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgba(255,255,255,.09);
       text-align: center;
       padding: 25px 15px;
       color: var(--muted);
       font-size: 13px;
-    }
-
-    /* Thème clair : bleu et blanc */
-    body.light-theme {
-      --bg: #f3f7fd;
-      --card: #ffffff;
-      --panel: #edf4ff;
-      --blue: #1764e8;
-      --cyan: #087ebd;
-      --text: #142b49;
-      --muted: #526780;
-      --border: #d2dfef;
-      --input-bg: #ffffff;
-      --header-bg: #ffffff;
-      --button-text: #ffffff;
-    }
-
-    body.light-theme .tag {
-      background: #e5f4ff;
-      border-color: #b9e4ff;
-    }
-
-    body.light-theme .plan {
-      box-shadow: 0 8px 25px rgba(24,61,110,.07);
-    }
-
-    body.light-theme .plan.featured {
-      box-shadow: 0 8px 28px rgba(8,126,189,.13);
-    }
-
-    body.light-theme .hero-image {
-      box-shadow: 0 12px 35px rgba(24,61,110,.12);
-    }
-
-    body.light-theme .cancel-btn {
-      background: #ffffff;
     }
 
     @media (max-width: 800px) {
@@ -425,42 +336,6 @@
       .plan {
         padding: 25px 20px;
       }
-
-      header {
-        padding: 16px 5%;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .logo {
-        font-size: 22px;
-      }
-
-      .header-actions {
-        width: 100%;
-      }
-
-      .back-link,
-      .theme-toggle {
-        text-align: center;
-        flex: 1;
-      }
-
-      .hero {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-
-      .offers {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-
-      .order-section {
-        margin-left: 15px;
-        margin-right: 15px;
-        padding: 25px 17px;
-      }
     }
   </style>
 </head>
@@ -468,26 +343,11 @@
 <body>
 
   <header>
-    <a class="logo" href="index.html">
-      Création <span>Ai</span>
-    </a>
-
-    <div class="header-actions">
-      <a class="back-link" href="index.html">← Accueil</a>
-
-      <button
-        class="theme-toggle"
-        id="colorToggle"
-        type="button"
-        aria-label="Activer le mode clair"
-      >
-        ☀️ Mode clair
-      </button>
-    </div>
+    <a class="logo" href="index.html">Création <span>Ai</span></a>
+    <a class="back-link" href="index.html">← Accueil</a>
   </header>
 
   <main>
-
     <section class="hero">
       <span class="tag">VISIBILITÉ • PUBLICITÉ • CROISSANCE</span>
 
@@ -502,10 +362,12 @@
         de toucher votre audience et d'attirer de nouveaux clients.
       </p>
 
+      <!-- Remplacez sponsoring.png par le nom exact de votre image GitHub -->
       <img
         class="hero-image"
         src="sponsoring.png"
         alt="Promotion d'une marque sur les réseaux sociaux avec Création Ai"
+        onerror="this.onerror=null;this.src='file_000000002f9c8211b35abe0ffabf04e8.png';"
       >
 
       <div class="benefits">
@@ -545,11 +407,8 @@
             <li>Suivi de votre demande</li>
           </ul>
 
-          <button
-            class="btn"
-            type="button"
-            onclick="selectPlan('Offre Hebdomadaire', '45 DT / semaine')"
-          >
+          <button class="btn" type="button"
+            onclick="selectPlan('Offre Hebdomadaire', '45 DT / semaine')">
             Commander
           </button>
         </article>
@@ -574,11 +433,8 @@
             <li>Suivi de votre campagne</li>
           </ul>
 
-          <button
-            class="btn"
-            type="button"
-            onclick="selectPlan('Offre Mensuelle', '160 DT / mois')"
-          >
+          <button class="btn" type="button"
+            onclick="selectPlan('Offre Mensuelle', '160 DT / mois')">
             Commander
           </button>
         </article>
@@ -603,11 +459,8 @@
             <li>Stratégie adaptée à votre marque</li>
           </ul>
 
-          <button
-            class="btn"
-            type="button"
-            onclick="selectPlan('Offre Annuelle', '1800 DT / an')"
-          >
+          <button class="btn" type="button"
+            onclick="selectPlan('Offre Annuelle', '1800 DT / an')">
             Commander
           </button>
         </article>
@@ -627,24 +480,14 @@
         action="https://formspree.io/f/mbgdkabo"
         method="POST"
       >
-        <input
-          type="hidden"
-          name="_subject"
-          value="Nouvelle commande Sponsoring - Création Ai"
-        >
 
-        <input
-          type="hidden"
-          name="Service"
-          value="Sponsoring"
-        >
+        <input type="hidden" name="_subject"
+          value="Nouvelle commande Sponsoring - Création Ai">
 
-        <input
-          type="hidden"
-          name="Offre"
-          id="selectedPlanInput"
-          required
-        >
+        <input type="hidden" name="Service"
+          value="Sponsoring">
+
+        <input type="hidden" name="Offre" id="selectedPlanInput">
 
         <div class="form-group">
           <label for="nom">Nom et prénom *</label>
@@ -718,11 +561,8 @@
           Envoyer ma demande
         </button>
 
-        <button
-          class="btn cancel-btn"
-          type="button"
-          onclick="closeOrder()"
-        >
+        <button class="btn cancel-btn" type="button"
+          onclick="closeOrder()">
           Annuler
         </button>
 
@@ -730,9 +570,9 @@
           Vos informations servent uniquement au traitement
           de votre demande par Création Ai.
         </p>
+
       </form>
     </section>
-
   </main>
 
   <footer>
@@ -742,40 +582,32 @@
   </footer>
 
   <script>
-    // Choisir une offre et afficher le formulaire
     function selectPlan(name, price) {
-      const section = document.getElementById("orderSection");
-      const selectedOffer = name + " — " + price;
+      const section = document.getElementById('orderSection');
 
-      document.getElementById("selectedPlanText").textContent =
-        selectedOffer;
+      document.getElementById('selectedPlanText').textContent =
+        name + ' — ' + price;
 
-      document.getElementById("selectedPlanInput").value =
-        selectedOffer;
+      document.getElementById('selectedPlanInput').value =
+        name + ' — ' + price;
 
-      section.classList.add("visible");
+      section.classList.add('visible');
 
       section.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+        behavior: 'smooth',
+        block: 'start'
       });
     }
 
-    // Fermer le formulaire
     function closeOrder() {
-      document
-        .getElementById("orderSection")
-        .classList.remove("visible");
+      document.getElementById('orderSection').classList.remove('visible');
 
-      document.querySelector(".offers").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+      document.querySelector('.offers').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   </script>
-
-  <!-- Script commun pour le thème et les autres fonctions -->
-  <script src="script.js"></script>
 
 </body>
 </html>
