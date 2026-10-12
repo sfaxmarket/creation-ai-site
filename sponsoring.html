@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+
+  <meta name="description" content="Création Ai : sponsoring et promotion de vos pages sur les réseaux sociaux. Développez votre visibilité et attirez plus de clients.">
+
+  <title>Sponsoring | Création Ai</title>
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #131c32;
+      --blue: #3984ff;
+      --cyan: #24d5ff;
+      --text: #f5f7ff;
+      --muted: #b5c0d8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .back-link {
+      color: #dbe8ff;
+      border: 1px solid #34415d;
+      border-radius: 25px;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      padding: 45px 20px 25px;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--cyan);
+      background: rgba(36,213,255,.10);
+      border: 1px solid rgba(36,213,255,.25);
+      border-radius: 30px;
+      padding: 6px 15px;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 6vw, 48px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      color: var(--cyan);
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 850px;
+      display: block;
+      margin: 25px auto;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
+    }
+
+    .benefits {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 25px 0 10px;
+    }
+
+    .benefit {
+      color: #e3edff;
+      background: #131c32;
+      border: 1px solid #293853;
+      padding: 9px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+    }
+
+    .offers {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px 60px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 29px;
+      margin-bottom: 10px;
+    }
+
+    .section-description {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .plan {
+      background: linear-gradient(160deg, #172440, #11192c);
+      border: 1px solid #2b3c5b;
+      padding: 28px 22px;
+      border-radius: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .plan.featured {
+      border: 1px solid var(--cyan);
+      box-shadow: 0 0 28px rgba(36,213,255,.10);
+    }
+
+    .plan-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .plan h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--cyan);
+      margin: 8px 0 14px;
+    }
+
+    .price small {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .plan p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .features {
+      list-style: none;
+      text-align: left;
+      width: 100%;
+      margin-bottom: 25px;
+      flex: 1;
+    }
+
+    .features li {
+      padding: 7px 0;
+      color: #e1eaff;
+      font-size: 14px;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: var(--cyan);
+      font-weight: bold;
+      margin-right: 9px;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 13px 18px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(100deg, #2875ff, #20bde9);
+      transition: transform .2s, opacity .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: .92;
+    }
+
+    .order-section {
+      display: none;
+      max-width: 650px;
+      margin: 0 auto 60px;
+      padding: 30px 22px;
+      background: var(--card);
+      border: 1px solid #344866;
+      border-radius: 20px;
+    }
+
+    .order-section.visible {
+      display: block;
+    }
+
+    .order-section h2 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .order-info {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 22px;
+      font-size: 14px;
+    }
+
+    .selected-plan {
+      color: var(--cyan);
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #e5edff;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1px solid #344663;
+      background: #0b1325;
+      color: white;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--cyan);
+    }
+
+    select option {
+      background: #131c32;
+    }
+
+    .submit-btn {
+      margin-top: 8px;
+    }
+
+    .cancel-btn {
+      background: transparent;
+      border: 1px solid #40516e;
+      margin-top: 10px;
+    }
+
+    .privacy {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.09);
+      text-align: center;
+      padding: 25px 15px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .plans {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: auto;
+      }
+
+      .hero {
+        padding-top: 35px;
+      }
+
+      .plan {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a class="logo" href="index.html">Création <span>Ai</span></a>
+    <a class="back-link" href="index.html">← Accueil</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="tag">VISIBILITÉ • PUBLICITÉ • CROISSANCE</span>
+
+      <h1>
+        Développez votre marque grâce au
+        <span>Sponsoring</span>
+      </h1>
+
+      <p class="intro">
+        Nous vous accompagnons dans la promotion de votre activité
+        sur les réseaux sociaux afin d'améliorer votre visibilité,
+        de toucher votre audience et d'attirer de nouveaux clients.
+      </p>
+
+      <!-- Remplacez sponsoring.png par le nom exact de votre image GitHub -->
+      <img
+        class="hero-image"
+        src="sponsoring.png"
+        alt="Promotion d'une marque sur les réseaux sociaux avec Création Ai"
+        onerror="this.onerror=null;this.src='file_000000002f9c8211b35abe0ffabf04e8.png';"
+      >
+
+      <div class="benefits">
+        <span class="benefit">✓ Plus de visibilité</span>
+        <span class="benefit">✓ Une image professionnelle</span>
+        <span class="benefit">✓ Une audience ciblée</span>
+        <span class="benefit">✓ Accompagnement personnalisé</span>
+      </div>
+    </section>
+
+    <section class="offers">
+      <h2 class="section-title">Choisissez votre offre</h2>
+
+      <p class="section-description">
+        Des formules adaptées à vos objectifs et à votre budget.
+      </p>
+
+      <div class="plans">
+
+        <article class="plan">
+          <div class="plan-icon">🚀</div>
+          <h3>Offre Hebdomadaire</h3>
+
+          <div class="price">
+            45 <small>DT / semaine</small>
+          </div>
+
+          <p>
+            Une solution flexible pour commencer à développer
+            la visibilité de votre activité.
+          </p>
+
+          <ul class="features">
+            <li>Promotion de votre activité</li>
+            <li>Accompagnement personnalisé</li>
+            <li>Objectifs définis selon vos besoins</li>
+            <li>Suivi de votre demande</li>
+          </ul>
+
+          <button class="btn" type="button"
+            onclick="selectPlan('Offre Hebdomadaire', '45 DT / semaine')">
+            Commander
+          </button>
+        </article>
+
+        <article class="plan featured">
+          <div class="plan-icon">⭐</div>
+          <h3>Offre Mensuelle</h3>
+
+          <div class="price">
+            160 <small>DT / mois</small>
+          </div>
+
+          <p>
+            Une formule pour travailler votre présence en ligne
+            avec une stratégie adaptée à votre marque.
+          </p>
+
+          <ul class="features">
+            <li>Promotion sur les réseaux sociaux</li>
+            <li>Stratégie adaptée à votre activité</li>
+            <li>Accompagnement personnalisé</li>
+            <li>Suivi de votre campagne</li>
+          </ul>
+
+          <button class="btn" type="button"
+            onclick="selectPlan('Offre Mensuelle', '160 DT / mois')">
+            Commander
+          </button>
+        </article>
+
+        <article class="plan">
+          <div class="plan-icon">👑</div>
+          <h3>Offre Annuelle</h3>
+
+          <div class="price">
+            1800 <small>DT / an</small>
+          </div>
+
+          <p>
+            Une collaboration à long terme pour développer
+            durablement la présence de votre marque.
+          </p>
+
+          <ul class="features">
+            <li>Accompagnement à long terme</li>
+            <li>Plan de promotion personnalisé</li>
+            <li>Suivi selon les objectifs convenus</li>
+            <li>Stratégie adaptée à votre marque</li>
+          </ul>
+
+          <button class="btn" type="button"
+            onclick="selectPlan('Offre Annuelle', '1800 DT / an')">
+            Commander
+          </button>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="order-section" id="orderSection">
+      <h2>Votre demande de sponsoring</h2>
+
+      <p class="order-info">
+        Offre choisie :
+        <span class="selected-plan" id="selectedPlanText"></span>
+      </p>
+
+      <form
+        action="https://formspree.io/f/mbgdkabo"
+        method="POST"
+      >
+
+        <input type="hidden" name="_subject"
+          value="Nouvelle commande Sponsoring - Création Ai">
+
+        <input type="hidden" name="Service"
+          value="Sponsoring">
+
+        <input type="hidden" name="Offre" id="selectedPlanInput">
+
+        <div class="form-group">
+          <label for="nom">Nom et prénom *</label>
+          <input
+            type="text"
+            id="nom"
+            name="Nom et prénom"
+            placeholder="Votre nom complet"
+            autocomplete="name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="telephone">Numéro de téléphone *</label>
+          <input
+            type="tel"
+            id="telephone"
+            name="Téléphone"
+            placeholder="Votre numéro de téléphone"
+            autocomplete="tel"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Adresse e-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="Email"
+            placeholder="exemple@email.com"
+            autocomplete="email"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="reseau">Réseau social à promouvoir *</label>
+          <select id="reseau" name="Réseau social" required>
+            <option value="">Choisissez un réseau</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Instagram">Instagram</option>
+            <option value="TikTok">TikTok</option>
+            <option value="YouTube">YouTube</option>
+            <option value="Plusieurs réseaux">Plusieurs réseaux</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="lien">Lien de votre page ou profil</label>
+          <input
+            type="url"
+            id="lien"
+            name="Lien de la page"
+            placeholder="https://..."
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="details">Parlez-nous de votre projet</label>
+          <textarea
+            id="details"
+            name="Détails du projet"
+            rows="4"
+            placeholder="Votre activité, vos objectifs, votre public cible..."
+          ></textarea>
+        </div>
+
+        <button class="btn submit-btn" type="submit">
+          Envoyer ma demande
+        </button>
+
+        <button class="btn cancel-btn" type="button"
+          onclick="closeOrder()">
+          Annuler
+        </button>
+
+        <p class="privacy">
+          Vos informations servent uniquement au traitement
+          de votre demande par Création Ai.
+        </p>
+
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Création Ai — Tous droits réservés.
+    <br>
+    Créativité • Intelligence artificielle • Communication digitale
+  </footer>
+
+  <script>
+    function selectPlan(name, price) {
+      const section = document.getElementById('orderSection');
+
+      document.getElementById('selectedPlanText').textContent =
+        name + ' — ' + price;
+
+      document.getElementById('selectedPlanInput').value =
+        name + ' — ' + price;
+
+      section.classList.add('visible');
+
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    function closeOrder() {
+      document.getElementById('orderSection').classList.remove('visible');
+
+      document.querySelector('.offers').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  </script>
+
+</body>
+</html>
