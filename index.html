@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -129,12 +130,13 @@
             pour présenter votre activité.
           </p>
 
-          <button
-            type="button"
-            class="cta"
-            onclick="openOrder('Création de sites web')">
-            Commander
-          </button>
+          <a href="./commande.html" class="cta">
+            Commander <span>↗</span>
+          </a>
+
+          <p class="service-price">
+            À partir de 300 DT
+          </p>
 
         </article>
 
@@ -183,7 +185,7 @@
       </div>
     </section>
 
-    <!-- FORMULAIRE DE COMMANDE -->
+    <!-- FORMULAIRE POUR LES AUTRES SERVICES -->
     <section id="commande" class="section contact" hidden>
 
       <p class="section-kicker">VOTRE COMMANDE</p>
@@ -322,7 +324,7 @@
   <script src="script.js"></script>
 
   <script>
-    // Ouvrir le formulaire de commande
+    // Ouvrir le formulaire pour les autres services
     function openOrder(service) {
       const section = document.getElementById('commande');
       const serviceLabel = document.getElementById('service-choisi');
@@ -339,7 +341,7 @@
       });
     }
 
-    // Fermer le formulaire de commande
+    // Fermer le formulaire
     function closeOrder() {
       const section = document.getElementById('commande');
 
