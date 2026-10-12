@@ -182,6 +182,24 @@
       color: #8997b4;
       font-size: 13px;
     }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 26px;
+      }
+
+      .intro h2 {
+        font-size: 24px;
+      }
+
+      .container {
+        padding: 25px 15px;
+      }
+
+      .card {
+        padding: 25px 18px;
+      }
+    }
   </style>
 </head>
 
@@ -208,11 +226,13 @@
         <h3>Offre Mensuelle</h3>
         <div class="price">200 DT</div>
         <div class="period">Par mois</div>
+
         <p class="description">
           Création d'images et de vidéos par intelligence artificielle.<br>
           Offre adaptée à vos besoins.
         </p>
-        <button class="btn"
+
+        <button class="btn" type="button"
           onclick="showForm('Offre mensuelle - 200 DT')">
           Commander
         </button>
@@ -222,11 +242,13 @@
         <h3>Offre Annuelle</h3>
         <div class="price">2000 DT</div>
         <div class="period">Par an</div>
+
         <p class="description">
           Création d'images et de vidéos par intelligence artificielle.<br>
           Une solution pour vos projets sur l'année.
         </p>
-        <button class="btn"
+
+        <button class="btn" type="button"
           onclick="showForm('Offre annuelle - 2000 DT')">
           Commander
         </button>
@@ -239,7 +261,7 @@
       <h2>Formulaire de commande</h2>
       <p id="selectedOffer"></p>
 
-      <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+      <form action="https://formspree.io/f/mbgdkabo"
             method="POST">
 
         <input type="hidden" name="Offre" id="offerInput">
@@ -258,7 +280,8 @@
 
         <label for="adresse">Adresse</label>
         <textarea id="adresse" name="Adresse"
-                  placeholder="Votre adresse complète" required></textarea>
+                  placeholder="Votre adresse complète"
+                  required></textarea>
 
         <label for="details">Détails de votre demande</label>
         <textarea id="details" name="Détails"
@@ -283,12 +306,16 @@
 
   <script>
     function showForm(offer) {
-      document.getElementById("orderForm").style.display = "block";
+      const formSection = document.getElementById("orderForm");
+
+      formSection.style.display = "block";
+
       document.getElementById("selectedOffer").textContent =
         "Offre choisie : " + offer;
+
       document.getElementById("offerInput").value = offer;
 
-      document.getElementById("orderForm").scrollIntoView({
+      formSection.scrollIntoView({
         behavior: "smooth",
         block: "start"
       });
