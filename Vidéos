@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#06172f">
+  <meta name="description" content="Découvrez les vidéos et les créations de Création Ai : intelligence artificielle, publicité, sites web et création visuelle.">
+
+  <title>Nos vidéos | Création Ai</title>
+
+  <style>
+    :root {
+      --background: #06172f;
+      --background-light: #082448;
+      --card: #0b2b50;
+      --cyan: #08d5f5;
+      --blue: #0789ef;
+      --white: #ffffff;
+      --text: #c5d3e5;
+      --border: rgba(75, 173, 255, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 27, 57, 0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 24px;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #e3edf9;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--cyan);
+    }
+
+    .hero {
+      padding: 85px 20px 70px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, #103e72 0%, transparent 65%),
+        linear-gradient(135deg, #06172f, #082448);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 54px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    h1 span,
+    .section-title span {
+      color: var(--cyan);
+    }
+
+    .hero p {
+      color: var(--text);
+      max-width: 650px;
+      margin: auto;
+      font-size: 16px;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 65px 24px 80px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-title {
+      font-size: clamp(27px, 4vw, 36px);
+      margin-bottom: 12px;
+    }
+
+    .section-description {
+      color: var(--text);
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .video-card {
+      background: linear-gradient(145deg, #0b2b50, #071d39);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cyan);
+    }
+
+    .video-card video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #020b18;
+      object-fit: contain;
+    }
+
+    .video-info {
+      padding: 20px;
+    }
+
+    .video-info h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .video-info p {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--cyan);
+      background: rgba(8, 213, 245, 0.09);
+      border: 1px solid rgba(8, 213, 245, 0.18);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .contact-box {
+      text-align: center;
+      margin-top: 55px;
+      padding: 35px 20px;
+      background: var(--background-light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .contact-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 7px;
+      background: linear-gradient(100deg, var(--blue), #05bddb);
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 16px;
+      border-top: 1px solid var(--border);
+      color: #9db2ca;
+      font-size: 13px;
+    }
+
+    footer span {
+      color: var(--cyan);
+    }
+
+    @media (max-width: 650px) {
+      .navbar {
+        padding: 13px 14px;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 60px 18px 50px;
+      }
+
+      main {
+        padding: 45px 15px 60px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .video-info {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="navbar">
+      <a class="logo" href="index.html">✳ Création <span>Ai</span></a>
+
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#about">À propos</a>
+        <a href="videos.html" class="active">Services</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#services">Nos offres</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Créativité & innovation</div>
+    <h1>Nos vidéos <span>Création Ai</span></h1>
+    <p>
+      Découvrez nos créations vidéo, nos idées publicitaires
+      et les possibilités de l'intelligence artificielle pour
+      développer votre activité.
+    </p>
+  </section>
+
+  <main>
+    <div class="section-heading">
+      <div class="eyebrow">Découvrez nos réalisations</div>
+      <h2 class="section-title">Nos <span>créations vidéo</span></h2>
+      <p class="section-description">
+        Regardez nos vidéos directement sur cette page.
+        De nouvelles créations seront ajoutées régulièrement.
+      </p>
+    </div>
+
+    <div class="video-grid">
+
+      <!-- VIDÉO 1 -->
+      <article class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="videos/video1.mp4" type="video/mp4">
+          Votre navigateur ne prend pas en charge la lecture vidéo.
+        </video>
+        <div class="video-info">
+          <span class="tag">Intelligence artificielle</span>
+          <h3>Notre première vidéo</h3>
+          <p>
+            Découvrez l'univers créatif de Création Ai.
+          </p>
+        </div>
+      </article>
+
+      <!-- VIDÉO 2 -->
+      <article class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="videos/video2.mp4" type="video/mp4">
+          Votre navigateur ne prend pas en charge la lecture vidéo.
+        </video>
+        <div class="video-info">
+          <span class="tag">Publicité</span>
+          <h3>Nos créations publicitaires</h3>
+          <p>
+            Des contenus visuels pour présenter vos produits
+            et attirer l'attention de vos clients.
+          </p>
+        </div>
+      </article>
+
+      <!-- VIDÉO 3 -->
+      <article class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="videos/video3.mp4" type="video/mp4">
+          Votre navigateur ne prend pas en charge la lecture vidéo.
+        </video>
+        <div class="video-info">
+          <span class="tag">Création numérique</span>
+          <h3>Nos idées en vidéo</h3>
+          <p>
+            Des idées modernes pour renforcer votre présence
+            sur Internet et les réseaux sociaux.
+          </p>
+        </div>
+      </article>
+
+      <!-- VIDÉO 4 -->
+      <article class="video-card">
+        <video controls preload="metadata" playsinline>
+          <source src="videos/video4.mp4" type="video/mp4">
+          Votre navigateur ne prend pas en charge la lecture vidéo.
+        </video>
+        <div class="video-info">
+          <span class="tag">Sites web</span>
+          <h3>Le digital à votre service</h3>
+          <p>
+            Découvrez comment une présence numérique soignée
+            peut mettre en valeur votre activité.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <section class="contact-box">
+      <h2>Un projet en tête ?</h2>
+      <p>
+        Création Ai vous accompagne dans vos projets créatifs
+        et numériques.
+      </p>
+      <a href="index.html#contact" class="btn">
+        Contactez-nous
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © <span>Création Ai</span> — Tous droits réservés.
+  </footer>
+
+</body>
+</html>
