@@ -36,6 +36,7 @@
       background: var(--background);
       color: var(--text);
       line-height: 1.7;
+      transition: background .3s, color .3s;
     }
 
     a {
@@ -66,6 +67,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 15px;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -79,6 +81,13 @@
       color: var(--cyan);
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
     .back-link {
       color: #d5e7fa;
       font-size: 14px;
@@ -86,6 +95,25 @@
 
     .back-link:hover {
       color: var(--cyan);
+    }
+
+    /* NOUVEAU BOUTON DE CHANGEMENT DES COULEURS */
+
+    .theme-toggle {
+      padding: 9px 14px;
+      border: 1px solid var(--cyan);
+      border-radius: 25px;
+      background: transparent;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .25s, color .25s;
+    }
+
+    .theme-toggle:hover {
+      background: var(--cyan);
+      color: #061329;
     }
 
     /* IMAGE ET SECTION PRINCIPALE */
@@ -513,6 +541,111 @@
       background: #193c62;
     }
 
+    /* NOUVEAU THÈME CLAIR */
+
+    body.light-mode {
+      --background: #f2f6fc;
+      --card: #ffffff;
+      --text: #142a46;
+      --muted: #526780;
+      --border: #cbd9e9;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    body.light-mode header {
+      background: #ffffff;
+      border-bottom-color: #d9e5f2;
+    }
+
+    body.light-mode .logo {
+      color: #102642;
+    }
+
+    body.light-mode .back-link {
+      color: #284764;
+    }
+
+    body.light-mode .theme-toggle {
+      color: #0877bd;
+      border-color: #0877bd;
+    }
+
+    body.light-mode .theme-toggle:hover {
+      background: #0877bd;
+      color: #ffffff;
+    }
+
+    body.light-mode .section {
+      background: #f2f6fc;
+    }
+
+    body.light-mode .offers-section {
+      background: #e8f0fa;
+      border-color: #d3e0ef;
+    }
+
+    body.light-mode .package {
+      background: linear-gradient(145deg, #ffffff, #f6f9ff);
+      border-color: #d0deed;
+      box-shadow: 0 12px 30px rgba(24, 55, 90, 0.08);
+    }
+
+    body.light-mode .package.featured {
+      border-color: #168cff;
+    }
+
+    body.light-mode .features-list li {
+      color: #344b65;
+    }
+
+    body.light-mode .feature-icon {
+      background: #e4f3ff;
+      border-color: #c3e8f5;
+      color: #0877bd;
+    }
+
+    body.light-mode .order-section {
+      background: radial-gradient(
+        ellipse at center,
+        #e1efff,
+        #f2f6fc 75%
+      );
+      border-top-color: #d3e0ef;
+    }
+
+    body.light-mode .form-card {
+      background: #ffffff;
+      border-color: #cbd9e9;
+    }
+
+    body.light-mode .field input,
+    body.light-mode .field textarea {
+      color: #142a46;
+      background: #f6f9fd;
+      border-color: #cbd9e9;
+    }
+
+    body.light-mode .field input::placeholder,
+    body.light-mode .field textarea::placeholder {
+      color: #71849b;
+    }
+
+    body.light-mode .cancel-btn {
+      color: #284764;
+      background: #eaf1f9;
+      border-color: #cbd9e9;
+    }
+
+    body.light-mode .cancel-btn:hover {
+      background: #dce9f7;
+    }
+
+    body.light-mode footer {
+      color: #526780;
+      background: #e5edf7;
+    }
+
     button:focus-visible,
     a:focus-visible,
     input:focus-visible,
@@ -563,9 +696,18 @@
         font-size: 20px;
       }
 
+      .nav-actions {
+        gap: 10px;
+      }
+
       .back-link {
         font-size: 12px;
         padding-top: 5px;
+      }
+
+      .theme-toggle {
+        font-size: 11px;
+        padding: 8px 10px;
       }
 
       .hero {
@@ -623,9 +765,21 @@
         <span>✳</span> Création Ai
       </a>
 
-      <a class="back-link" href="index.html#services">
-        ← Retour aux services
-      </a>
+      <div class="nav-actions">
+        <a class="back-link" href="index.html#services">
+          ← Retour aux services
+        </a>
+
+        <!-- BOUTON DE CHANGEMENT DES COULEURS -->
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Changer les couleurs de la page"
+          aria-pressed="false">
+          ☀️ Mode clair
+        </button>
+      </div>
     </nav>
   </header>
 
@@ -931,6 +1085,22 @@
   </footer>
 
   <script>
+    /* CHANGEMENT DES COULEURS */
+
+    const themeButton = document.getElementById("theme-toggle");
+
+    themeButton.addEventListener("click", function () {
+      const isLight = document.body.classList.toggle("light-mode");
+
+      themeButton.textContent = isLight
+        ? "🌙 Mode sombre"
+        : "☀️ Mode clair";
+
+      themeButton.setAttribute("aria-pressed", String(isLight));
+    });
+
+    /* CHOIX DE L'OFFRE */
+
     function choosePlan(type) {
       let label;
 
@@ -954,6 +1124,8 @@
       });
     }
 
+    /* FERMETURE DU FORMULAIRE */
+
     function closeOrder() {
       const section = document.getElementById("commande");
 
@@ -965,6 +1137,8 @@
         block: "start"
       });
     }
+
+    /* ANNÉE AUTOMATIQUE */
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
