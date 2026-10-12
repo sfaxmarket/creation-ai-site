@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Pack Succès Création Ai : site web, création publicitaire et sponsoring de vos réseaux sociaux.">
+
+  <meta name="theme-color" content="#0b1020">
+
+  <title>Pack Succès | Création Ai</title>
+
+  <style>
+    :root {
+      --background: #07172f;
+      --card: #0d294b;
+      --card-light: #10365e;
+      --cyan: #00d4ef;
+      --blue: #078cf0;
+      --text: #f4f8ff;
+      --muted: #a8bbd2;
+      --border: #1d4770;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      background: #092449;
+      border-bottom: 1px solid rgba(0, 212, 239, 0.15);
+      padding: 16px 5%;
+    }
+
+    .navbar {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .logo {
+      color: white;
+      font-size: 23px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .back-link {
+      color: #d5e7fa;
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      color: var(--cyan);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 75px 20px 35px;
+      background:
+        radial-gradient(
+          ellipse at top,
+          rgba(0, 126, 255, 0.22),
+          transparent 65%
+        );
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      color: var(--cyan);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .packages-section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 35px 20px 80px;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .package {
+      position: relative;
+      background: linear-gradient(
+        145deg,
+        var(--card-light),
+        var(--card) 65%
+      );
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 27px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.16);
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .package:hover {
+      transform: translateY(-5px);
+      border-color: var(--cyan);
+    }
+
+    .package.featured {
+      border: 1px solid var(--cyan);
+      box-shadow: 0 0 28px rgba(0, 212, 239, 0.09);
+    }
+
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: rgba(0, 212, 239, 0.12);
+      color: var(--cyan);
+      border: 1px solid rgba(0, 212, 239, 0.25);
+      padding: 5px 12px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .package h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .package-description {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 23px;
+    }
+
+    .price {
+      margin-bottom: 24px;
+    }
+
+    .price strong {
+      display: block;
+      font-size: clamp(32px, 4vw, 42px);
+      line-height: 1.3;
+      color: white;
+    }
+
+    .price strong span {
+      color: var(--cyan);
+    }
+
+    .price small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 22px;
+    }
+
+    .includes-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 17px;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 30px;
+      flex: 1;
+    }
+
+    .features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #d6e4f4;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .check {
+      color: var(--cyan);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .order-btn {
+      display: block;
+      width: 100%;
+      padding: 15px 12px;
+      text-align: center;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: linear-gradient(
+        100deg,
+        var(--blue),
+        #00bfdc
+      );
+      box-shadow: 0 5px 18px rgba(0, 160, 255, 0.16);
+      transition: filter 0.2s, transform 0.2s;
+    }
+
+    .order-btn:hover {
+      filter: brightness(1.12);
+      transform: translateY(-2px);
+    }
+
+    .guarantee {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 30px;
+    }
+
+    .order-section {
+      padding: 70px 20px;
+      background: radial-gradient(
+        ellipse at center,
+        #103b69,
+        #07172f 72%
+      );
+      border-top: 1px solid rgba(0, 212, 239, 0.1);
+    }
+
+    .order-container {
+      max-width: 560px;
+      margin: auto;
+    }
+
+    .order-heading {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .order-heading h2 {
+      font-size: clamp(25px, 4vw, 34px);
+      margin-bottom: 10px;
+    }
+
+    .order-heading h2 span {
+      color: var(--cyan);
+    }
+
+    .order-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .form-card {
+      background: rgba(13, 41, 75, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+    }
+
+    .selected-plan {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 22px;
+      padding: 12px;
+      background: rgba(0, 212, 239, 0.07);
+      border-radius: 8px;
+    }
+
+    .selected-plan strong {
+      color: var(--cyan);
+    }
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 13px;
+      background: #06172f;
+      color: white;
+      border: 1px solid #294b70;
+      border-radius: 6px;
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--cyan);
+    }
+
+    .field textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #8297b0;
+    }
+
+    .submit-btn {
+      margin-top: 8px;
+    }
+
+    .return-btn {
+      display: block;
+      text-align: center;
+      margin-top: 12px;
+      padding: 12px;
+      background: #193d63;
+      color: white;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .return-btn:hover {
+      background: #244d78;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #8ea8c5;
+      background: #061329;
+      font-size: 12px;
+    }
+
+    @media (max-width: 650px) {
+      .hero {
+        padding-top: 55px;
+      }
+
+      .packages {
+        grid-template-columns: 1fr;
+        max-width: 430px;
+        margin: auto;
+      }
+
+      .package {
+        padding: 27px 23px;
+      }
+
+      .navbar {
+        align-items: flex-start;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .back-link {
+        font-size: 12px;
+        padding-top: 5px;
+      }
+
+      .form-card {
+        padding: 21px 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar">
+      <a class="logo" href="index.html">
+        <span>✳</span> Création Ai
+      </a>
+
+      <a class="back-link" href="index.html#services">
+        ← Retour aux services
+      </a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="eyebrow">Votre réussite, notre mission</div>
+
+      <h1>
+        Découvrez le <span>Pack Succès</span>
+      </h1>
+
+      <p>
+        Concentrez-vous sur votre activité.
+        Nous prenons soin de votre présence digitale,
+        de votre site web à vos campagnes publicitaires.
+      </p>
+    </section>
+
+    <section class="packages-section" id="offres">
+
+      <div class="packages">
+
+        <!-- OFFRE MENSUELLE -->
+        <article class="package">
+
+          <div class="badge">FLEXIBILITÉ</div>
+
+          <h2>Pack Succès Mensuel</h2>
+
+          <p class="package-description">
+            Un accompagnement pour développer votre projet
+            et renforcer votre présence en ligne.
+          </p>
+
+          <div class="price">
+            <strong>700 <span>DT</span></strong>
+            <small>par mois</small>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="includes-title">
+            Votre projet entre de bonnes mains :
+          </p>
+
+          <ul class="features">
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Nous prenons soin de chaque détail de votre projet.
+              </span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Création de votre site web professionnel.
+              </span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Création de vos publicités pour valoriser vos produits
+                et services.
+              </span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Sponsoring de vos pages sur les réseaux sociaux.
+              </span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Une solution pensée pour développer votre visibilité.
+              </span>
+            </li>
+          </ul>
+
+          <button
+            class="order-btn"
+            type="button"
+            onclick="choosePlan('mensuel', '700 DT / mois')">
+            Choisir l'offre mensuelle →
+          </button>
+
+        </article>
+
+        <!-- OFFRE ANNUELLE -->
+        <article class="package featured">
+
+          <div class="badge">ACCOMPAGNEMENT ANNUEL</div>
+
+          <h2>Pack Succès Annuel</h2>
+
+          <p class="package-description">
+            Une vision à long terme pour construire et développer
+            durablement votre présence digitale.
+          </p>
+
+          <div class="price">
+            <strong>7 000 <span>DT</span></strong>
+            <small>par an</small>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="includes-title">
+            Votre projet entre de bonnes mains :
+          </p>
+
+          <ul class="features">
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Nous prenons soin de chaque détail de votre projet.
+              </span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Création de votre site web professionnel.
+              </span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Création de vos publicités pour valoriser vos produits
+                et services.
+              </span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Sponsoring de vos pages sur les réseaux sociaux.
+              </span>
+            </li>
+
+            <li>
+              <span class="check">✓</span>
+              <span>
+                Une vision globale pour développer votre activité
+                tout au long de l'année.
+              </span>
+            </li>
+          </ul>
+
+          <button
+            class="order-btn"
+            type="button"
+            onclick="choosePlan('annuel', '7 000 DT / an')">
+            Choisir l'offre annuelle →
+          </button>
+
+        </article>
+
+      </div>
+
+      <p class="guarantee">
+        ✦ Une solution adaptée à votre projet et à vos objectifs.
+      </p>
+
+    </section>
+
+    <!-- FORMULAIRE DE COMMANDE -->
+    <section class="order-section" id="commande">
+
+      <div class="order-container">
+
+        <div class="order-heading">
+          <div class="eyebrow">Votre commande</div>
+
+          <h2>
+            Confirmer votre <span>commande</span>
+          </h2>
+
+          <p>
+            Remplissez vos coordonnées pour nous envoyer votre demande.
+          </p>
+        </div>
+
+        <div class="form-card">
+
+          <div class="selected-plan">
+            Offre choisie :
+            <strong id="plan-label">Pack Succès Mensuel — 700 DT / mois</strong>
+          </div>
+
+          <!-- Remplacez l'adresse ci-dessous par votre URL Formspree -->
+          <form
+            action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+            method="POST">
+
+            <input
+              type="hidden"
+              name="Offre choisie"
+              id="plan-input"
+              value="Pack Succès Mensuel — 700 DT / mois">
+
+            <div class="field">
+              <label for="nom">Nom</label>
+              <input
+                id="nom"
+                name="Nom"
+                type="text"
+                placeholder="Votre nom"
+                autocomplete="family-name"
+                required>
+            </div>
+
+            <div class="field">
+              <label for="prenom">Prénom</label>
+              <input
+                id="prenom"
+                name="Prénom"
+                type="text"
+                placeholder="Votre prénom"
+                autocomplete="given-name"
+                required>
+            </div>
+
+            <div class="field">
+              <label for="telephone">Numéro de téléphone</label>
+              <input
+                id="telephone"
+                name="Téléphone"
+                type="tel"
+                placeholder="+216 ..."
+                autocomplete="tel"
+                required>
+            </div>
+
+            <div class="field">
+              <label for="adresse">Adresse complète</label>
+              <textarea
+                id="adresse"
+                name="Adresse"
+                placeholder="Votre adresse complète"
+                autocomplete="street-address"
+                required></textarea>
+            </div>
+
+            <div class="field">
+              <label for="details">Parlez-nous de votre projet (facultatif)</label>
+              <textarea
+                id="details"
+                name="Détails du projet"
+                placeholder="Décrivez votre activité et vos besoins..."></textarea>
+            </div>
+
+            <button class="order-btn submit-btn" type="submit">
+              Confirmer ma commande
+            </button>
+
+            <a class="return-btn" href="index.html#services">
+              Retour aux services
+            </a>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Création Ai — Tous droits réservés.
+  </footer>
+
+  <script>
+    function choosePlan(type, price) {
+      let label;
+
+      if (type === "annuel") {
+        label = "Pack Succès Annuel — " + price;
+      } else {
+        label = "Pack Succès Mensuel — " + price;
+      }
+
+      document.getElementById("plan-label").textContent = label;
+      document.getElementById("plan-input").value = label;
+
+      document.getElementById("commande").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  </script>
+
+</body>
+</html>
