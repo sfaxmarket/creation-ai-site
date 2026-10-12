@@ -1,122 +1,58 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#061b38">
-  <meta name="description" content="Création de sites web professionnels à partir de 300 DT.">
   <title>Création de sites web | Création Ai</title>
+  <meta name="description" content="Création de sites web professionnels à partir de 300 DT.">
 
   <style>
-    :root {
-      color-scheme: dark;
-      --bg: #061832;
-      --header: #071f43;
-      --panel: #0b2749;
-      --text: #f5f8ff;
-      --muted: #c2d3e9;
-      --border: #1b4d79;
-      --input-bg: #071b35;
-      --cyan: #00d9f5;
-      --footer: #061832;
-    }
-
-    body.light-theme {
-      color-scheme: light;
-      --bg: #f4f7fc;
-      --header: #ffffff;
-      --panel: #ffffff;
-      --text: #102344;
-      --muted: #536781;
-      --border: #d5e1f0;
-      --input-bg: #f7f9fd;
-      --cyan: #0879e8;
-      --footer: #e7eef8;
-    }
-
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: #061832;
+      color: #f5f8ff;
       line-height: 1.6;
-      transition: background .25s, color .25s;
     }
 
     header {
-      padding: 14px 6%;
-      background: var(--header);
-      border-bottom: 1px solid var(--border);
+      padding: 18px 6%;
+      background: #071f43;
+      border-bottom: 1px solid #164575;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      gap: 12px;
     }
 
     .logo {
       font-size: 21px;
       font-weight: bold;
-      white-space: nowrap;
     }
 
     .cyan {
-      color: var(--cyan);
+      color: #00d9f5;
     }
 
     header a,
     .back {
-      color: var(--text);
+      color: white;
       text-decoration: none;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .theme-toggle {
-      width: auto;
-      margin: 0;
-      padding: 9px 12px;
-      border: 1px solid var(--cyan);
-      border-radius: 8px;
-      background: #0879e8;
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: bold;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-
-    .theme-toggle:hover {
-      filter: brightness(1.1);
     }
 
     .hero {
       text-align: center;
       padding: 55px 20px 35px;
-      background: radial-gradient(ellipse at top, #104779, var(--bg) 72%);
-    }
-
-    body.light-theme .hero {
-      background: radial-gradient(ellipse at top, #dcecff, var(--bg) 78%);
+      background: radial-gradient(ellipse at top, #104779, #061832 72%);
     }
 
     .tag {
-      color: var(--cyan);
+      color: #00d9f5;
       text-transform: uppercase;
       font-size: 12px;
       font-weight: bold;
@@ -130,7 +66,7 @@
     }
 
     .intro {
-      color: var(--muted);
+      color: #c2d3e9;
       max-width: 600px;
       margin: 0 auto 22px;
     }
@@ -138,13 +74,13 @@
     .price {
       font-size: 27px;
       font-weight: bold;
-      color: var(--cyan);
+      color: #00d9f5;
       margin: 20px 0 0;
     }
 
     .note,
     .sub {
-      color: var(--muted);
+      color: #b9cbe1;
       font-size: 14px;
     }
 
@@ -156,11 +92,10 @@
 
     .panel {
       padding: 25px;
-      background: var(--panel);
-      border: 1px solid var(--border);
+      background: #0b2749;
+      border: 1px solid #1b4d79;
       border-radius: 15px;
       box-shadow: 0 12px 35px #0002;
-      transition: background .25s, border-color .25s;
     }
 
     h2 {
@@ -184,17 +119,16 @@
       width: 100%;
       padding: 14px;
       border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--input-bg);
-      color: var(--text);
+      border: 1px solid #315779;
+      background: #071b35;
+      color: white;
       font: inherit;
+      outline: none;
     }
 
     input:focus,
     textarea:focus {
-      border-color: var(--cyan);
-      outline: 2px solid transparent;
-      box-shadow: 0 0 0 3px #0879e820;
+      border-color: #00d9f5;
     }
 
     input::placeholder,
@@ -202,73 +136,39 @@
       color: #829bb8;
     }
 
-    body.light-theme input::placeholder,
-    body.light-theme textarea::placeholder {
-      color: #71839a;
-    }
-
-    .submit-button {
+    button {
       width: 100%;
       margin-top: 24px;
       padding: 15px;
       border: 0;
       border-radius: 8px;
       color: white;
-      background: linear-gradient(90deg, #0789f5, #00aaca);
+      background: linear-gradient(90deg, #0789f5, #00bfdc);
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    .submit-button:hover {
+    button:hover {
       filter: brightness(1.08);
     }
 
     .back {
       display: inline-block;
       margin-top: 22px;
-      color: var(--cyan);
+      color: #00d9f5;
       font-size: 14px;
     }
 
     footer {
       text-align: center;
       padding: 22px;
-      color: var(--muted);
+      color: #8da8c6;
       font-size: 12px;
-      border-top: 1px solid var(--border);
-      background: var(--footer);
-    }
-
-    button:focus-visible,
-    a:focus-visible {
-      outline: 2px solid var(--cyan);
-      outline-offset: 3px;
+      border-top: 1px solid #173653;
     }
 
     @media (max-width: 420px) {
-      header {
-        padding: 12px;
-        gap: 8px;
-      }
-
-      .logo {
-        font-size: 17px;
-      }
-
-      .header-actions {
-        gap: 9px;
-      }
-
-      .header-actions > a {
-        font-size: 13px;
-      }
-
-      .theme-toggle {
-        padding: 8px;
-        font-size: 11px;
-      }
-
       .panel {
         padding: 20px 16px;
       }
@@ -284,19 +184,7 @@
 
   <header>
     <div class="logo">✳ Création <span class="cyan">Ai</span></div>
-
-    <div class="header-actions">
-      <a href="./index.html">Accueil</a>
-
-      <button
-        id="theme-toggle"
-        class="theme-toggle"
-        type="button"
-        aria-label="Changer le thème"
-      >
-        ☀️ Mode blanc
-      </button>
-    </div>
+    <a href="./index.html">Accueil</a>
   </header>
 
   <section class="hero">
@@ -359,7 +247,7 @@
           required
         ></textarea>
 
-        <button class="submit-button" type="submit">
+        <button type="submit">
           Envoyer ma commande ↗
         </button>
 
@@ -374,51 +262,6 @@
   <footer>
     © Création Ai — Tous droits réservés.
   </footer>
-
-  <script>
-    (() => {
-      const button = document.getElementById('theme-toggle');
-      const storageKey = 'creation-ai-theme';
-
-      function applyTheme(theme) {
-        const isWhite = theme === 'white';
-
-        document.body.classList.toggle('light-theme', isWhite);
-
-        button.textContent = isWhite
-          ? '🌙 Mode bleu'
-          : '☀️ Mode blanc';
-
-        button.setAttribute(
-          'aria-label',
-          isWhite ? 'Activer le thème bleu' : 'Activer le thème blanc'
-        );
-
-        document.querySelector('meta[name="theme-color"]')
-          ?.setAttribute('content', isWhite ? '#f4f7fc' : '#061b38');
-      }
-
-      let savedTheme = 'blue';
-
-      try {
-        savedTheme = localStorage.getItem(storageKey) || 'blue';
-      } catch (error) {}
-
-      applyTheme(savedTheme);
-
-      button.addEventListener('click', () => {
-        const nextTheme = document.body.classList.contains('light-theme')
-          ? 'blue'
-          : 'white';
-
-        applyTheme(nextTheme);
-
-        try {
-          localStorage.setItem(storageKey, nextTheme);
-        } catch (error) {}
-      });
-    })();
-  </script>
 
 </body>
 </html>
