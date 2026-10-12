@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commander un site web</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 35px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon {
+      text-align: center;
+      font-size: 48px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      text-align: center;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .price {
+      margin: 22px 0;
+      padding: 20px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .price span {
+      display: block;
+      color: #047857;
+      font-size: 14px;
+    }
+
+    .price strong {
+      display: block;
+      margin-top: 8px;
+      color: #047857;
+      font-size: 32px;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #64748b;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #059669;
+      box-shadow: 0 0 0 3px #05966920;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #059669;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #047857;
+    }
+
+    .back {
+      display: block;
+      margin-top: 22px;
+      text-align: center;
+      text-decoration: none;
+      color: #059669;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 400px) {
+      .container {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div class="icon">💻</div>
+
+    <h1>Créez votre site web</h1>
+
+    <p class="description">
+      Vous avez un projet ?
+      Remplissez le formulaire pour nous contacter
+      et discuter de votre futur site web.
+    </p>
+
+    <div class="price">
+      <span>Offre de création de site web</span>
+      <strong>À partir de 300 DT</strong>
+    </div>
+
+    <p class="note">
+      Le prix final dépend de vos besoins et des fonctionnalités demandées.
+    </p>
+
+    <form
+      action="https://formspree.io/f/mbgdkabo"
+      method="POST"
+    >
+
+      <input
+        type="hidden"
+        name="Objet"
+        value="Nouvelle demande de création de site web"
+      >
+
+      <label for="nom">Nom et prénom *</label>
+      <input
+        type="text"
+        id="nom"
+        name="Nom et prénom"
+        placeholder="Votre nom et prénom"
+        autocomplete="name"
+        required
+      >
+
+      <label for="telephone">Numéro de téléphone *</label>
+      <input
+        type="tel"
+        id="telephone"
+        name="Téléphone"
+        placeholder="Exemple : 20 123 456"
+        autocomplete="tel"
+        required
+      >
+
+      <label for="adresse">Adresse *</label>
+      <input
+        type="text"
+        id="adresse"
+        name="Adresse"
+        placeholder="Votre adresse"
+        autocomplete="street-address"
+        required
+      >
+
+      <button type="submit">
+        Commander maintenant
+      </button>
+
+    </form>
+
+    <a class="back" href="index.html">
+      ← Retour à l'accueil
+    </a>
+
+  </main>
+
+</body>
+</html>
