@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Création Ai - Création d'images et vidéos avec l'intelligence artificielle.">
+
+  <title>Images & Vidéos | Création Ai</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 15px;
+      background: #101a35;
+      border-bottom: 1px solid #26365d;
+    }
+
+    header h1 {
+      font-size: 30px;
+      color: #72e6ff;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #cbd5e1;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      padding: 35px 18px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .intro h2 {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .intro p {
+      color: #b9c5dc;
+      line-height: 1.7;
+    }
+
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #131d38;
+      border: 1px solid #2b3d65;
+      border-radius: 18px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 10px 30px #0003;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      color: #72e6ff;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      font-size: 35px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .period {
+      color: #b9c5dc;
+      margin-bottom: 24px;
+    }
+
+    .description {
+      color: #d4dcec;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #00c6ff, #7b61ff);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      opacity: 0.88;
+    }
+
+    #orderForm {
+      display: none;
+      margin-top: 35px;
+      padding: 25px;
+      background: #131d38;
+      border: 1px solid #2b3d65;
+      border-radius: 18px;
+    }
+
+    #orderForm h2 {
+      color: #72e6ff;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    #selectedOffer {
+      text-align: center;
+      color: #d4dcec;
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      color: #e2e8f0;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #34466e;
+      border-radius: 9px;
+      background: #0b1020;
+      color: white;
+      font-size: 15px;
+    }
+
+    input:focus, textarea:focus {
+      outline: 1px solid #72e6ff;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      margin-top: 22px;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: #72e6ff;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px 12px;
+      color: #8997b4;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Création Ai</h1>
+    <p>Votre créativité, propulsée par l'intelligence artificielle</p>
+  </header>
+
+  <main class="container">
+
+    <section class="intro">
+      <h2>Images & Vidéos</h2>
+      <p>
+        Donnez vie à vos idées grâce à des créations visuelles
+        modernes réalisées avec l'intelligence artificielle.
+      </p>
+    </section>
+
+    <section class="offers">
+
+      <div class="card">
+        <h3>Offre Mensuelle</h3>
+        <div class="price">200 DT</div>
+        <div class="period">Par mois</div>
+        <p class="description">
+          Création d'images et de vidéos par intelligence artificielle.<br>
+          Offre adaptée à vos besoins.
+        </p>
+        <button class="btn"
+          onclick="showForm('Offre mensuelle - 200 DT')">
+          Commander
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Offre Annuelle</h3>
+        <div class="price">2000 DT</div>
+        <div class="period">Par an</div>
+        <p class="description">
+          Création d'images et de vidéos par intelligence artificielle.<br>
+          Une solution pour vos projets sur l'année.
+        </p>
+        <button class="btn"
+          onclick="showForm('Offre annuelle - 2000 DT')">
+          Commander
+        </button>
+      </div>
+
+    </section>
+
+    <section id="orderForm">
+
+      <h2>Formulaire de commande</h2>
+      <p id="selectedOffer"></p>
+
+      <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+            method="POST">
+
+        <input type="hidden" name="Offre" id="offerInput">
+
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="Nom"
+               placeholder="Votre nom" required>
+
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="Prénom"
+               placeholder="Votre prénom" required>
+
+        <label for="telephone">Numéro de téléphone</label>
+        <input type="tel" id="telephone" name="Téléphone"
+               placeholder="Votre numéro de téléphone" required>
+
+        <label for="adresse">Adresse</label>
+        <textarea id="adresse" name="Adresse"
+                  placeholder="Votre adresse complète" required></textarea>
+
+        <label for="details">Détails de votre demande</label>
+        <textarea id="details" name="Détails"
+                  placeholder="Décrivez les images ou vidéos souhaitées"></textarea>
+
+        <button type="submit" class="btn submit-btn">
+          Envoyer ma commande
+        </button>
+
+      </form>
+    </section>
+
+    <a class="back" href="index.html">
+      ← Retour à la page d'accueil
+    </a>
+
+  </main>
+
+  <footer>
+    © 2026 Création Ai - Tous droits réservés
+  </footer>
+
+  <script>
+    function showForm(offer) {
+      document.getElementById("orderForm").style.display = "block";
+      document.getElementById("selectedOffer").textContent =
+        "Offre choisie : " + offer;
+      document.getElementById("offerInput").value = offer;
+
+      document.getElementById("orderForm").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  </script>
+
+</body>
+</html>
