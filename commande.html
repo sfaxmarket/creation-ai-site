@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#06172f">
+<meta name="description" content="Création de sites web professionnels avec Création Ai. Offre à partir de 300 DT.">
 <title>Création de sites web | Création Ai</title>
 
 <style>
@@ -17,6 +17,7 @@
   --muted: #b6c8df;
 }
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -25,6 +26,7 @@ body {
   line-height: 1.6;
 }
 .container { width: min(1100px, 92%); margin: auto; }
+
 header {
   background: #041328;
   border-bottom: 1px solid #123e60;
@@ -40,6 +42,7 @@ nav {
 .logo { font-size: 23px; font-weight: bold; }
 .logo span, .cyan { color: var(--cyan); }
 nav a { color: white; text-decoration: none; }
+
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -61,6 +64,7 @@ p { color: var(--muted); }
 ul { list-style: none; padding: 0; }
 li { margin: 12px 0; }
 .check { color: var(--cyan); margin-right: 8px; }
+
 .device {
   border: 2px solid var(--cyan);
   border-radius: 18px;
@@ -72,6 +76,7 @@ li { margin: 12px 0; }
 }
 .device h2 { font-size: 29px; }
 .device button { margin-top: 12px; }
+
 .price-card {
   border: 1px solid var(--cyan);
   border-radius: 18px;
@@ -103,6 +108,8 @@ li { margin: 12px 0; }
   font-size: 15px;
 }
 .btn:hover { filter: brightness(1.1); }
+.btn:disabled { opacity: .65; cursor: wait; }
+
 .features {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -114,6 +121,7 @@ li { margin: 12px 0; }
   padding: 20px 8px;
 }
 .feature strong { color: var(--cyan); }
+
 .cta {
   border: 1px solid #16466b;
   background: #091f3c;
@@ -147,6 +155,7 @@ footer .container {
   backdrop-filter: blur(5px);
 }
 .modal-backdrop.open { display: flex; }
+
 .modal {
   width: min(100%, 460px);
   max-height: 92vh;
@@ -189,7 +198,9 @@ footer .container {
   margin-bottom: 6px;
   font-weight: bold;
 }
-.field input {
+.field input,
+.field textarea,
+.field select {
   width: 100%;
   padding: 12px;
   border: 1px solid #155782;
@@ -198,12 +209,18 @@ footer .container {
   color: white;
   font-size: 15px;
   outline: none;
+  font-family: Arial, sans-serif;
 }
-.field input:focus { border-color: var(--cyan); }
-.field input::placeholder { color: #8199b5; }
+.field input:focus,
+.field textarea:focus,
+.field select:focus { border-color: var(--cyan); }
+.field input::placeholder,
+.field textarea::placeholder { color: #8199b5; }
+.field textarea { min-height: 90px; resize: vertical; }
 .submit { width: 100%; }
 .privacy { text-align: center; font-size: 11px; }
 .status { font-size: 13px; }
+
 @media(max-width: 700px) {
   .hero { grid-template-columns: 1fr; padding-top: 35px; }
   .device { min-height: 200px; }
@@ -212,6 +229,9 @@ footer .container {
   .price-card { align-items: stretch; }
   .price-card .btn { width: 100%; }
   .modal { padding: 19px; }
+}
+@media(max-width: 380px) {
+  .features { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -251,7 +271,6 @@ footer .container {
     </div>
   </section>
 
-  <!-- خانة السعر الوحيدة -->
   <section class="price-card">
     <div>
       <div class="price-label">Offre de création de site web</div>
@@ -264,16 +283,30 @@ footer .container {
   </section>
 
   <section class="features">
-    <div class="feature"><strong>▣ Site vitrine</strong><p>Présentez votre activité en ligne.</p></div>
-    <div class="feature"><strong>▤ Site e-commerce</strong><p>Vendez vos produits en ligne.</p></div>
-    <div class="feature"><strong>⚙ Fonctionnalités</strong><p>Selon les besoins de votre projet.</p></div>
-    <div class="feature"><strong>✓ Responsive</strong><p>Compatible mobile et ordinateur.</p></div>
+    <div class="feature">
+      <strong>▣ Site vitrine</strong>
+      <p>Présentez votre activité en ligne.</p>
+    </div>
+    <div class="feature">
+      <strong>▤ Site e-commerce</strong>
+      <p>Vendez vos produits en ligne.</p>
+    </div>
+    <div class="feature">
+      <strong>⚙ Fonctionnalités</strong>
+      <p>Selon les besoins de votre projet.</p>
+    </div>
+    <div class="feature">
+      <strong>✓ Responsive</strong>
+      <p>Compatible mobile et ordinateur.</p>
+    </div>
   </section>
 
   <div class="cta">
     <strong>🚀 Prêt à lancer votre site web ?</strong>
     <p>Envoyez votre demande, nous vous contacterons pour discuter de votre projet.</p>
-    <button class="btn" type="button" data-order>Commander maintenant →</button>
+    <button class="btn" type="button" data-order>
+      Commander maintenant →
+    </button>
   </div>
 </main>
 
@@ -284,7 +317,7 @@ footer .container {
   </div>
 </footer>
 
-<!-- Formulaire qui s'ouvre au clic sur Commander -->
+<!-- Formulaire de commande -->
 <div class="modal-backdrop" id="orderModal" aria-hidden="true">
   <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-head">
@@ -295,33 +328,66 @@ footer .container {
     <p>Remplissez vos coordonnées pour demander la création de votre site web.</p>
     <div class="selected">Création de site web — à partir de 300 DT</div>
 
-    <!-- Remplace YOUR_FORM_ID par ton identifiant Formspree -->
-    <form id="orderForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <!-- Formspree connecté -->
+    <form id="orderForm" action="https://formspree.io/f/mbgdkabo" method="POST">
       <input type="hidden" name="_subject" value="Nouvelle demande de création de site web">
 
       <div class="field">
         <label for="prenom">Prénom *</label>
-        <input id="prenom" name="Prénom" type="text" placeholder="Votre prénom" required>
+        <input id="prenom" name="Prénom" type="text"
+               placeholder="Votre prénom" autocomplete="given-name" required>
       </div>
 
       <div class="field">
         <label for="nom">Nom *</label>
-        <input id="nom" name="Nom" type="text" placeholder="Votre nom" required>
+        <input id="nom" name="Nom" type="text"
+               placeholder="Votre nom" autocomplete="family-name" required>
+      </div>
+
+      <div class="field">
+        <label for="email">Adresse e-mail *</label>
+        <input id="email" name="Email" type="email"
+               placeholder="exemple@email.com" autocomplete="email" required>
       </div>
 
       <div class="field">
         <label for="telephone">Numéro de téléphone *</label>
-        <input id="telephone" name="Téléphone" type="tel" placeholder="Ex. : +216 XX XXX XXX" required>
+        <input id="telephone" name="Téléphone" type="tel"
+               placeholder="Ex. : +216 XX XXX XXX"
+               autocomplete="tel" required>
       </div>
 
       <div class="field">
         <label for="adresse">Adresse *</label>
-        <input id="adresse" name="Adresse" type="text" placeholder="Votre adresse complète" required>
+        <input id="adresse" name="Adresse" type="text"
+               placeholder="Votre adresse complète"
+               autocomplete="street-address" required>
       </div>
 
-      <button class="btn submit" type="submit">Envoyer ma demande →</button>
-      <p class="privacy">Vos informations seront utilisées pour traiter votre demande.</p>
-      <p class="status" id="formStatus" role="status"></p>
+      <div class="field">
+        <label for="typeSite">Type de site souhaité *</label>
+        <select id="typeSite" name="Type de site" required>
+          <option value="">Choisissez un type de site</option>
+          <option value="Site vitrine">Site vitrine</option>
+          <option value="Site e-commerce">Site e-commerce</option>
+          <option value="Autre type de site">Autre type de site</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="details">Décrivez votre projet</label>
+        <textarea id="details" name="Détails du projet"
+          placeholder="Présentez votre activité et vos besoins..."></textarea>
+      </div>
+
+      <button class="btn submit" id="submitButton" type="submit">
+        Envoyer ma demande →
+      </button>
+
+      <p class="privacy">
+        Vos informations seront utilisées pour traiter votre demande.
+      </p>
+      <p class="status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
   </section>
 </div>
@@ -330,7 +396,7 @@ footer .container {
 const modal = document.getElementById('orderModal');
 const form = document.getElementById('orderForm');
 const statusBox = document.getElementById('formStatus');
-const submitButton = form.querySelector('button[type="submit"]');
+const submitButton = document.getElementById('submitButton');
 
 function openModal() {
   modal.classList.add('open');
@@ -338,18 +404,23 @@ function openModal() {
   document.body.style.overflow = 'hidden';
   setTimeout(() => document.getElementById('prenom').focus(), 50);
 }
+
 function closeModal() {
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 }
+
 document.querySelectorAll('[data-order]').forEach(button => {
   button.addEventListener('click', openModal);
 });
+
 document.getElementById('closeModal').addEventListener('click', closeModal);
+
 modal.addEventListener('click', event => {
   if (event.target === modal) closeModal();
 });
+
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') closeModal();
 });
@@ -357,28 +428,40 @@ document.addEventListener('keydown', event => {
 form.addEventListener('submit', async event => {
   event.preventDefault();
 
-  if (form.action.includes('YOUR_FORM_ID')) {
-    statusBox.textContent = 'Configurez d’abord votre identifiant Formspree dans le code.';
-    statusBox.style.color = '#ffbaba';
-    return;
-  }
+  if (!form.reportValidity()) return;
 
   submitButton.disabled = true;
   submitButton.textContent = 'Envoi en cours…';
+  statusBox.textContent = '';
 
   try {
     const response = await fetch(form.action, {
       method: 'POST',
       body: new FormData(form),
-      headers: { Accept: 'application/json' }
+      headers: {
+        'Accept': 'application/json'
+      }
     });
-    if (!response.ok) throw new Error('Envoi impossible');
 
-    statusBox.textContent = 'Merci ! Votre demande a bien été envoyée.';
+    if (!response.ok) {
+      let message = 'Impossible d’envoyer votre demande.';
+      try {
+        const data = await response.json();
+        if (data.errors) {
+          message = data.errors.map(error => error.message).join(' ');
+        }
+      } catch (_) {}
+      throw new Error(message);
+    }
+
+    statusBox.textContent =
+      'Merci ! Votre demande a bien été envoyée. Nous vous contacterons bientôt.';
     statusBox.style.color = '#8fffd9';
+
     form.reset();
   } catch (error) {
-    statusBox.textContent = 'Échec de l’envoi. Vérifiez votre connexion et Formspree.';
+    statusBox.textContent =
+      'Échec de l’envoi. Vérifiez votre connexion et la configuration de votre formulaire Formspree, puis réessayez.';
     statusBox.style.color = '#ffbaba';
   } finally {
     submitButton.disabled = false;
