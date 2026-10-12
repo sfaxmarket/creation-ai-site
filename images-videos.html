@@ -16,29 +16,76 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --bg: #0b1020;
+      --header: #101a35;
+      --panel: #131d38;
+      --border: #2b3d65;
+      --text: #ffffff;
+      --muted: #b9c5dc;
+      --description: #d4dcec;
+      --input-bg: #0b1020;
+      --accent: #72e6ff;
+      --footer: #8997b4;
+    }
+
+    body.light-theme {
+      --bg: #f4f7fc;
+      --header: #ffffff;
+      --panel: #ffffff;
+      --border: #d6dfed;
+      --text: #17233c;
+      --muted: #586780;
+      --description: #43516a;
+      --input-bg: #f8faff;
+      --accent: #087ea4;
+      --footer: #667085;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      background: #0b1020;
-      color: white;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
     }
 
     header {
       text-align: center;
-      padding: 30px 15px;
-      background: #101a35;
-      border-bottom: 1px solid #26365d;
+      padding: 25px 15px;
+      background: var(--header);
+      border-bottom: 1px solid var(--border);
     }
 
     header h1 {
       font-size: 30px;
-      color: #72e6ff;
+      color: var(--accent);
       margin-bottom: 10px;
     }
 
     header p {
-      color: #cbd5e1;
+      color: var(--muted);
       font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .theme-toggle {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 17px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background: var(--panel);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      opacity: 0.85;
     }
 
     .container {
@@ -58,19 +105,18 @@
     }
 
     .intro p {
-      color: #b9c5dc;
+      color: var(--muted);
       line-height: 1.7;
     }
 
-    /* Image professionnelle */
     .hero-image {
       width: 100%;
       margin: 0 auto 32px;
       overflow: hidden;
       border-radius: 18px;
-      border: 1px solid #2b3d65;
+      border: 1px solid var(--border);
       box-shadow: 0 10px 35px rgba(0, 198, 255, 0.12);
-      background: #131d38;
+      background: var(--panel);
     }
 
     .hero-image img {
@@ -87,17 +133,22 @@
     }
 
     .card {
-      background: #131d38;
-      border: 1px solid #2b3d65;
+      background: var(--panel);
+      border: 1px solid var(--border);
       border-radius: 18px;
       padding: 28px 22px;
       text-align: center;
-      box-shadow: 0 10px 30px #0003;
+      box-shadow: 0 10px 30px #0002;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
     }
 
     .card h3 {
       font-size: 22px;
-      color: #72e6ff;
+      color: var(--accent);
       margin-bottom: 18px;
     }
 
@@ -108,12 +159,12 @@
     }
 
     .period {
-      color: #b9c5dc;
+      color: var(--muted);
       margin-bottom: 24px;
     }
 
     .description {
-      color: #d4dcec;
+      color: var(--description);
       line-height: 1.8;
       margin-bottom: 25px;
     }
@@ -124,58 +175,67 @@
       padding: 14px;
       border: none;
       border-radius: 10px;
-      background: linear-gradient(90deg, #00c6ff, #7b61ff);
-      color: white;
+      background: linear-gradient(90deg, #00aee8, #7b61ff);
+      color: #ffffff;
       font-size: 16px;
       font-weight: bold;
       text-decoration: none;
       cursor: pointer;
+      transition: opacity 0.3s, transform 0.3s;
     }
 
     .btn:hover {
       opacity: 0.88;
+      transform: translateY(-2px);
     }
 
     #orderForm {
       display: none;
       margin-top: 35px;
       padding: 25px;
-      background: #131d38;
-      border: 1px solid #2b3d65;
+      background: var(--panel);
+      border: 1px solid var(--border);
       border-radius: 18px;
       scroll-margin-top: 20px;
     }
 
     #orderForm h2 {
-      color: #72e6ff;
+      color: var(--accent);
       text-align: center;
       margin-bottom: 10px;
     }
 
     #selectedOffer {
       text-align: center;
-      color: #d4dcec;
+      color: var(--description);
       margin-bottom: 22px;
+      line-height: 1.6;
     }
 
     label {
       display: block;
       margin: 15px 0 7px;
-      color: #e2e8f0;
+      color: var(--text);
     }
 
     input, textarea {
       width: 100%;
       padding: 13px;
-      border: 1px solid #34466e;
+      border: 1px solid var(--border);
       border-radius: 9px;
-      background: #0b1020;
-      color: white;
+      background: var(--input-bg);
+      color: var(--text);
       font-size: 15px;
+      font-family: Arial, sans-serif;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: var(--muted);
     }
 
     input:focus, textarea:focus {
-      outline: 1px solid #72e6ff;
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
     }
 
     textarea {
@@ -191,14 +251,19 @@
       display: block;
       text-align: center;
       margin-top: 25px;
-      color: #72e6ff;
+      color: var(--accent);
       text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .back:hover {
+      text-decoration: underline;
     }
 
     footer {
       text-align: center;
       padding: 22px 12px;
-      color: #8997b4;
+      color: var(--footer);
       font-size: 13px;
     }
 
@@ -223,6 +288,10 @@
       .card {
         padding: 25px 18px;
       }
+
+      #orderForm {
+        padding: 20px 16px;
+      }
     }
   </style>
 </head>
@@ -232,6 +301,15 @@
   <header>
     <h1>Création Ai</h1>
     <p>Votre créativité, propulsée par l'intelligence artificielle</p>
+
+    <button
+      id="theme-toggle"
+      class="theme-toggle"
+      type="button"
+      aria-label="Changer le thème"
+    >
+      ☀️ Mode blanc
+    </button>
   </header>
 
   <main class="container">
@@ -244,12 +322,13 @@
       </p>
     </section>
 
-    <!-- Image de l'appareil photo et de l'ordinateur -->
+    <!-- Image principale -->
     <div class="hero-image">
       <img
         src="file_00000000aac881f5987c1ee642d3ef47.png"
         alt="Appareil photo professionnel et ordinateur portable sur un bureau luxueux"
-        loading="eager">
+        loading="eager"
+      >
     </div>
 
     <section class="offers">
@@ -264,8 +343,11 @@
           Offre adaptée à vos besoins.
         </p>
 
-        <button class="btn" type="button"
-          onclick="showForm('Offre mensuelle - 200 DT')">
+        <button
+          class="btn"
+          type="button"
+          onclick="showForm('Offre mensuelle - 200 DT')"
+        >
           Commander
         </button>
       </div>
@@ -280,8 +362,11 @@
           Une solution pour vos projets sur l'année.
         </p>
 
-        <button class="btn" type="button"
-          onclick="showForm('Offre annuelle - 2000 DT')">
+        <button
+          class="btn"
+          type="button"
+          onclick="showForm('Offre annuelle - 2000 DT')"
+        >
           Commander
         </button>
       </div>
@@ -292,31 +377,58 @@
       <h2>Formulaire de commande</h2>
       <p id="selectedOffer"></p>
 
-      <form action="https://formspree.io/f/mbgdkabo"
-            method="POST">
+      <form
+        action="https://formspree.io/f/mbgdkabo"
+        method="POST"
+      >
 
         <input type="hidden" name="Offre" id="offerInput">
 
         <label for="nom">Nom</label>
-        <input type="text" id="nom" name="Nom"
-               placeholder="Votre nom" required>
+        <input
+          type="text"
+          id="nom"
+          name="Nom"
+          placeholder="Votre nom"
+          autocomplete="family-name"
+          required
+        >
 
         <label for="prenom">Prénom</label>
-        <input type="text" id="prenom" name="Prénom"
-               placeholder="Votre prénom" required>
+        <input
+          type="text"
+          id="prenom"
+          name="Prénom"
+          placeholder="Votre prénom"
+          autocomplete="given-name"
+          required
+        >
 
         <label for="telephone">Numéro de téléphone</label>
-        <input type="tel" id="telephone" name="Téléphone"
-               placeholder="Votre numéro de téléphone" required>
+        <input
+          type="tel"
+          id="telephone"
+          name="Téléphone"
+          placeholder="Votre numéro de téléphone"
+          autocomplete="tel"
+          required
+        >
 
         <label for="adresse">Adresse</label>
-        <textarea id="adresse" name="Adresse"
-                  placeholder="Votre adresse complète"
-                  required></textarea>
+        <textarea
+          id="adresse"
+          name="Adresse"
+          placeholder="Votre adresse complète"
+          autocomplete="street-address"
+          required
+        ></textarea>
 
         <label for="details">Détails de votre demande</label>
-        <textarea id="details" name="Détails"
-                  placeholder="Décrivez les images ou vidéos souhaitées"></textarea>
+        <textarea
+          id="details"
+          name="Détails"
+          placeholder="Décrivez les images ou vidéos souhaitées"
+        ></textarea>
 
         <button type="submit" class="btn submit-btn">
           Envoyer ma commande
@@ -325,7 +437,7 @@
       </form>
     </section>
 
-    <a class="back" href="index.html">
+    <a class="back" href="./index.html">
       ← Retour à la page d'accueil
     </a>
 
@@ -336,6 +448,37 @@
   </footer>
 
   <script>
+    // Changement de thème et sauvegarde du choix
+    const themeToggle = document.getElementById("theme-toggle");
+    const savedTheme = localStorage.getItem("creation-ai-theme");
+
+    function applyTheme(theme) {
+      const isLight = theme === "light";
+
+      document.body.classList.toggle("light-theme", isLight);
+
+      themeToggle.textContent = isLight
+        ? "🌙 Mode bleu foncé"
+        : "☀️ Mode blanc";
+
+      document.querySelector('meta[name="theme-color"]').setAttribute(
+        "content",
+        isLight ? "#f4f7fc" : "#0b1020"
+      );
+    }
+
+    applyTheme(savedTheme === "light" ? "light" : "dark");
+
+    themeToggle.addEventListener("click", function () {
+      const newTheme = document.body.classList.contains("light-theme")
+        ? "dark"
+        : "light";
+
+      localStorage.setItem("creation-ai-theme", newTheme);
+      applyTheme(newTheme);
+    });
+
+    // Afficher le formulaire après avoir choisi une offre
     function showForm(offer) {
       const formSection = document.getElementById("orderForm");
 
