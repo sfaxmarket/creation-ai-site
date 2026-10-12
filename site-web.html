@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#061b38">
+  <title>Création de sites web | Création Ai</title>
+  <meta name="description" content="Création de sites web professionnels à partir de 300 DT. Demandez votre devis personnalisé.">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #061832;
+      color: #f5f8ff;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 18px 6%;
+      background: #071f43;
+      border-bottom: 1px solid #164575;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .logo span, .cyan { color: #00d9f5; }
+
+    header a, .back {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 55px 20px 35px;
+      background: radial-gradient(ellipse at top, #104779, #061832 72%);
+    }
+
+    .tag {
+      color: #00d9f5;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 6vw, 46px);
+      line-height: 1.2;
+      margin: 15px 0;
+    }
+
+    .intro {
+      color: #c2d3e9;
+      max-width: 600px;
+      margin: 0 auto 22px;
+    }
+
+    .price {
+      font-size: 27px;
+      font-weight: bold;
+      color: #00d9f5;
+      margin: 20px 0 0;
+    }
+
+    .note {
+      color: #b9cbe1;
+      font-size: 14px;
+      margin-top: 3px;
+    }
+
+    main {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 20px 18px 55px;
+    }
+
+    .panel {
+      padding: 25px;
+      background: #0b2749;
+      border: 1px solid #1b4d79;
+      border-radius: 15px;
+      box-shadow: 0 12px 35px #0002;
+    }
+
+    h2 {
+      font-size: 23px;
+      margin: 0 0 5px;
+    }
+
+    .sub {
+      color: #b9cbe1;
+      font-size: 14px;
+      margin: 0 0 24px;
+    }
+
+    label {
+      display: block;
+      margin: 17px 0 7px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #315779;
+      background: #071b35;
+      color: white;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #00d9f5;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #829bb8;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 15px;
+      border: 0;
+      border-radius: 8px;
+      color: white;
+      background: linear-gradient(90deg, #0789f5, #00bfdc);
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover { filter: brightness(1.08); }
+
+    .back {
+      display: inline-block;
+      margin-top: 22px;
+      color: #00d9f5;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px;
+      color: #8da8c6;
+      font-size: 12px;
+      border-top: 1px solid #173653;
+    }
+
+    @media (max-width: 420px) {
+      .panel { padding: 20px 16px; }
+      .hero { padding-top: 40px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">✳ Création <span>Ai</span></div>
+    <a href="index.html">Accueil</a>
+  </header>
+
+  <section class="hero">
+    <div class="tag">Nos services web</div>
+    <h1>Création de <span class="cyan">sites web</span></h1>
+    <p class="intro">
+      Donnez vie à votre projet avec un site web moderne,
+      professionnel et adapté à votre activité.
+    </p>
+    <div class="price">À partir de 300 DT</div>
+    <p class="note">Prix selon les besoins du client.</p>
+  </section>
+
+  <main>
+    <section class="panel">
+      <h2>Commander votre site web</h2>
+      <p class="sub">
+        Remplissez le formulaire ci-dessous pour nous transmettre votre demande.
+      </p>
+
+      <form action="https://formspree.io/f/mbgdkabo" method="POST">
+        <input type="hidden" name="_subject"
+          value="Nouvelle commande - Création de sites web">
+
+        <label for="name">Nom et prénom</label>
+        <input
+          id="name"
+          name="Nom et prénom"
+          type="text"
+          placeholder="Votre nom complet"
+          autocomplete="name"
+          required
+        >
+
+        <label for="phone">Numéro de téléphone</label>
+        <input
+          id="phone"
+          name="Numéro de téléphone"
+          type="tel"
+          placeholder="Votre numéro de téléphone"
+          autocomplete="tel"
+          required
+        >
+
+        <label for="address">Adresse</label>
+        <textarea
+          id="address"
+          name="Adresse"
+          rows="3"
+          placeholder="Votre adresse complète"
+          autocomplete="street-address"
+          required
+        ></textarea>
+
+        <button type="submit">Envoyer ma commande ↗</button>
+      </form>
+    </section>
+
+    <a class="back" href="index.html">← Retour à l'accueil</a>
+  </main>
+
+  <footer>
+    © Création Ai — Tous droits réservés.
+  </footer>
+</body>
+</html>
