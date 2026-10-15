@@ -282,8 +282,8 @@
       z-index: 9999;
       display: flex;
       flex-direction: column;
-      width: min(370px, calc(100vw - 28px));
-      height: min(520px, calc(100dvh - 125px));
+      width: min(390px, calc(100vw - 28px));
+      height: min(560px, calc(100dvh - 125px));
       min-height: 350px;
       overflow: hidden;
       color: #102344;
@@ -410,7 +410,8 @@
 
     .ai-chat-form {
       display: flex;
-      gap: 8px;
+      align-items: center;
+      gap: 7px;
       padding: 12px;
       border-top: 1px solid #e0eaf5;
       background: #ffffff;
@@ -436,7 +437,8 @@
 
     .ai-chat-send {
       flex-shrink: 0;
-      width: 45px;
+      width: 42px;
+      height: 44px;
       border: 0;
       border-radius: 12px;
       color: #ffffff;
@@ -449,12 +451,86 @@
       background: #0564c4;
     }
 
+    /* COMMANDES VOCALES */
+    .ai-chat-mic {
+      flex-shrink: 0;
+      width: 42px;
+      height: 44px;
+      border: 1px solid #acd9f7;
+      border-radius: 12px;
+      color: #0757a0;
+      background: #eaf6ff;
+      font-size: 19px;
+      cursor: pointer;
+    }
+
+    .ai-chat-mic:hover {
+      background: #d7edff;
+    }
+
+    .ai-chat-mic.listening {
+      color: #ffffff;
+      background: #d93025;
+      border-color: #d93025;
+      animation: ai-mic-pulse 1.2s infinite;
+    }
+
+    .ai-chat-voice-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 12px 9px;
+      background: #ffffff;
+    }
+
+    .ai-chat-voice-controls button,
+    .ai-chat-voice-controls select {
+      max-width: 100%;
+      padding: 8px 9px;
+      border: 1px solid #d1deec;
+      border-radius: 9px;
+      color: #0757a0;
+      background: #f4f8fd;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    .ai-chat-voice-controls button {
+      cursor: pointer;
+    }
+
+    .ai-chat-voice-controls button:hover {
+      background: #e4f5ff;
+    }
+
+    .ai-chat-voice-controls select {
+      min-width: 0;
+    }
+
+    .ai-chat-voice-status {
+      margin: 0;
+      padding: 0 12px 9px;
+      color: #536781;
+      background: #ffffff;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
     .ai-chat-note {
       padding: 0 12px 10px;
       color: #70839b;
       background: #ffffff;
       text-align: center;
       font-size: 10px;
+    }
+
+    @keyframes ai-mic-pulse {
+      50% {
+        box-shadow: 0 0 0 5px rgba(217, 48, 37, 0.16);
+      }
     }
 
     @media (max-width: 700px) {
@@ -555,9 +631,36 @@
         right: 10px;
         bottom: 80px;
         width: calc(100vw - 20px);
-        height: min(540px, calc(100dvh - 100px));
+        height: min(560px, calc(100dvh - 100px));
         min-height: 320px;
         border-radius: 17px;
+      }
+
+      .ai-chat-form {
+        gap: 5px;
+        padding: 9px;
+      }
+
+      .ai-chat-mic,
+      .ai-chat-send {
+        width: 38px;
+        min-width: 38px;
+        height: 42px;
+      }
+
+      .ai-chat-input {
+        padding: 10px 8px;
+        font-size: 13px;
+      }
+
+      .ai-chat-voice-controls {
+        gap: 5px;
+      }
+
+      .ai-chat-voice-controls button,
+      .ai-chat-voice-controls select {
+        padding: 7px;
+        font-size: 11px;
       }
     }
 
@@ -572,6 +675,12 @@
 
       .nav a {
         font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ai-chat-mic.listening {
+        animation: none;
       }
     }
   </style>
@@ -877,14 +986,24 @@
       aria-relevant="additions text">
     </div>
 
+    <!-- SAISIE ÉCRITE ET MICROPHONE -->
     <form id="ai-chat-form" class="ai-chat-form">
+      <button
+        id="ai-chat-mic"
+        class="ai-chat-mic"
+        type="button"
+        aria-label="Parler au microphone"
+        title="Parler">
+        🎙️
+      </button>
+
       <input
         id="ai-chat-input"
         class="ai-chat-input"
         type="text"
         maxlength="500"
         autocomplete="off"
-        placeholder="Écrivez votre question..."
+        placeholder="Écrivez ou parlez..."
         aria-label="Votre question"
         required>
 
@@ -895,6 +1014,38 @@
         ➤
       </button>
     </form>
+
+    <!-- LANGUE ET ÉCOUTE DES RÉPONSES -->
+    <div class="ai-chat-voice-controls">
+      <select
+        id="ai-chat-language"
+        aria-label="Langue de reconnaissance vocale">
+        <option value="fr-FR">Français</option>
+        <option value="ar-TN">العربية (تونس)</option>
+        <option value="ar-SA">العربية</option>
+      </select>
+
+      <button
+        id="ai-chat-speak"
+        type="button"
+        aria-label="Écouter la dernière réponse">
+        🔊 Écouter
+      </button>
+
+      <button
+        id="ai-chat-stop"
+        type="button"
+        aria-label="Arrêter la lecture vocale">
+        ⏹ Arrêter
+      </button>
+    </div>
+
+    <p
+      id="ai-chat-voice-status"
+      class="ai-chat-voice-status"
+      aria-live="polite">
+      Choisissez une langue, puis appuyez sur le microphone.
+    </p>
 
     <div class="ai-chat-note">
       Assistant à réponses prédéfinies · Création Ai
@@ -908,10 +1059,15 @@
   <script>
     function openOrder(service) {
       const section = document.getElementById('commande');
+      const serviceLabel = document.getElementById('service-choisi');
+      const serviceInput = document.getElementById('service-input');
 
-      document.getElementById('service-choisi').textContent = service;
-      document.getElementById('service-input').value = service;
+      if (!section || !serviceLabel || !serviceInput) {
+        return;
+      }
 
+      serviceLabel.textContent = service;
+      serviceInput.value = service;
       section.hidden = false;
 
       section.scrollIntoView({
@@ -921,16 +1077,26 @@
     }
 
     function closeOrder() {
-      document.getElementById('commande').hidden = true;
+      const section = document.getElementById('commande');
+      const services = document.getElementById('services');
 
-      document.getElementById('services').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+      if (section) {
+        section.hidden = true;
+      }
+
+      if (services) {
+        services.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
     }
 
-    document.getElementById('year').textContent =
-      new Date().getFullYear();
+    const currentYear = document.getElementById('year');
+
+    if (currentYear) {
+      currentYear.textContent = new Date().getFullYear();
+    }
   </script>
 
 </body>
