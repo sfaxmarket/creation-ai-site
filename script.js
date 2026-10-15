@@ -1,7 +1,6 @@
-
 // ======================================
 // Création Ai — Script commun
-// Thème bleu + Menu mobile + Assistant
+// Thème bleu + Menu mobile + Assistant vocal
 // ======================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -97,7 +96,8 @@ window.closeOrder = function() {
 
 
 // ======================================
-// BASE DE RÉPONSES DE L'ASSISTANT
+// ASSISTANT CRÉATION AI
+// Texte + Microphone + Lecture vocale
 // ======================================
 
 function initCreationAiAssistant() {
@@ -108,54 +108,106 @@ function initCreationAiAssistant() {
   const chatForm = document.getElementById('ai-chat-form');
   const input = document.getElementById('ai-chat-input');
 
+  // Contrôles vocaux
+  const micButton = document.getElementById('ai-chat-mic');
+  const languageSelect = document.getElementById('ai-chat-language');
+  const speakButton = document.getElementById('ai-chat-speak');
+  const stopButton = document.getElementById('ai-chat-stop');
+  const voiceStatus = document.getElementById('ai-chat-voice-status');
+
   // Ne rien faire sur les pages sans assistant.
-  if (!launcher || !chatWindow || !closeButton ||
-      !messages || !chatForm || !input) {
+  if (
+    !launcher ||
+    !chatWindow ||
+    !closeButton ||
+    !messages ||
+    !chatForm ||
+    !input
+  ) {
     return;
   }
 
   let greeted = false;
+  let lastBotResponse = '';
+  let recognition = null;
+  let isListening = false;
 
-  // Liens vers les services du site.
+  // Fonction pour afficher l'état des fonctions vocales.
+  function setVoiceStatus(message) {
+    if (voiceStatus) {
+      voiceStatus.textContent = message;
+    }
+  }
+
+  // Langue choisie par le visiteur.
+  function getSelectedLanguage() {
+    return languageSelect ? languageSelect.value : 'fr-FR';
+  }
+
+
+  // ======================================
+  // SERVICES DU SITE
+  // ======================================
+
   const services = [
     {
       name: 'Publicité par IA',
-      keywords: ['publicite', 'publicité', 'publicitaire', 'annonce', 'reklam'],
+      keywords: [
+        'publicite', 'publicité', 'publicitaire',
+        'annonce', 'reklam'
+      ],
       url: './publicite.html',
       description:
         'Nous créons des visuels publicitaires avec l’intelligence artificielle pour mettre vos produits en valeur.'
     },
     {
       name: 'Création de sites web',
-      keywords: ['site web', 'site internet', 'site', 'website', 'web'],
+      keywords: [
+        'site web', 'site internet', 'site',
+        'website', 'web'
+      ],
       url: './commande.html',
       description:
         'Nous créons des sites web modernes et adaptés aux téléphones. Le prix affiché commence à 300 DT.'
     },
     {
       name: 'Images et vidéos',
-      keywords: ['image', 'images', 'video', 'vidéo', 'videos', 'visuel', 'montage'],
+      keywords: [
+        'image', 'images', 'video', 'vidéo',
+        'videos', 'visuel', 'montage'
+      ],
       url: './images-videos.html',
       description:
         'Nous réalisons des images et des vidéos personnalisées pour vos réseaux sociaux et vos campagnes.'
     },
     {
       name: 'Pack Succès',
-      keywords: ['pack succes', 'pack succès', 'pack', 'offre complete', 'offre complète'],
+      keywords: [
+        'pack succes', 'pack succès', 'pack',
+        'offre complete', 'offre complète'
+      ],
       url: './pack-succes.html',
       description:
         'Le Pack Succès propose une solution pour développer votre activité et renforcer votre présence en ligne.'
     },
     {
       name: 'Sponsoring des réseaux sociaux',
-      keywords: ['sponsoring', 'sponsorisation', 'sponsorise', 'publicite facebook', 'publicité facebook', 'reseaux sociaux', 'réseaux sociaux'],
+      keywords: [
+        'sponsoring', 'sponsorisation', 'sponsorise',
+        'publicite facebook', 'publicité facebook',
+        'reseaux sociaux', 'réseaux sociaux'
+      ],
       url: './sponsoring.html',
       description:
         'Nous vous accompagnons pour promouvoir vos pages et toucher davantage de clients sur les réseaux sociaux.'
     }
   ];
 
-  // Normaliser les questions pour reconnaître plusieurs écritures.
+
+  // ======================================
+  // NORMALISATION DU TEXTE
+  // ======================================
+
   function normalize(text) {
     return text
       .toLocaleLowerCase()
@@ -167,7 +219,11 @@ function initCreationAiAssistant() {
       .trim();
   }
 
-  // Ajouter un message en toute sécurité.
+
+  // ======================================
+  // AFFICHER LES MESSAGES
+  // ======================================
+
   function addMessage(text, sender = 'bot') {
     const bubble = document.createElement('div');
 
@@ -177,10 +233,18 @@ function initCreationAiAssistant() {
     messages.appendChild(bubble);
     messages.scrollTop = messages.scrollHeight;
 
+    if (sender === 'bot') {
+      lastBotResponse = text;
+    }
+
     return bubble;
   }
 
-  // Ajouter des boutons de questions rapides.
+
+  // ======================================
+  // QUESTIONS RAPIDES
+  // ======================================
+
   function addQuickReplies(items) {
     const container = document.createElement('div');
     container.className = 'ai-chat-quick';
@@ -202,7 +266,11 @@ function initCreationAiAssistant() {
     messages.scrollTop = messages.scrollHeight;
   }
 
-  // Questions suggérées au démarrage.
+
+  // ======================================
+  // MESSAGE DE BIENVENUE
+  // ======================================
+
   function showWelcome() {
     if (greeted) return;
 
@@ -222,7 +290,11 @@ function initCreationAiAssistant() {
     ]);
   }
 
-  // Réponses prédéfinies.
+
+  // ======================================
+  // BASE DE RÉPONSES
+  // ======================================
+
   function getAnswer(question) {
     const q = normalize(question);
 
@@ -254,7 +326,11 @@ function initCreationAiAssistant() {
 
     // Contact et WhatsApp.
     if (
-      has('whatsapp', 'contact', 'telephone', 'téléphone', 'numero', 'numéro', 'appeler', 'اتصال', 'واتساب', 'رقم الهاتف')
+      has(
+        'whatsapp', 'contact', 'telephone', 'téléphone',
+        'numero', 'numéro', 'appeler', 'اتصال',
+        'واتساب', 'رقم الهاتف'
+      )
     ) {
       return {
         text:
@@ -267,9 +343,12 @@ function initCreationAiAssistant() {
       };
     }
 
-    // Comment passer une commande.
+    // Commandes.
     if (
-      has('commander', 'commande', 'acheter', 'reservation', 'réserver', 'طلب', 'نطلب', 'كيفاش نطلب')
+      has(
+        'commander', 'commande', 'acheter', 'reservation',
+        'réserver', 'طلب', 'نطلب', 'كيفاش نطلب'
+      )
     ) {
       return {
         text:
@@ -288,7 +367,10 @@ function initCreationAiAssistant() {
 
     // Prix : ne pas inventer de tarifs.
     if (
-      has('prix', 'tarif', 'combien', 'cout', 'coût', 'budget', 'ثمن', 'السعر', 'بقداش', 'قداش')
+      has(
+        'prix', 'tarif', 'combien', 'cout', 'coût',
+        'budget', 'ثمن', 'السعر', 'بقداش', 'قداش'
+      )
     ) {
       return {
         text:
@@ -302,9 +384,12 @@ function initCreationAiAssistant() {
       };
     }
 
-    // Présentation générale des services.
+    // Présentation des services.
     if (
-      has('services', 'service', 'proposez', 'offrez', 'activite', 'activité', 'خدمات', 'شنوة تعملو')
+      has(
+        'services', 'service', 'proposez', 'offrez',
+        'activite', 'activité', 'خدمات', 'شنوة تعملو'
+      )
     ) {
       return {
         text:
@@ -347,7 +432,10 @@ function initCreationAiAssistant() {
 
     // Présentation de l'entreprise.
     if (
-      has('qui etes vous', 'qui êtes vous', 'creation ai', 'création ai', 'votre entreprise', 'من انتم')
+      has(
+        'qui etes vous', 'qui êtes vous', 'creation ai',
+        'création ai', 'votre entreprise', 'من انتم'
+      )
     ) {
       return {
         text:
@@ -357,7 +445,7 @@ function initCreationAiAssistant() {
       };
     }
 
-    // Réponse de secours.
+    // Réponse par défaut.
     return {
       text:
         'Merci pour votre message ! 😊 Je peux répondre aux questions courantes ' +
@@ -376,7 +464,11 @@ function initCreationAiAssistant() {
     };
   }
 
-  // Envoyer une question et afficher la réponse.
+
+  // ======================================
+  // ENVOYER UNE QUESTION
+  // ======================================
+
   function handleQuestion(question) {
     const cleanQuestion = question.trim();
 
@@ -388,6 +480,7 @@ function initCreationAiAssistant() {
 
     addMessage(answer.text, 'bot');
 
+    // Ajouter un lien si nécessaire.
     if (answer.link) {
       const linkContainer = document.createElement('div');
       linkContainer.className = 'ai-chat-quick';
@@ -417,7 +510,11 @@ function initCreationAiAssistant() {
     messages.scrollTop = messages.scrollHeight;
   }
 
-  // Ouvrir la fenêtre.
+
+  // ======================================
+  // OUVRIR ET FERMER L'ASSISTANT
+  // ======================================
+
   function openChat() {
     chatWindow.hidden = false;
     launcher.setAttribute('aria-expanded', 'true');
@@ -428,11 +525,17 @@ function initCreationAiAssistant() {
     input.focus();
   }
 
-  // Fermer la fenêtre.
   function closeChat() {
     chatWindow.hidden = true;
     launcher.hidden = false;
     launcher.setAttribute('aria-expanded', 'false');
+
+    stopListening();
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+
     launcher.focus();
   }
 
@@ -457,4 +560,255 @@ function initCreationAiAssistant() {
     input.value = '';
     handleQuestion(question);
   });
+
+
+  // ======================================
+  // RECONNAISSANCE VOCALE : MICROPHONE
+  // ======================================
+
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  function stopListening() {
+    if (recognition && isListening) {
+      try {
+        recognition.stop();
+      } catch (error) {
+        // Le microphone est peut-être déjà arrêté.
+      }
+    }
+  }
+
+  if (micButton) {
+    if (!SpeechRecognition) {
+      micButton.addEventListener('click', () => {
+        setVoiceStatus(
+          'La reconnaissance vocale n’est pas disponible dans ce navigateur. ' +
+          'Essayez Chrome ou utilisez le clavier.'
+        );
+      });
+
+      micButton.title = 'Microphone non disponible dans ce navigateur';
+    } else {
+      recognition = new SpeechRecognition();
+
+      recognition.lang = getSelectedLanguage();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onstart = () => {
+        isListening = true;
+        micButton.setAttribute('aria-pressed', 'true');
+        micButton.textContent = '⏹️';
+        setVoiceStatus('Je vous écoute… Parlez maintenant.');
+      };
+
+      recognition.onresult = event => {
+        const transcript =
+          event.results &&
+          event.results[0] &&
+          event.results[0][0]
+            ? event.results[0][0].transcript.trim()
+            : '';
+
+        if (!transcript) {
+          setVoiceStatus('Je n’ai pas compris. Veuillez réessayer.');
+          return;
+        }
+
+        // Afficher ce qui a été reconnu.
+        input.value = transcript;
+
+        setVoiceStatus('Question reconnue : ' + transcript);
+
+        // Envoyer automatiquement la question reconnue.
+        if (typeof chatForm.requestSubmit === 'function') {
+          chatForm.requestSubmit();
+        } else {
+          chatForm.dispatchEvent(
+            new Event('submit', {
+              bubbles: true,
+              cancelable: true
+            })
+          );
+        }
+
+        setVoiceStatus(
+          'Votre question a été envoyée. Appuyez sur « Écouter » pour entendre la réponse.'
+        );
+      };
+
+      recognition.onerror = event => {
+        const errors = {
+          'not-allowed':
+            'Accès au microphone refusé. Autorisez le microphone dans les paramètres du navigateur.',
+          'service-not-allowed':
+            'Le navigateur n’autorise pas le service de reconnaissance vocale.',
+          'no-speech':
+            'Aucune parole détectée. Appuyez sur le microphone et réessayez.',
+          'audio-capture':
+            'Aucun microphone disponible. Vérifiez les paramètres de votre téléphone.',
+          'network':
+            'Erreur réseau pendant la reconnaissance vocale. Vérifiez votre connexion.',
+          'language-not-supported':
+            'Cette langue vocale n’est pas prise en charge par le navigateur.'
+        };
+
+        setVoiceStatus(
+          errors[event.error] ||
+          'La reconnaissance vocale a rencontré un problème. Veuillez réessayer.'
+        );
+      };
+
+      recognition.onend = () => {
+        isListening = false;
+        micButton.setAttribute('aria-pressed', 'false');
+        micButton.textContent = '🎙️';
+      };
+
+      micButton.addEventListener('click', () => {
+        if (isListening) {
+          stopListening();
+          setVoiceStatus('Écoute arrêtée.');
+          return;
+        }
+
+        // Arrêter une éventuelle lecture avant d'écouter.
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+        }
+
+        recognition.lang = getSelectedLanguage();
+
+        try {
+          recognition.start();
+        } catch (error) {
+          setVoiceStatus(
+            'Impossible de démarrer le microphone. Attendez quelques secondes puis réessayez.'
+          );
+        }
+      });
+    }
+  }
+
+
+  // ======================================
+  // CHANGER LA LANGUE DU MICROPHONE
+  // ======================================
+
+  if (languageSelect) {
+    languageSelect.addEventListener('change', () => {
+      if (recognition && !isListening) {
+        recognition.lang = getSelectedLanguage();
+      }
+
+      const languageNames = {
+        'fr-FR': 'français',
+        'ar-TN': 'arabe tunisien',
+        'ar-SA': 'arabe'
+      };
+
+      setVoiceStatus(
+        'Langue du microphone : ' +
+        (languageNames[getSelectedLanguage()] || getSelectedLanguage()) +
+        '. Appuyez sur le microphone pour parler.'
+      );
+    });
+  }
+
+
+  // ======================================
+  // LECTURE VOCALE DE LA RÉPONSE
+  // ======================================
+
+  function getSpeechLanguage(text) {
+    // Si la réponse contient de l'arabe, choisir une voix arabe.
+    const containsArabic = /[\u0600-\u06FF]/.test(text);
+
+    if (containsArabic) {
+      const selected = getSelectedLanguage();
+
+      return selected.startsWith('ar') ? selected : 'ar-TN';
+    }
+
+    return 'fr-FR';
+  }
+
+  function speakLastResponse() {
+    if (!('speechSynthesis' in window)) {
+      setVoiceStatus(
+        'La lecture vocale n’est pas prise en charge par ce navigateur.'
+      );
+      return;
+    }
+
+    if (!lastBotResponse) {
+      setVoiceStatus(
+        'Aucune réponse à lire pour le moment. Posez d’abord une question.'
+      );
+      return;
+    }
+
+    // Arrêter la lecture précédente.
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(lastBotResponse);
+
+    utterance.lang = getSpeechLanguage(lastBotResponse);
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+
+    // Choisir une voix correspondant à la langue, si disponible.
+    const voices = window.speechSynthesis.getVoices();
+
+    const languagePrefix = utterance.lang.toLowerCase().split('-')[0];
+
+    const matchingVoice = voices.find(voice =>
+      voice.lang.toLowerCase().startsWith(languagePrefix)
+    );
+
+    if (matchingVoice) {
+      utterance.voice = matchingVoice;
+    }
+
+    utterance.onstart = () => {
+      setVoiceStatus('Lecture vocale en cours…');
+    };
+
+    utterance.onend = () => {
+      setVoiceStatus('Lecture terminée. Vous pouvez poser une autre question.');
+    };
+
+    utterance.onerror = () => {
+      setVoiceStatus(
+        'La lecture vocale a échoué. Vérifiez que votre navigateur dispose d’une voix installée.'
+      );
+    };
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  if (speakButton) {
+    speakButton.addEventListener('click', speakLastResponse);
+  }
+
+
+  // ======================================
+  // ARRÊTER LA LECTURE VOCALE
+  // ======================================
+
+  if (stopButton) {
+    stopButton.addEventListener('click', () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      stopListening();
+
+      setVoiceStatus('Lecture et écoute arrêtées.');
+    });
+  }
+
 }
