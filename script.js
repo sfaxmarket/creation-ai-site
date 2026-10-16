@@ -1,9 +1,10 @@
 
 /* ======================================
-   Création Ai
-   Thème bleu + Menu mobile + Assistant bilingue
+   Création Ai — Assistant Omar
    Français + العربية + العربية التونسية
-   Texte + Microphone + Lecture vocale
+   Base de questions/réponses
+   Menu mobile + Commandes + Microphone
+   Lecture vocale + Réponses rapides
 ====================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -78,7 +79,7 @@ window.closeOrder = function() {
 
 
 // ======================================
-// ASSISTANT CRÉATION AI
+// ASSISTANT OMAR — CRÉATION AI
 // ======================================
 
 function initCreationAiAssistant() {
@@ -95,16 +96,21 @@ function initCreationAiAssistant() {
   const stopButton = document.getElementById('ai-chat-stop');
   const voiceStatus = document.getElementById('ai-chat-voice-status');
 
-  if (!launcher || !chatWindow || !closeButton ||
-      !messages || !chatForm || !input) return;
+  if (
+    !launcher || !chatWindow || !closeButton ||
+    !messages || !chatForm || !input
+  ) return;
 
   const WHATSAPP_URL = 'https://wa.me/21621582307';
 
   let greeted = false;
   let lastBotResponse = '';
-  let lastAnswerLanguage = 'ar';
   let recognition = null;
   let isListening = false;
+
+  // --------------------------------------
+  // Langue et normalisation
+  // --------------------------------------
 
   function setVoiceStatus(text) {
     if (voiceStatus) voiceStatus.textContent = text;
@@ -114,7 +120,6 @@ function initCreationAiAssistant() {
     return languageSelect ? languageSelect.value : 'fr-FR';
   }
 
-  // Normalisation du français et de l'arabe.
   function normalize(text) {
     return String(text || '')
       .toLocaleLowerCase()
@@ -131,9 +136,6 @@ function initCreationAiAssistant() {
       .trim();
   }
 
-  // Détecter la langue à partir du texte de la question.
-  // Le script arabe est prioritaire, même si le microphone
-  // est réglé sur le français.
   function detectLanguage(text) {
     return /[\u0600-\u06FF]/.test(String(text || ''))
       ? 'ar'
@@ -154,7 +156,6 @@ function initCreationAiAssistant() {
 
     if (sender === 'bot') {
       lastBotResponse = text;
-      lastAnswerLanguage = detectLanguage(text);
     }
 
     return bubble;
@@ -168,7 +169,11 @@ function initCreationAiAssistant() {
       const button = document.createElement('button');
       button.type = 'button';
       button.textContent = item.label;
-      button.addEventListener('click', () => handleQuestion(item.value));
+
+      button.addEventListener('click', () => {
+        handleQuestion(item.value);
+      });
+
       container.appendChild(button);
     });
 
@@ -196,35 +201,36 @@ function initCreationAiAssistant() {
 
     container.appendChild(link);
     messages.appendChild(container);
+    messages.scrollTop = messages.scrollHeight;
   }
 
-  function showWelcome() {
-    if (greeted) return;
-    greeted = true;
-
-    addMessage(
-      'مرحبًا بك في Création Ai! 👋\n\n' +
-      'أنا المساعد الافتراضي للموقع. نجم نعرّفك بخدماتنا، ' +
-      'ونعاونك في الأسعار وكيفاش تطلب.\n\n' +
-      'اكتب بالعربية أو بالفرنسية، أو استعمل الميكروفون.'
-    );
-
-    addQuickReplies([
-      { label: 'خدماتنا', value: 'شنوة الخدمات اللي تقدمو فيها؟' },
-      { label: 'الأسعار', value: 'قداش الأسعار؟' },
-      { label: 'كيف أطلب؟', value: 'كيفاش نطلب؟' },
-      { label: 'واتساب', value: 'رقم واتساب' }
-    ]);
-  }
+  // --------------------------------------
+  // Réponses rapides
+  // --------------------------------------
 
   function serviceQuickReplies(arabic) {
     if (arabic) {
       return [
-        { label: 'الإعلانات بالذكاء الاصطناعي', value: 'نحب إعلان بالذكاء الاصطناعي' },
-        { label: 'إنشاء موقع', value: 'نحب نعمل موقع إلكتروني' },
-        { label: 'الصور والفيديوهات', value: 'نحب صور وفيديوهات' },
-        { label: 'باقة النجاح', value: 'شنوة باقة النجاح؟' },
-        { label: 'الإشهار المموّل', value: 'نحب نعمل إشهار ممول' }
+        {
+          label: 'Publicité par IA',
+          value: 'نحب إعلان بالذكاء الاصطناعي'
+        },
+        {
+          label: 'إنشاء موقع',
+          value: 'نحب نعمل موقع إلكتروني'
+        },
+        {
+          label: 'الصور والفيديوهات',
+          value: 'نحب صور وفيديوهات'
+        },
+        {
+          label: 'باقة النجاح',
+          value: 'شنوة باقة النجاح؟'
+        },
+        {
+          label: 'الإشهار المموّل',
+          value: 'نحب نعمل إشهار ممول'
+        }
       ];
     }
 
@@ -233,20 +239,49 @@ function initCreationAiAssistant() {
       { label: 'Site web', value: 'Création de sites web' },
       { label: 'Images et vidéos', value: 'Images et vidéos' },
       { label: 'Pack Succès', value: 'Pack Succès' },
-      { label: 'Sponsoring', value: 'Sponsoring des réseaux sociaux' }
+      {
+        label: 'Sponsoring',
+        value: 'Sponsoring des réseaux sociaux'
+      }
     ];
   }
+
+  function showWelcome() {
+    if (greeted) return;
+    greeted = true;
+
+    addMessage(
+      'مرحبًا بك في Création Ai! 👋\n\n' +
+      'أنا عمر، مساعدك الافتراضي. نجم نعرّفك بخدماتنا، ' +
+      'ونعاونك في معرفة مدة الإنجاز وكيفاش تطلب.\n\n' +
+      'اكتب بالعربية أو بالفرنسية، أو استعمل الميكروفون.'
+    );
+
+    addQuickReplies([
+      { label: 'خدماتنا', value: 'شنوة الخدمات اللي تقدمو فيها؟' },
+      { label: 'مدة الإنجاز', value: 'قداش مدة إنجاز الخدمات؟' },
+      { label: 'الأسعار', value: 'قداش الأسعار؟' },
+      { label: 'كيف أطلب؟', value: 'كيفاش نطلب؟' },
+      { label: 'واتساب', value: 'رقم واتساب' }
+    ]);
+  }
+
+  // --------------------------------------
+  // Services Création Ai
+  // --------------------------------------
 
   const services = [
     {
       name: 'Publicité par IA',
       arabicName: 'الإعلانات بالذكاء الاصطناعي',
       keywords: [
-        'publicite', 'publicitaire', 'annonce',
-        'إعلان', 'اعلان', 'إعلانات', 'اعلانات',
-        'إشهار', 'اشهار', 'دعاية', 'ذكاء اصطناعي'
+        'publicite par ia', 'publicite ia', 'publicite',
+        'publicitaire', 'annonce',
+        'اعلان', 'اعلانات', 'اشهار', 'دعاية',
+        'ذكاء اصطناعي', 'بالذكاء الاصطناعي'
       ],
       url: './publicite.html',
+      duration: 'same-day',
       description:
         'Nous créons des visuels publicitaires avec l’intelligence artificielle pour mettre vos produits en valeur.',
       arabicDescription:
@@ -257,11 +292,14 @@ function initCreationAiAssistant() {
       arabicName: 'إنشاء المواقع الإلكترونية',
       keywords: [
         'site web', 'site internet', 'website',
-        'موقع', 'مواقع', 'موقع الكتروني', 'ويب', 'سايت'
+        'creation site', 'creer un site',
+        'موقع', 'مواقع', 'موقع الكتروني',
+        'مواقع الكترونية', 'ويب', 'سايت'
       ],
       url: './commande.html',
+      duration: '3-4-days',
       description:
-        'Nous créons des sites web modernes et adaptés aux téléphones. Le prix affiché commence à 300 DT.',
+        'Nous créons des sites web modernes et adaptés aux téléphones. Le prix annoncé commence à 300 DT.',
       arabicDescription:
         'نصمّم مواقع إلكترونية عصرية ومتوافقة مع الهواتف. السعر المعلن يبدأ من 300 دينار تونسي.'
     },
@@ -282,8 +320,8 @@ function initCreationAiAssistant() {
       name: 'Pack Succès',
       arabicName: 'باقة النجاح',
       keywords: [
-        'pack succes', 'offre complete', 'باقة النجاح',
-        'باقة', 'باك', 'عرض شامل'
+        'pack succes', 'offre complete', 'pack',
+        'باقة النجاح', 'باقة', 'باك', 'عرض شامل'
       ],
       url: './pack-succes.html',
       description:
@@ -296,16 +334,102 @@ function initCreationAiAssistant() {
       arabicName: 'الإشهار المموّل على مواقع التواصل',
       keywords: [
         'sponsoring', 'sponsorisation', 'publicite facebook',
-        'reseaux sociaux', 'تمويل', 'إشهار ممول', 'اشهار ممول',
-        'ترويج', 'فيسبوك', 'انستغرام', 'انستجرام', 'اعلان ممول'
+        'reseaux sociaux', 'facebook ads', 'instagram ads',
+        'تمويل', 'اشهار ممول', 'ترويج', 'فيسبوك',
+        'انستغرام', 'انستجرام', 'اعلان ممول'
       ],
       url: './sponsoring.html',
+      duration: '2-days',
       description:
         'Nous vous accompagnons pour promouvoir vos pages et toucher davantage de clients sur les réseaux sociaux.',
       arabicDescription:
         'نساعدك على الترويج لصفحاتك ومنشوراتك للوصول إلى عدد أكبر من العملاء على مواقع التواصل الاجتماعي.'
     }
   ];
+
+  // --------------------------------------
+  // Durée des services
+  // --------------------------------------
+
+  function getDurationAnswer(question) {
+    const q = normalize(question);
+    const arabic = detectLanguage(question) === 'ar';
+
+    const asksDuration = [
+      'duree', 'delai', 'combien de temps',
+      'temps necessaire', 'temps pour',
+      'quand sera termine', 'quand sera pret',
+      'مدة', 'مدة الانجاز', 'مدة الإنجاز',
+      'قداش يستحق', 'قداش تاخو', 'قداش تاخذ',
+      'في قداش', 'قداش من نهار', 'شحال من يوم',
+      'وقتاش يكمل', 'وقتاش تجهز', 'وقت الانجاز',
+      'كم يستغرق', 'كم المدة', 'كم يوم',
+      'متى ينتهي', 'متى يكون جاهز'
+    ].some(word => q.includes(normalize(word)));
+
+    if (!asksDuration) return null;
+
+    const sponsoring = [
+      'sponsoring', 'sponsorisation', 'اشهار ممول',
+      'الاشهار الممول', 'اعلان ممول', 'اعلانات ممولة',
+      'تمويل', 'ترويج', 'فيسبوك', 'انستغرام'
+    ].some(word => q.includes(normalize(word)));
+
+    const advertising = [
+      'publicite par ia', 'publicite ia',
+      'publicite', 'annonce', 'اعلان',
+      'اعلانات', 'دعاية', 'ذكاء اصطناعي'
+    ].some(word => q.includes(normalize(word)));
+
+    const website = [
+      'site web', 'site internet', 'website',
+      'creation site', 'موقع', 'ويب', 'سايت'
+    ].some(word => q.includes(normalize(word)));
+
+    // Question sur un service particulier
+    if (sponsoring) {
+      return {
+        text: arabic
+          ? 'مدة إنجاز خدمة Sponsoring هي يومان. 📅'
+          : 'Le délai pour le Sponsoring est de 2 jours. 📅'
+      };
+    }
+
+    if (advertising) {
+      return {
+        text: arabic
+          ? 'خدمة Publicité par IA يتم إنجازها في نفس اليوم. ⚡'
+          : 'La prestation Publicité par IA est réalisée le jour même. ⚡'
+      };
+    }
+
+    if (website) {
+      return {
+        text: arabic
+          ? 'مدة إنشاء الموقع الإلكتروني تتراوح بين 3 و4 أيام. 💻'
+          : 'Le délai de création d’un site web est de 3 à 4 jours. 💻'
+      };
+    }
+
+    // Question sur toutes les durées
+    return {
+      text: arabic
+        ? 'مدد إنجاز الخدمات في Création Ai:\n\n' +
+          '• Sponsoring: يومان.\n' +
+          '• Publicité par IA: في نفس اليوم.\n' +
+          '• Création site web: من 3 إلى 4 أيام.\n\n' +
+          'إذا تحب تعرف أكثر على خدمة معيّنة، اسألني عليها.'
+        : 'Les délais annoncés sont les suivants :\n\n' +
+          '• Sponsoring : 2 jours.\n' +
+          '• Publicité par IA : le jour même.\n' +
+          '• Création de site web : 3 à 4 jours.\n\n' +
+          'Posez-moi vos questions sur la prestation qui vous intéresse.'
+    };
+  }
+
+  // --------------------------------------
+  // Base de questions / réponses
+  // --------------------------------------
 
   function getAnswer(question) {
     const q = normalize(question);
@@ -314,71 +438,101 @@ function initCreationAiAssistant() {
     const has = (...words) =>
       words.some(word => q.includes(normalize(word)));
 
-    // 1. Services généraux : vérifier avant les intentions secondaires.
-    // Inclut explicitement la question tunisienne signalée.
-    const asksAllServices =
+    // 1. Présentation du propriétaire
+    if (
       has(
-        'شنوة الخدمات اللي تقدمو فيها',
-        'شنوة الخدمات اللي تقدموا فيها',
-        'شنوة الخدمات الي تقدمو فيها',
-        'شنية الخدمات اللي تقدموا فيها',
-        'شنوة خدماتكم',
-        'شنو الخدمات',
-        'شنوة تعملو',
-        'شنو تعملو',
-        'شنوة تقدموا',
-        'شنوة تقدمو',
-        'شنوة عندكم',
-        'الخدمات المتوفرة',
-        'ماذا تقدمون',
-        'خدماتكم',
-        'services',
-        'service',
-        'vos services',
-        'quels sont vos services',
-        'quelles sont vos prestations',
-        'que proposez vous',
-        'que faites vous',
-        'activite'
-      );
-
-    if (asksAllServices) {
-      return arabic
-        ? {
-            text:
-              'في Création Ai نقدّموا الخدمات التالية:\n\n' +
-              '• الإعلانات بالذكاء الاصطناعي\n' +
-              '• إنشاء المواقع الإلكترونية\n' +
-              '• تصميم الصور والفيديوهات\n' +
-              '• باقة النجاح\n' +
-              '• الإشهار المموّل على مواقع التواصل الاجتماعي\n\n' +
-              'اختار الخدمة اللي تهمّك باش نعطيك معلومات أكثر.',
-            quick: serviceQuickReplies(true)
-          }
-        : {
-            text:
-              'Voici les services proposés par Création Ai :\n\n' +
-              '• Publicité par IA\n' +
-              '• Création de sites web\n' +
-              '• Images et vidéos\n' +
-              '• Pack Succès\n' +
-              '• Sponsoring des réseaux sociaux\n\n' +
-              'Choisissez une prestation pour en savoir plus.',
-            quick: serviceQuickReplies(false)
-          };
+        'من هو صاحب الموقع', 'من صاحب الموقع',
+        'شكون صاحب الموقع', 'شكون مول الموقع',
+        'شكون عمل الموقع', 'من انشأ الموقع',
+        'qui est le proprietaire du site',
+        'qui est le proprietaire',
+        'qui est le fondateur', 'qui a cree le site',
+        'qui a créé le site', 'nom du proprietaire'
+      )
+    ) {
+      return {
+        text: arabic
+          ? 'صاحب الموقع هو عمر. 😊'
+          : 'Le propriétaire du site est Omar. 😊'
+      };
     }
 
-    // Salutations
-    if (has('bonjour', 'bonsoir', 'salut', 'coucou', 'hello',
-            'salam', 'aslema', 'ahlan', 'مرحبا',
-            'السلام عليكم', 'سلام', 'عسلامة', 'اهلا')) {
+    // 2. Nom du projet
+    if (
+      has(
+        'ماهو اسم المشروع', 'ما هو اسم المشروع',
+        'شنوة اسم المشروع', 'شنية اسم المشروع',
+        'اسم الموقع', 'اسم المشروع',
+        'quel est le nom du projet',
+        'nom du projet', 'comment sappelle le projet',
+        'nom du site', 'comment sappelle votre projet'
+      )
+    ) {
+      return {
+        text: arabic
+          ? 'اسم المشروع هو Création Ai. ✨'
+          : 'Le nom du projet est Création Ai. ✨'
+      };
+    }
+
+    // 3. Question personnelle : nourriture préférée
+    if (
+      has(
+        'ما هي اكلتك المفضلة', 'ما هي اكلتك المفضله',
+        'شنوة اكلتك المفضلة', 'شنوة ماكلتك المفضلة',
+        'شنوة تحب تاكل', 'شنو تحب تاكل',
+        'اكلتك المفضلة', 'اكلتك المفضله',
+        'quel est ton plat prefere',
+        'quel est votre plat prefere',
+        'ton plat favori', 'votre plat favori',
+        'qu est ce que tu aimes manger'
+      )
+    ) {
+      return {
+        text: arabic
+          ? 'أكلتي المفضلة هي البيتزا! 🍕😋'
+          : 'Mon plat préféré est la pizza ! 🍕😋'
+      };
+    }
+
+    // 4. Disponibilité du site et de l'assistant
+    if (
+      has(
+        '24 heures', '24h', '24 24', '24 sur 24',
+        'toute la journee', 'tous les jours',
+        'disponible', 'disponibilite', 'ouvert quand',
+        'وقتاش الموقع متاح', 'الموقع متاح',
+        'الموقع متوفر', 'المساعد متاح',
+        'متى يبقى الموقع متاح', '24 ساعة',
+        'طول اليوم', 'كل يوم', 'على مدار الساعة',
+        'هل الموقع يعمل دائما', 'هل المساعد يعمل دائما',
+        'الموقع يخدم ديما', 'عمر موجود ديما',
+        'هل انتم متاحون', 'وقتاش تنجموا تجاوبوا'
+      )
+    ) {
+      return {
+        text: arabic
+          ? 'موقع Création Ai ومساعد Omar متاحان على مدار 24 ساعة في اليوم، طوال أيام الأسبوع. 🤖🌙'
+          : 'Le site Création Ai et l’assistant Omar sont disponibles 24 heures sur 24, tous les jours. 🤖🌙'
+      };
+    }
+
+    // 5. Salutations
+    if (
+      has(
+        'bonjour', 'bonsoir', 'salut', 'coucou',
+        'hello', 'salam', 'aslema', 'ahlan',
+        'مرحبا', 'السلام عليكم', 'سلام', 'عسلامة', 'اهلا'
+      )
+    ) {
       return arabic
         ? {
             text:
               'عسلامة ومرحبًا بيك في Création Ai! 😊\n\n' +
-              'شنوة تحب تعرف؟ نجم نعاونك في الخدمات والأسعار وكيفاش تطلب.',
+              'أنا عمر، مساعدك الافتراضي. شنوة تحب تعرف؟',
             quick: [
               { label: 'خدماتنا', value: 'شنوة الخدمات اللي تقدمو فيها؟' },
+              { label: 'مدة الإنجاز', value: 'قداش مدة إنجاز الخدمات؟' },
               { label: 'الأسعار', value: 'قداش الأسعار؟' },
               { label: 'كيف نطلب؟', value: 'كيفاش نطلب؟' }
             ]
@@ -386,18 +540,23 @@ function initCreationAiAssistant() {
         : {
             text:
               'Bonjour et bienvenue chez Création Ai ! 😊\n\n' +
-              'Que souhaitez-vous découvrir ? Je peux vous aider à choisir un service ou à passer une commande.',
+              'Je suis Omar, votre assistant virtuel. Que souhaitez-vous savoir ?',
             quick: [
               { label: 'Nos services', value: 'Quels sont vos services ?' },
+              { label: 'Délais', value: 'Quels sont vos délais ?' },
               { label: 'Les prix', value: 'Quels sont vos prix ?' },
               { label: 'Commander', value: 'Comment commander ?' }
             ]
           };
     }
 
-    // Remerciements
-    if (has('merci', 'thank you', 'شكرا', 'شكرا جزيلا',
-            'يعطيك الصحة', 'بارك الله فيك')) {
+    // 6. Remerciements
+    if (
+      has(
+        'merci', 'thank you', 'شكرا', 'شكرا جزيلا',
+        'يعطيك الصحة', 'بارك الله فيك'
+      )
+    ) {
       return {
         text: arabic
           ? 'بالصحة والراحة! 😊 مرحبا بيك ديما في Création Ai. إذا عندك سؤال آخر، أنا هنا باش نعاونك.'
@@ -405,35 +564,101 @@ function initCreationAiAssistant() {
       };
     }
 
-    // Contact / WhatsApp
-    if (has('whatsapp', 'contact', 'telephone', 'numero',
-            'appeler', 'اتصال', 'واتساب', 'رقم الهاتف',
-            'رقمكم', 'نحكي معاكم', 'نتصل بيكم', 'كيف نتصل')) {
+    // 7. Délais : vérifier avant les autres intentions
+    const durationAnswer = getDurationAnswer(question);
+    if (durationAnswer) return durationAnswer;
+
+    // 8. Liste de tous les services
+    const asksAllServices = has(
+      'شنوة الخدمات اللي تقدمو فيها',
+      'شنوة الخدمات اللي تقدموا فيها',
+      'شنية الخدمات اللي تقدموا فيها',
+      'شنوة خدماتكم', 'شنو الخدمات', 'شنوة تعملو',
+      'شنو تعملو', 'شنوة تقدموا', 'شنوة تقدمو',
+      'شنوة عندكم', 'الخدمات المتوفرة',
+      'ماذا تقدمون', 'خدماتكم',
+      'services', 'vos services',
+      'quels sont vos services',
+      'quelles sont vos prestations',
+      'que proposez vous', 'que faites vous',
+      'activite'
+    );
+
+    if (asksAllServices) {
+      return arabic
+        ? {
+            text:
+              'في Création Ai نقدّموا الخدمات التالية:\n\n' +
+              '• الإعلانات بالذكاء الاصطناعي.\n' +
+              '• إنشاء المواقع الإلكترونية.\n' +
+              '• تصميم الصور والفيديوهات.\n' +
+              '• باقة النجاح.\n' +
+              '• الإشهار المموّل على مواقع التواصل الاجتماعي.\n\n' +
+              'اختار الخدمة اللي تهمّك باش نعطيك معلومات أكثر.',
+            quick: serviceQuickReplies(true)
+          }
+        : {
+            text:
+              'Voici les services proposés par Création Ai :\n\n' +
+              '• Publicité par IA.\n' +
+              '• Création de sites web.\n' +
+              '• Images et vidéos.\n' +
+              '• Pack Succès.\n' +
+              '• Sponsoring des réseaux sociaux.\n\n' +
+              'Choisissez une prestation pour en savoir plus.',
+            quick: serviceQuickReplies(false)
+          };
+    }
+
+    // 9. Contact et WhatsApp
+    if (
+      has(
+        'whatsapp', 'contact', 'telephone', 'numero',
+        'appeler', 'اتصال', 'واتساب', 'رقم الهاتف',
+        'رقمكم', 'نحكي معاكم', 'نتصل بيكم',
+        'كيف نتصل', 'رقم التواصل'
+      )
+    ) {
       return arabic
         ? {
             text:
               'تنجم تتصل بينا على واتساب بالرقم:\n' +
-              '+216 21 582 307\n\nاضغط على الرابط باش تبعثلنا رسالة مباشرة.',
-            link: { label: 'راسلنا على واتساب', url: WHATSAPP_URL }
+              '+216 21 582 307\n\n' +
+              'اضغط على الرابط باش تبعثلنا رسالة مباشرة.',
+            link: {
+              label: 'راسلنا على واتساب',
+              url: WHATSAPP_URL
+            }
           }
         : {
             text:
-              'Vous pouvez contacter Création Ai sur WhatsApp au +216 21 582 307. Cliquez ci-dessous pour nous écrire directement.',
-            link: { label: 'Écrire sur WhatsApp', url: WHATSAPP_URL }
+              'Vous pouvez contacter Création Ai sur WhatsApp au ' +
+              '+216 21 582 307. Cliquez ci-dessous pour nous écrire directement.',
+            link: {
+              label: 'Écrire sur WhatsApp',
+              url: WHATSAPP_URL
+            }
           };
     }
 
-    // Prix
-    if (has('prix', 'tarif', 'combien', 'cout', 'budget',
-            'ثمن', 'السعر', 'الاسعار', 'الأسعار', 'بقداش',
-            'قداش', 'بكم', 'بشحال', 'تسعيرة', 'تكلفة',
-            'يكلف', 'تسوى', 'فلوس')) {
+    // 10. Prix
+    if (
+      has(
+        'prix', 'tarif', 'combien', 'cout', 'budget',
+        'ثمن', 'السعر', 'الاسعار', 'بقداش', 'قداش',
+        'بكم', 'بشحال', 'تسعيرة', 'تكلفة',
+        'يكلف', 'تسوى', 'فلوس'
+      )
+    ) {
       return arabic
         ? {
             text:
               'بالنسبة لإنشاء المواقع الإلكترونية، السعر المعلن يبدأ من 300 دينار تونسي.\n\n' +
-              'أما بقية الخدمات، فالسعر يتحدّد حسب طلبك ونوع المشروع. راسلنا على واتساب باش نعطيوك تفاصيل تناسب احتياجاتك.',
-            link: { label: 'اطلب تفاصيل الأسعار', url: WHATSAPP_URL },
+              'أما بقية الخدمات، فالسعر يتحدّد حسب طلبك ونوع المشروع. راسلنا على واتساب باش نعطيوك التفاصيل.',
+            link: {
+              label: 'اطلب تفاصيل الأسعار',
+              url: WHATSAPP_URL
+            },
             quick: [
               { label: 'خدماتنا', value: 'شنوة الخدمات اللي تقدمو فيها؟' },
               { label: 'إنشاء موقع', value: 'قداش يكلف إنشاء موقع؟' }
@@ -441,32 +666,47 @@ function initCreationAiAssistant() {
           }
         : {
             text:
-              'Le prix affiché pour la création de sites web commence à 300 DT. Les tarifs des autres prestations dépendent de votre demande. Contactez-nous sur WhatsApp pour obtenir des informations adaptées à votre projet.',
-            link: { label: 'Demander un tarif', url: WHATSAPP_URL }
+              'Le prix annoncé pour la création de sites web commence à 300 DT. Les tarifs des autres prestations dépendent de votre demande. Contactez-nous sur WhatsApp pour obtenir les détails.',
+            link: {
+              label: 'Demander un tarif',
+              url: WHATSAPP_URL
+            }
           };
     }
 
-    // Commander
-    if (has('commander', 'commande', 'acheter', 'reservation',
-            'reserver', 'طلب', 'نطلب', 'كيفاش نطلب',
-            'كيف نطلب', 'نحب نطلب', 'نحب نشري',
-            'شراء', 'باش نطلب', 'طريقة الطلب')) {
+    // 11. Commander
+    if (
+      has(
+        'commander', 'commande', 'acheter',
+        'reservation', 'reserver', 'طلب',
+        'نطلب', 'كيفاش نطلب', 'كيف نطلب',
+        'نحب نطلب', 'نحب نشري', 'شراء',
+        'باش نطلب', 'طريقة الطلب'
+      )
+    ) {
       return arabic
         ? {
             text:
-              'باش تطلب، اختار الخدمة اللي تناسبك واضغط على الزر الخاص بيها في الموقع. بعدها اتبع التعليمات وعمّر المعلومات المطلوبة.\n\nإذا تحتاج مساعدة، تنجم تراسلنا على واتساب.',
+              'باش تطلب، اختار الخدمة اللي تناسبك واضغط على الزر الخاص بيها في الموقع. بعدها اتبع التعليمات وعمّر المعلومات المطلوبة.\n\n' +
+              'إذا تحتاج مساعدة، تنجم تراسلنا على واتساب.',
             quick: serviceQuickReplies(true),
-            link: { label: 'راسلنا على واتساب', url: WHATSAPP_URL }
+            link: {
+              label: 'راسلنا على واتساب',
+              url: WHATSAPP_URL
+            }
           }
         : {
             text:
               'Pour commander, choisissez le service qui vous intéresse puis cliquez sur le bouton correspondant. Suivez ensuite les instructions de la page. Si vous avez besoin d’aide, contactez-nous sur WhatsApp.',
             quick: serviceQuickReplies(false),
-            link: { label: 'Contacter notre équipe', url: WHATSAPP_URL }
+            link: {
+              label: 'Contacter notre équipe',
+              url: WHATSAPP_URL
+            }
           };
     }
 
-    // Service spécifique
+    // 12. Service spécifique
     const service = services.find(item =>
       item.keywords.some(keyword => q.includes(normalize(keyword))) ||
       q === normalize(item.name) ||
@@ -477,62 +717,87 @@ function initCreationAiAssistant() {
       return arabic
         ? {
             text: service.arabicName + '\n\n' + service.arabicDescription,
-            link: { label: 'اكتشف الخدمة', url: service.url },
+            link: {
+              label: 'اكتشف الخدمة',
+              url: service.url
+            },
             quick: [
               { label: 'كل الخدمات', value: 'شنوة الخدمات اللي تقدمو فيها؟' },
+              { label: 'المدة', value: 'قداش مدة إنجاز الخدمات؟' },
               { label: 'الأسعار', value: 'قداش الأسعار؟' },
               { label: 'كيف نطلب؟', value: 'كيفاش نطلب؟' }
             ]
           }
         : {
             text: service.name + '\n\n' + service.description,
-            link: { label: 'Découvrir / commander', url: service.url },
+            link: {
+              label: 'Découvrir / commander',
+              url: service.url
+            },
             quick: [
               { label: 'Tous les services', value: 'Quels sont vos services ?' },
+              { label: 'Délais', value: 'Quels sont vos délais ?' },
               { label: 'Les prix', value: 'Quels sont vos prix ?' }
             ]
           };
     }
 
-    // Présentation de l'entreprise
-    if (has('qui etes vous', 'creation ai', 'votre entreprise',
-            'من انتم', 'شنوة creation ai', 'ما هو موقعكم',
-            'عرفني بيكم', 'عرفني عليكم')) {
+    // 13. Présentation de l'entreprise
+    if (
+      has(
+        'qui etes vous', 'creation ai',
+        'votre entreprise', 'من انتم',
+        'شنوة creation ai', 'ما هو موقعكم',
+        'عرفني بيكم', 'عرفني عليكم'
+      )
+    ) {
       return {
         text: arabic
-          ? 'Création Ai مشروع يساعدك على تطوير حضورك على الإنترنت.\n\nنقدّموا خدمات إنشاء المواقع الإلكترونية، والإعلانات، وتصميم الصور والفيديوهات، والترويج على مواقع التواصل الاجتماعي باستعمال حلول إبداعية وتقنيات الذكاء الاصطناعي.'
-          : 'Création Ai vous accompagne dans la création de sites web, de publicités et de contenus visuels grâce à des solutions créatives et à l’intelligence artificielle.'
+          ? 'Création Ai مشروع يساعدك على تطوير حضورك على الإنترنت. نقدّموا خدمات إنشاء المواقع الإلكترونية، والإعلانات، وتصميم الصور والفيديوهات، والترويج على مواقع التواصل الاجتماعي.'
+          : 'Création Ai vous accompagne dans la création de sites web, de publicités et de contenus visuels, ainsi que dans la promotion sur les réseaux sociaux.'
       };
     }
 
-    // Réponse de secours dans la langue du message.
+    // 14. Réponse de secours
     return arabic
       ? {
           text:
-            'شكرًا على رسالتك! 😊\n\nنجم نعاونك بمعلومات على خدماتنا، والأسعار، وكيفاش تطلب. إذا سؤالك خاص أو ما لقيتش الإجابة، راسل فريقنا على واتساب.',
+            'شكرًا على رسالتك! 😊\n\n' +
+            'نجم نعاونك بمعلومات على خدماتنا، ومدد الإنجاز، والأسعار، وكيفاش تطلب.\n\n' +
+            'إذا ما لقيتش الإجابة على سؤالك، راسل عمر على واتساب.',
           quick: [
             { label: 'خدماتنا', value: 'شنوة الخدمات اللي تقدمو فيها؟' },
+            { label: 'مدة الإنجاز', value: 'قداش مدة إنجاز الخدمات؟' },
             { label: 'الأسعار', value: 'قداش الأسعار؟' },
-            { label: 'كيف نطلب؟', value: 'كيفاش نطلب؟' },
-            { label: 'واتساب', value: 'رقم واتساب' }
+            { label: 'كيف نطلب؟', value: 'كيفاش نطلب؟' }
           ],
-          link: { label: 'تواصل مع Création Ai', url: WHATSAPP_URL }
+          link: {
+            label: 'تواصل مع Création Ai',
+            url: WHATSAPP_URL
+          }
         }
       : {
           text:
-            'Merci pour votre message ! 😊 Je peux répondre aux questions courantes sur nos services, les prix et les commandes. Pour une question particulière, contactez notre équipe sur WhatsApp.',
+            'Merci pour votre message ! 😊 Je peux répondre aux questions courantes sur nos services, les délais, les prix et les commandes. Pour une question particulière, contactez notre équipe sur WhatsApp.',
           quick: [
             { label: 'Nos services', value: 'Quels sont vos services ?' },
+            { label: 'Délais', value: 'Quels sont vos délais ?' },
             { label: 'Les prix', value: 'Quels sont vos prix ?' },
-            { label: 'Commander', value: 'Comment commander ?' },
-            { label: 'WhatsApp', value: 'Contact WhatsApp' }
+            { label: 'Commander', value: 'Comment commander ?' }
           ],
-          link: { label: 'Contacter Création Ai', url: WHATSAPP_URL }
+          link: {
+            label: 'Contacter Création Ai',
+            url: WHATSAPP_URL
+          }
         };
   }
 
+  // --------------------------------------
+  // Envoyer une question et afficher la réponse
+  // --------------------------------------
+
   function handleQuestion(question) {
-    const cleanQuestion = question.trim();
+    const cleanQuestion = String(question || '').trim();
     if (!cleanQuestion) return;
 
     addMessage(cleanQuestion, 'user');
@@ -546,7 +811,10 @@ function initCreationAiAssistant() {
     messages.scrollTop = messages.scrollHeight;
   }
 
+  // --------------------------------------
   // Ouvrir / fermer le chat
+  // --------------------------------------
+
   function openChat() {
     chatWindow.hidden = false;
     launcher.setAttribute('aria-expanded', 'true');
@@ -580,11 +848,14 @@ function initCreationAiAssistant() {
   closeButton.addEventListener('click', closeChat);
 
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !chatWindow.hidden) closeChat();
+    if (event.key === 'Escape' && !chatWindow.hidden) {
+      closeChat();
+    }
   });
 
   chatForm.addEventListener('submit', event => {
     event.preventDefault();
+
     const question = input.value.trim();
     if (!question) return;
 
@@ -592,7 +863,10 @@ function initCreationAiAssistant() {
     handleQuestion(question);
   });
 
-  // Microphone
+  // --------------------------------------
+  // Microphone : reconnaissance vocale
+  // --------------------------------------
+
   const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -706,7 +980,10 @@ function initCreationAiAssistant() {
     }
   }
 
+  // --------------------------------------
   // Changer la langue du microphone
+  // --------------------------------------
+
   if (languageSelect) {
     languageSelect.addEventListener('change', () => {
       if (recognition && !isListening) {
@@ -727,12 +1004,16 @@ function initCreationAiAssistant() {
     });
   }
 
-  // Lecture vocale : choisir la langue selon la réponse.
+  // --------------------------------------
+  // Lecture vocale
+  // --------------------------------------
+
   function getSpeechLanguage(text) {
     if (detectLanguage(text) === 'ar') {
       const selected = getSelectedLanguage();
       return selected.startsWith('ar') ? selected : 'ar-TN';
     }
+
     return 'fr-FR';
   }
 
@@ -757,6 +1038,7 @@ function initCreationAiAssistant() {
 
     const voices = window.speechSynthesis.getVoices();
     const prefix = utterance.lang.toLowerCase().split('-')[0];
+
     const matchingVoice = voices.find(voice =>
       voice.lang.toLowerCase().startsWith(prefix)
     );
